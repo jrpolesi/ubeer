@@ -3,16 +3,24 @@ import Database from "../controllers/database.js";
 import { v4 as uuid4 } from "uuid";
 
 const router = express.Router();
-const pricePerKm = 10;
+const pricePerKm = 20;
 
-router.get("/newTravel/users/:userId", (req, res) => {
+router.post("/newTravel/users/:userId", (req, res) => {
   const { from, to } = req.body;
   const userId = req.params.userId;
 
   const user = Database.getById("users", userId);
 
-  const distance = Math.hypot(from.lat - to.lat, from.long - to.long);
+  const distance =
+    Math.hypot(
+      Number(from.lat) - Number(to.lat),
+      Number(from.long) - Number(to.long)
+    ) * 100;
+  console.log(from, to);
+  console.log({ distance });
+
   const totalPrice = distance * pricePerKm;
+  console.log(totalPrice);
 
   const travel = {
     id: uuid4(),
@@ -30,6 +38,21 @@ router.get("/newTravel/users/:userId", (req, res) => {
   const driver = Database.getRandomItem("drivers");
 
   res.status(201).json({ travel, driver });
+});
+
+router.put("/newTravel/users/:userId", (req, res) => {
+  const userId = req.params.userId;
+  const travelId = req.query.travelid;
+
+  const user = Database.getById("users", userId);
+
+  const travel = user.travelHistoric.find((element) => element.id === travelId);
+
+  travel.arrivedDate = Date.now();
+
+  Database.updateOne("users", userId, user);
+
+  return res.status(200).json(travel);
 });
 
 export default router;
