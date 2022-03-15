@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": "2b3a4bc8-ee02-480d-b352-7d8e55de30b6",
+      "email": "carlos@kenzie.com.br",
+      "name": "carlos",
+      "car": { "model": "onix", "plate": "AZP-3705" },
+      "password": "$2a$10$pcyCXgTaCPdRcATwQkUI8unBkn3pbxHiAw2fJu9BtieWqcdrUlbNG",
+      "budget": 0,
+      "favoritesPlaces": [],
+      "travelHistoric": []
+    },
+    {
+      "id": "434fc60c-06e1-48d8-b1bc-af2efc2cc85d",
+      "email": "josejose@kenzie.com.br",
+      "name": "carlos",
+      "car": { "model": "onix", "plate": "AZP-3705" },
+      "password": "$2a$10$htySTohyT1fvKIQTmzHDnOjP/daFHveks.AK6u2GGz2/4P8QtXQce",
+      "budget": 0,
+      "favoritesPlaces": [],
+      "travelHistoric": []
+    },
+    {
+      "id": "6155957e-bd2a-4675-bff4-bf10805b422c",
+      "email": "gabrielcastedo@kenzie.com.br",
+      "name": "Gabriel",
+      "car": { "model": "fusion", "plate": "AZP-3705" },
+      "password": "$2a$10$vPpQR5PWWFOE9TgTSJTiQ.OlqPRRFDwURHpQrgPBEdJZvJzMOBY9q",
+      "budget": 500,
+      "favoritesPlaces": [
+        { "id": "c49a2fc8-b28f-41c4-a19f-173a6ff62640", "name": "SaoPaulo" }
+      ],
+      "travelHistoric": []
+    }
+  ],
+  "drivers": [
+    {
+      "id": "101",
+      "name": "Lucas",
+      "car": { "model": "Ford Fiesta", "plate": "AGH-2679" },
+      "rating": {
+        "starsAverage": 5,
+        "feedbacks": [
+          {
+            "id": "5",
+            "start": 5,
+            "description": "Estava em mal estado, cuidou bem do meu carro, e me levou até minha casa com segurança. Parabéns pelo serviço."
+          }
+        ]
+      }
+    }
+  ]
+}
