@@ -1,11 +1,11 @@
-import React from 'react';
-import MyComponent from "./components/teste"
+import React from "react";
+import GlobalStyle from "./styles/global";
 
 function App() {
   return (
-    <div>
- <MyComponent />
-    </div>
+    <>
+      <GlobalStyle />
+    </>
   );
 }
 
