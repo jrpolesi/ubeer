@@ -4,17 +4,17 @@ class DatabaseControllers {
   static getByEmail(collection, email) {
     const db = FilesControllers.read();
 
-    const list = db[collection].find((each) => (each.email = email));
+    const item = db[collection].find((each) => each.email === email);
 
-    return list;
+    return item;
   }
 
   static getById(collection, id) {
     const db = FilesControllers.read();
 
-    const list = db[collection].find((each) => (each.id = id));
+    const item = db[collection].find((each) => each.id === id);
 
-    return list;
+    return item;
   }
 
   static getAll(collection) {
@@ -66,6 +66,15 @@ class DatabaseControllers {
     } else {
       return false;
     }
+  }
+
+  static getRandomItem(collection) {
+    const db = FilesControllers.read();
+
+    const randomIndex = Math.floor(Math.random() * db[collection].length);
+    const randomItem = db[collection][randomIndex];
+
+    return randomItem;
   }
 }
 

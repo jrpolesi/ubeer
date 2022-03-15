@@ -8,9 +8,9 @@ import jwt from "jsonwebtoken";
 const router = express.Router();
 
 router.post("/signup", (req, res) => {
-  const { password, email, ...newUser } = req.body;
+  const { password, ...newUser } = req.body;
 
-  const userFromDatabase = Database.getByEmail("users", email);
+  const userFromDatabase = Database.getByEmail("users", newUser.email);
 
   if (userFromDatabase) {
     return res
@@ -22,7 +22,7 @@ router.post("/signup", (req, res) => {
     if (!err) {
       const userToSave = {
         id: uuid4(),
-        newUser,
+        ...newUser,
         password: hash,
         budget: 0,
         favoritesPlaces: [],
@@ -50,10 +50,8 @@ router.post("/signup", (req, res) => {
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
-  const { password: encryptedPassword, ...user } = Database.getByEmail(
-    "users",
-    email
-  );
+  const user = Database.getByEmail("users", email);
+  const { password: encryptedPassword, ...userWithoutPassword } = user;
 
   if (!user) {
     return res.status(401).json({ message: "invalid password or email" });
@@ -73,7 +71,7 @@ router.post("/login", (req, res) => {
       { expiresIn: tokenConfig.expiresIn }
     );
 
-    return res.status(200).json({ user, token });
+    return res.status(200).json({ userWithoutPassword, token });
   });
 });
 
@@ -97,7 +95,7 @@ router.put("/:userId/budget", (req, res) => {
 
   Database.updateOne("users", userId, user);
 
-  return res.status(204).end()
+  return res.status(204).end();
 });
 
 router.post("/:userId/favorites", (req, res) => {
