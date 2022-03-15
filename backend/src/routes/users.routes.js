@@ -81,6 +81,7 @@ router.get("/:userId", (req, res) => {
   const userId = req.params.userId;
 
   const user = Database.getById("users", userId);
+  //removersenha
 
   return res.status(200).json(user);
 });
