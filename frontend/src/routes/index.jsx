@@ -5,10 +5,11 @@ const RoutesPages = () => {
     return(
         <Routes>
             <Route path="/" element={<Home/>}/ >
-            <Route path="register" element={}/>            
+            <Route path="signup" element={}/>            
             <Route path="login" element={}/>
             <Route path="dashboard" element={}/>
             <Route path="wallet" element={}/>
+            <Route path="history" element={}/>
         </Routes>
     )
 } 
