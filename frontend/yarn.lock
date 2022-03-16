@@ -1454,7 +1454,7 @@
 
 "@react-google-maps/api@^2.7.0":
   version "2.7.0"
-  resolved "https://registry.npmjs.org/@react-google-maps/api/-/api-2.7.0.tgz"
+  resolved "https://registry.yarnpkg.com/@react-google-maps/api/-/api-2.7.0.tgz#c4d7b8a53f03ee63643b0d0f313aa3b2d79dde92"
   integrity sha512-Fb/l7aR69ObYvzhpt1d1931454ylRkTPKF1C8GfLvXtg19wc36zTev2Afbahd+qAdyKuQyDdf5/SQyMjYBHI/A==
   dependencies:
     "@googlemaps/js-api-loader" "1.12.8"
@@ -4715,14 +4715,14 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4, 
 
 grommet-icons@^4.7.0:
   version "4.7.0"
-  resolved "https://registry.npmjs.org/grommet-icons/-/grommet-icons-4.7.0.tgz"
+  resolved "https://registry.yarnpkg.com/grommet-icons/-/grommet-icons-4.7.0.tgz#1d537b2bdc507be07d5643309d433bbe1464c5b6"
   integrity sha512-ptw8x86Age/Yz6SplCLtJ8q1z/4ZLktMruCOnE6oTgc7hcIV/8ieOucTrLbu+PDi7rKxoP321O3OG3Zo/3qXjw==
   dependencies:
     grommet-styles "^0.2.0"
 
 grommet-styles@^0.2.0:
   version "0.2.0"
-  resolved "https://registry.npmjs.org/grommet-styles/-/grommet-styles-0.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/grommet-styles/-/grommet-styles-0.2.0.tgz#b2eac2b7e2747cb523434d21728ce5234f8ce4f4"
   integrity sha512-0OMSYuGeyifYKpg4Gv2HzL8rUdd0ddnJ5LbCBKgDuloC71XIwr9g/Fxa6rs737MbPV7OZ4pEm4wvrjH4epzf1A==
 
 grommet@^2.21.0:
