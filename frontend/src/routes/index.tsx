@@ -1,3 +1,4 @@
+import Login from "../pages/Login/index";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
@@ -8,8 +9,15 @@ const RoutesPages = () => {
   return (
     <Routes>
       <Route path="/" element={<PublicRoute>home</PublicRoute>} />
-      <Route path="/signup" element={<PublicRoute>{<Signup/>}</PublicRoute>} />
-      <Route path="/login" element={<PublicRoute>login</PublicRoute>} />
+      <Route path="/signup" element={<PublicRoute><Signup/></PublicRoute>} />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            {/* <Login /> */}
+          </PublicRoute>
+        }
+      />
       <Route path="/dashboard" element={<PrivateRoute>dash</PrivateRoute>} />
       <Route path="/wallet" element={<PrivateRoute>carteira</PrivateRoute>} />
       <Route path="/history" element={<PrivateRoute>historico</PrivateRoute>} />
