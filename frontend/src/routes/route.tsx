@@ -10,5 +10,5 @@ const Routes = () => {
       setAuth(true);
     }
   }, [auth]);
-  return <Login auth={auth} setAuth/>;
+  return <Login />;
 };
