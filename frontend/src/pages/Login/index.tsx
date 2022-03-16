@@ -5,11 +5,11 @@ import styled from "styled-components";
 import { Box, Main, Button, Form, Heading, Image, FormField } from "grommet";
 import backArrow from "../../assets/img/Union.svg";
 
-interface loginProps{
+interface loginProps {
   auth: boolean;
   setAuth: boolean;
 }
-const Login = ({auth, setAuth}: loginProps) => {
+const Login = ({ auth, setAuth }: loginProps) => {
   return (
     <Main pad="large" fill="vertical">
       <Image alignSelf="start" src={backArrow} />

@@ -1,5 +1,5 @@
 import React from "react";
-import GlobalStyle from "./styles/global";
+import DashBoard from "./pages/Dashboard";
 
 function App() {
   return (
