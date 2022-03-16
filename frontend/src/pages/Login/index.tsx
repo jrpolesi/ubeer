@@ -1,6 +1,5 @@
 import React from "react";
 import { MailOption, Hide } from "grommet-icons";
-import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import styled from "styled-components";
 import { Box, Main, Button, Form, Heading, Image, FormField } from "grommet";
@@ -11,20 +10,6 @@ interface loginProps{
   setAuth: boolean;
 }
 const Login = ({auth, setAuth}: loginProps) => {
-  const history = useNavigate();
-
-  const schema = yup.object().shape({
-    email: yup
-      .string()
-      .email("Digite um email válido")
-      .required("Campo obrigatório"),
-    password: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(/^(?=.{6})/, "Senha inválida."),
-  });
-  setAuth = true;
-  console.log(auth);
   return (
     <Main pad="large" fill="vertical">
       <Image alignSelf="start" src={backArrow} />
