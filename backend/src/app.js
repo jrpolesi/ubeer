@@ -1,7 +1,6 @@
 import express from "express";
 import usersRoutes from "./routes/users.routes.js";
 import travelsRoutes from "./routes/travels.routes.js";
-import driversRoues from "./routes/drivers.routes.js";
 
 const app = express();
 const port = process.env.PORT || 3001;
