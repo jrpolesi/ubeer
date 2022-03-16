@@ -16,8 +16,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const userId = localStorage.getItem("@uBeer:user");
 
-    console.log(userId);
-
     if (token && userId) {
       api
         .get(`/users/${userId}`, {
