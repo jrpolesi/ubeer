@@ -3,17 +3,18 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
+import Signup from "../pages/Signup";
 
 const RoutesPages = () => {
   return (
     <Routes>
       <Route path="/" element={<PublicRoute>home</PublicRoute>} />
-      <Route path="/signup" element={<PublicRoute>cadastro</PublicRoute>} />
+      <Route path="/signup" element={<PublicRoute><Signup/></PublicRoute>} />
       <Route
         path="/login"
         element={
           <PublicRoute>
-            <Login />
+            {/* <Login /> */}
           </PublicRoute>
         }
       />
