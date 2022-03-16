@@ -30,6 +30,7 @@ export interface UserData {
 export interface UserContextInterface {
   updateUser: (userUpdated: UserData) => void;
   updateToken: (newToken:string) => void;
-  user: UserData;
-  token: string | false
+  logOut: () => void;
+  user: UserData | null;
+  token: string | null
 }
