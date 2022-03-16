@@ -13,6 +13,27 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const [user, setUser] = useState<UserData | null>({} as UserData);
 
+  useEffect(() => {
+    const userId = localStorage.getItem("@uBeer:user");
+
+    console.log(userId);
+
+    if (token && userId) {
+      api
+        .get(`/users/${userId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          setToken(response.data);
+        })
+        .catch(() => {
+          logOut();
+        });
+    } else {
+      logOut();
+    }
+  }, [token]);
+
   function updateToken(newToken: string) {
     setToken(newToken);
 
@@ -20,6 +41,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }
 
   function updateUser(userUpdated: UserData) {
+    localStorage.setItem("@uBeer:token", userUpdated.id);
+
     setUser(userUpdated);
   }
 
@@ -28,6 +51,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     setUser(null);
 
     localStorage.removeItem("@uBeer:token");
+    localStorage.removeItem("@uBeer:user");
   }
 
   return (
