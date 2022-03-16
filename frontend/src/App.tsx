@@ -1,13 +1,12 @@
 import React from "react";
-import { Grommet } from "grommet";
-import Signup from "./pages/Signup";
+import GlobalStyle from "./styles/global";
 
 function App() {
-  return(
-    <Grommet>
-      <Signup/>
-    </Grommet>
-  )
+  return (
+    <>
+      <GlobalStyle />
+    </>
+  );
 }
 
 export default App;
