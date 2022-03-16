@@ -1,43 +1,63 @@
 import React from "react";
 import { MailOption, Hide } from "grommet-icons";
 import * as yup from "yup";
-import styled from "styled-components";
-import { Box, Main, Button, Form, Heading, Image, FormField } from "grommet";
+import {
+  Box,
+  Main,
+  Button,
+  Form,
+  Heading,
+  Image,
+  FormField,
+  Grommet,
+} from "grommet";
 import backArrow from "../../assets/img/Union.svg";
+import { grommet } from "grommet";
+import { deepMerge } from "grommet/utils";
+import backgroundMap from "../../assets/img/map.png";
+import myCustomTheme from "../../styles/theme";
 
-interface loginProps{
+interface loginProps {
   auth: boolean;
   setAuth: boolean;
 }
-const Login = ({auth, setAuth}: loginProps) => {
+
+const Login = () => {
   return (
-    <Main pad="large" fill="vertical">
-      <Image alignSelf="start" src={backArrow} />
-      <Heading margin={{ bottom: "large" }}>Entrar</Heading>
-      <Box>
-        <Form>
-          <FormField
-            margin={{ bottom: "50px" }}
-            placeholder="ryan1456723@example.com"
-            icon={<MailOption />}
-            dropHeight="medium"
-            reverse
-          />
-          <FormField placeholder="***********" icon={<Hide />} reverse />
-          <Button
-            color="#FBD50E"
-            alignSelf="center"
-            margin={{ top: "520px" }}
-            fill="horizontal"
-            onClick={() => console.log("oi")}
-            primary
-            type="submit"
-            justify="end"
-            label="Log in"
-          />
-        </Form>
-      </Box>
-    </Main>
+    <Grommet theme={myCustomTheme}>
+      <Main background={`url(${backgroundMap})`} pad="large" fill="vertical">
+        <Image alignSelf="start" src={backArrow} />
+        <Heading style={{ fontFamily: "comfortaa", margin: "40px" }}>
+          Entrar
+        </Heading>
+        <Box>
+          <Form>
+            <FormField
+              margin={{ bottom: "50px" }}
+              placeholder="ryan1456723@example.com"
+              icon={<MailOption />}
+              reverse
+            />
+            <FormField placeholder="***********" icon={<Hide />} reverse />
+            <Button
+              style={{
+                border: "2px solid black",
+                color: "#000000",
+                marginTop: "485px",
+              }}
+              secondary
+              alignSelf="center"
+              fill="horizontal"
+              onClick={() => console.log("oi")}
+              primary
+              type="submit"
+              justify="end"
+              label="Log in"
+            />
+          </Form>
+        </Box>
+      </Main>
+    </Grommet>
   );
 };
 
