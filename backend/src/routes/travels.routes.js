@@ -26,7 +26,7 @@ router.post("/newTravel/users/:userId", (req, res) => {
     id: uuid4(),
     from: from.name,
     to: to.name,
-    departureDate: Date.now(),
+    departureDate: new Date(),
     arrivedDate: "",
     value: totalPrice,
   };
@@ -48,7 +48,7 @@ router.put("/newTravel/users/:userId", (req, res) => {
 
   const travel = user.travelHistoric.find((element) => element.id === travelId);
 
-  travel.arrivedDate = Date.now();
+  travel.arrivedDate = new Date();
 
   Database.updateOne("users", userId, user);
 
@@ -57,18 +57,3 @@ router.put("/newTravel/users/:userId", (req, res) => {
 
 export default router;
 
-/* {from:{
-    name:"" ,
-    lat: "",
-    long: ""
-}, to: {
-    name:"" ,
-    lat: "",
-    long: ""
-}}
- */
-/*
-    {driver: driver    
-    }
-
-*/
