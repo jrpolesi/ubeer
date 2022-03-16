@@ -1,185 +1,187 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/img/logo.png";
 import Motorista from "../../assets/img/imagemSobre.png";
+import Background from "../../assets/img/background.png";
 import Gabriel from "../../assets/img/Gabriel.jpeg";
 import Monalisa from "../../assets/img/Monalisa.jpeg";
 import Jose from "../../assets/img/Jose.jpeg";
 import Carlos from "../../assets/img/Carlos.jpeg";
 import Robert from "../../assets/img/Robert.png";
-import { Button, Nav } from "grommet";
-import { Github, Linkedin } from "grommet-icons";
 import {
-  ButtonFooter,
+  Anchor,
+  Box,
+  Button,
+  Footer,
   Header,
-  LogoSection,
+  Heading,
+  Image,
   Main,
-  SobreArticle,
-  TimeSection,
-} from "./styles";
+  Nav,
+  Paragraph,
+  Text,
+} from "grommet";
+import { Github, Linkedin } from "grommet-icons";
+// import {
+//   ButtonFooter,
+//   LogoSection,
+//   Main,
+//   SobreArticle,
+//   TimeSection,
+// } from "./styles";
 
 const Sobre = () => {
+  const navigate = useNavigate();
+
   return (
     <>
-      <Header>
-        <div>
-          <figure>
-            <img src={Logo} alt="Logo" />
-          </figure>
-          <h3>uBeer</h3>
-        </div>
-        <Nav direction="row">
-          <Button primary label="Entrar" color="light-1" />
-          <Button primary label="Cadastre-se" color="light-1" />
-        </Nav>
-      </Header>
       <Main>
-        <LogoSection>
-          <div>
-            <figure id="logo">
-              <img src={Logo} alt="Logo da uBeer" />
-            </figure>
-            <h1 id="mobile">uBeer</h1>
-            <h1 id="desktop">Bem vindo a uBeer!</h1>
-          </div>
-        </LogoSection>
-        <SobreArticle>
-          <h2>Sobre a uBeer</h2>
-          <div>
-            <figure>
-              <img src={Motorista} alt="Motorista dirigindo bebado" />
-            </figure>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only.
-            </p>
-          </div>
-        </SobreArticle>
-        <TimeSection>
-          <h2>Nosso time</h2>
-          <div>
-            <figure>
-              <img src={Gabriel} />
-            </figure>
-            <div className="container">
-              <p>Gabriel Castedo</p>
-              <span>Product Owner</span>
-              <div className="links">
-                <a href="" target="_blank" rel="noopener noreferrer">
-                  <Github />
-                </a>
-                <a href="" target="_blank" rel="noopener noreferrer">
-                  <Linkedin />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div>
-            <figure>
-              <img src={Monalisa} />
-            </figure>
-            <div className="container">
-              <p>Monalisa Menezes</p>
-              <span>Scrum Master</span>
-              <div className="links">
-                <a href="" target="_blank" rel="noopener noreferrer">
-                  <Github />
-                </a>
-                <a href="" target="_blank" rel="noopener noreferrer">
-                  <Linkedin />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div>
-            <figure>
-              <img src={Jose} />
-            </figure>
-            <div className="container">
-              <p>José Kremer</p>
-              <span>Tech Lead</span>
-              <div className="links">
-                <a
-                  href="https://github.com/jrpolesi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/jose-ricardo-kremer-polesi/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div>
-            <figure>
-              <img src={Carlos} />
-            </figure>
-            <div className="container">
-              <p>Carlos Vitor</p>
-              <span>Quality Assurance</span>
-              <div className="links">
-                <a
-                  href="https://github.com/Carlosv117"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/carlos-vitor-ribeiro-cerqueira-lima-08aa78212/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div>
-            <figure>
-              <img src={Robert} />
-            </figure>
-            <div className="container">
-              <p>Robert Costa</p>
-              <span>Quality Assurance</span>
-              <div className="links">
-                <a href="" target="_blank" rel="noopener noreferrer">
-                  <Github />
-                </a>
-                <a href="" target="_blank" rel="noopener noreferrer">
-                  <Linkedin />
-                </a>
-              </div>
-            </div>
-          </div>
-        </TimeSection>
+        <Box
+          direction="row"
+          align="center"
+          justify="center"
+          height="470px"
+          margin="0px 0px 20px 0px"
+          background={`url(${Background})`}
+          style={{ boxShadow: "0 4 4 #00000040" }}
+        >
+          <Box height="66px" width="66px">
+            <Image fit="cover" src={Logo} />
+          </Box>
+          <Heading>uBeer</Heading>
+        </Box>
+        <Box align="center" pad="0px 25px">
+          <Heading>Sobre a uBeer</Heading>
+          <Box height="200px" width="200px">
+            <Image fit="cover" src={Motorista} />
+          </Box>
+          <Paragraph>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industrys standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only.
+          </Paragraph>
+        </Box>
+        <Box pad="0px 25px 10px 25px">
+          <Heading alignSelf="center" margin="25px 0px">
+            Nosso Time
+          </Heading>
+          <Box direction="row">
+            <Box height="66px" width="66px" margin="0px 10px 0px 0px">
+              <Image fit="cover" src={Gabriel} style={{ borderRadius: 90 }} />
+            </Box>
+            <Box>
+              <Paragraph>Gabriel Castedo</Paragraph>
+              <Text>Product Owner</Text>
+              <Nav direction="row" margin="5px 0px 0px 0px">
+                <Anchor href="" target="_blank">
+                  <Github size="22px" />
+                </Anchor>
+                <Anchor href="#">
+                  <Linkedin size="22px" />
+                </Anchor>
+              </Nav>
+            </Box>
+          </Box>
+          <Box direction="row">
+            <Box height="66px" width="66px" margin="0px 10px 0px 0px">
+              <Image fit="cover" src={Monalisa} style={{ borderRadius: 90 }} />
+            </Box>
+            <Box>
+              <Paragraph>Monalisa Menezes</Paragraph>
+              <Text>Scrum Master</Text>
+              <Nav direction="row" margin="5px 0px 0px 0px">
+                <Anchor href="" target="_blank">
+                  <Github size="22px" />
+                </Anchor>
+                <Anchor href="#">
+                  <Linkedin size="22px" />
+                </Anchor>
+              </Nav>
+            </Box>
+          </Box>
+          <Box direction="row">
+            <Box height="66px" width="66px" margin="0px 10px 0px 0px">
+              <Image fit="cover" src={Jose} style={{ borderRadius: 90 }} />
+            </Box>
+            <Box>
+              <Paragraph>José Kremer</Paragraph>
+              <Text>Tech Lead</Text>
+              <Nav direction="row" margin="5px 0px 0px 0px">
+                <Anchor href="" target="_blank">
+                  <Github size="22px" />
+                </Anchor>
+                <Anchor href="#">
+                  <Linkedin size="22px" />
+                </Anchor>
+              </Nav>
+            </Box>
+          </Box>
+          <Box direction="row">
+            <Box height="66px" width="66px" margin="0px 10px 0px 0px">
+              <Image fit="cover" src={Carlos} style={{ borderRadius: 90 }} />
+            </Box>
+            <Box>
+              <Paragraph>Carlos Vitor</Paragraph>
+              <Text>Quality Assurance</Text>
+              <Nav direction="row" margin="5px 0px 0px 0px">
+                <Anchor href="" target="_blank">
+                  <Github size="22px" />
+                </Anchor>
+                <Anchor href="#">
+                  <Linkedin size="22px" />
+                </Anchor>
+              </Nav>
+            </Box>
+          </Box>
+          <Box direction="row">
+            <Box height="66px" width="66px" margin="0px 10px 0px 0px">
+              <Image fit="cover" src={Robert} style={{ borderRadius: 90 }} />
+            </Box>
+            <Box>
+              <Paragraph>Robert Costa</Paragraph>
+              <Text>Quality Assurance</Text>
+              <Nav direction="row" margin="5px 0px 0px 0px">
+                <Anchor href="" target="_blank">
+                  <Github size="22px" />
+                </Anchor>
+                <Anchor href="#">
+                  <Linkedin size="22px" />
+                </Anchor>
+              </Nav>
+            </Box>
+          </Box>
+        </Box>
       </Main>
-      <ButtonFooter>
+
+      <Footer background="status-unknown" pad="medium">
         <Button
           primary
           label="LOG IN"
           color="accent-4"
-          style={{ borderRadius: 6 }}
-          size="small"
-          // onClick={() => history.push("/login")}
+          style={{
+            borderRadius: 6,
+            fontSize: 12,
+            width: 140,
+            border: "2px solid #333333",
+          }}
+          onClick={() => navigate("/Login")}
         />
         <Button
           primary
           label="CADASTRE-SE"
-          style={{ borderRadius: 6 }}
-          size="small"
           color="dark-1"
-          // onClick={() => history.push("/signup")}
+          style={{
+            borderRadius: 6,
+            fontSize: 12,
+            width: 140,
+            border: "2px solid #333333",
+          }}
+          width="60px"
+          onClick={() => navigate("/Signup")}
         />
-      </ButtonFooter>
+      </Footer>
     </>
   );
 };
