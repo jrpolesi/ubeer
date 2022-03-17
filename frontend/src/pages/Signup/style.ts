@@ -6,19 +6,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  header {
-      height: 15%;
-      background-color: #F7F8F9;
-  button{
-      width: 84px;
-      height: 84px;
-      border: none;
-      border-radius: 50%;
-    }
-
-
-  }
-
+  
   
 `;
 

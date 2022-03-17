@@ -1,23 +1,15 @@
 import { Grommet, Notification } from "grommet";
-import {
-  FormPrevious,
-  MailOption,
-  User,
-  Hide,
-  Car,
-  Blank,
-  Mail,
-} from "grommet-icons";
+import { MailOption, User, Car } from "grommet-icons";
 import { FieldValues, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import { deepMerge } from "grommet/utils";
 import api from "../../services/api";
 import { Container, Main } from "./style";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import Header from "../../components/Header";
 
 const schema = yup.object().shape({
   name: yup.string().required("Campo obrigatório"),
@@ -54,10 +46,6 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  // const handleClick = () => {
-  //   navigate
-  // }
-
   const submit = ({ model, plate, ...user }: FieldValues) => {
     const userFormated = {
       ...user,
@@ -87,11 +75,8 @@ const Signup = () => {
       )}
 
       <Container>
-        <header>
-          <button onClick={()=> navigate("/login")}>
-            <FormPrevious size="50px" color="#FBD50E" />
-          </button>
-        </header>
+        <Header />
+
         <Main>
           <h1>Cadastro</h1>
           <form onSubmit={handleSubmit(submit)}>
