@@ -1,25 +1,25 @@
 import React, { useContext } from "react";
-import { MailOption, Hide, Mail } from "grommet-icons";
+import { MailOption, Hide } from "grommet-icons";
 import * as yup from "yup";
-import { Main, InputText, Box, Label } from "./styled";
-import backArrow from "../../assets/img/Union.svg";
+import { Main, Box } from "./styled";
+import Header from "../../components/Header/index";
 import api from "../../services/api";
 import { FieldValues, useForm } from "react-hook-form";
 import { UserContext } from "../../providers/user";
+import Input from "../../components/Input/index";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../../components/Button/index";
-import { useTheme } from "styled-components";
-const schema = yup.object().shape({
-  email: yup.string().email("Email inválido").required("Campo Obrigatório"),
-  password: yup
-    .string()
-    .min(8, "mínimo 8 digitos")
-    .required("Campo obrigatório"),
-});
+import { FormField } from "grommet";
 
 const Login = () => {
+  const schema = yup.object().shape({
+    email: yup.string().email("Email inválido").required("Campo Obrigatório"),
+    password: yup
+      .string()
+      .min(8, "mínimo 8 digitos")
+      .required("Campo obrigatório"),
+  });
   const { updateToken } = useContext(UserContext);
-  const theme = useTheme();
 
   const {
     register,
@@ -39,38 +39,34 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
   };
-
+  // console.log(errors);
   return (
-    <Main>
-      {/* <Form onSubmit={handleSubmit(onSubmit)}>
-            <FormField
-              margin={{ bottom: "50px" }}
-              placeholder="ryan1456723@example.com"
+    <>
+      <Header />
+      <Main>
+        <Box>
+          <FormField onSubmit={handleSubmit(onSubmit)}>
+            <Input
               icon={<MailOption />}
-              reverse
-              {...register("email")}
+              placeholder={"Email"}
+              name="email"
+              type="email"
+              register={register}
               error={errors.email?.message}
             />
-            <FormField
-              placeholder="***********"
+            <Input
               icon={<Hide />}
-              reverse
-              {...register("password")}
+              placeholder={"Senha"}
+              type="password"
+              name="password"
+              register={register}
               error={errors.password?.message}
-            /> */}
-      <Box>
-        <div>
-          <InputText
-            placeholder="Email"
-            onChange={(e) => console.log(e.target.value)}
-          />
-          <MailOption style={{ position: "relative" }} />
-        </div>
-        {/* <MailOption style={{ position: "relative" }} /> */}
-        {/* <InputText placeholder="Senha" type="password" /> */}
-        <Button onClick={() => console.log("Teste")}>Teste</Button>
-      </Box>
-    </Main>
+            />
+            <Button type="submit">Log in</Button>
+          </FormField>
+        </Box>
+      </Main>
+    </>
   );
 };
 
