@@ -9,14 +9,24 @@ export const Container = styled.div`
   header {
       height: 15%;
       background-color: #F7F8F9;
+  button{
+      width: 84px;
+      height: 84px;
+      border: none;
+      border-radius: 50%;
+    }
+
+
   }
+
+  
 `;
 
 export const Main = styled.div`
+  height: 100vh;
   background: url(${map});
   background-position: center;
   background-repeat: no-repeat;
-  height: 85%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,9 +35,17 @@ export const Main = styled.div`
     h1 {
         font-family: "comfortaa";
         font-size: 35px;
+        margin-bottom: 20px;
+        text-align: center;
     }
+
+    
 
   @media (max-width: 900px){
       background: #F7F8F9;
+
+      h1 {
+        text-align: left;
+      }
   }
 `;
