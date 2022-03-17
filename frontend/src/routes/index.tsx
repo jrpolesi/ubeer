@@ -5,7 +5,7 @@ import PrivateRoute  from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import Signup from "../pages/Signup";
 import DashBoard from "../pages/Dashboard";
-import Sobre from "../pages/sobre";
+import Sobre from "../pages/Sobre";
 
 const RoutesPages = () => {
   return (
