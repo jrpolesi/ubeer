@@ -1,14 +1,5 @@
 import {
-  Box,
-  Button,
-  Form,
-  Header,
-  Heading,
-  Main,
-  FormField,
-  grommet,
   Grommet,
-  TextInput,
   Notification,
 } from "grommet";
 import {
@@ -26,25 +17,8 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { deepMerge } from "grommet/utils";
 import api from "../../services/api";
+import { Container, Main } from "./style";
 
-const myCustomTheme = deepMerge(grommet, {
-  global: {
-    colors: {
-      brand: "black",
-    },
-  },
-
-  button: {
-    border: {
-      radius: "0%",
-    },
-  },
-  h1: {
-    font: {
-      family: "arial",
-    },
-  },
-});
 
 const schema = yup.object().shape({
   name: yup.string().required("Campo obrigatório"),
@@ -96,7 +70,7 @@ const Signup = () => {
   };
 
   return (
-    <Grommet theme={myCustomTheme}>
+    <Grommet>
       {toast === true && (
         <Notification
           toast
@@ -105,7 +79,22 @@ const Signup = () => {
           onClose={() => setToast(false)}
         />
       )}
-      <Box>
+
+      <Container>
+        <header>
+
+        </header>
+        <Main>
+          <h1>Cadastro</h1>
+          <form>
+
+          </form>
+        </Main>
+
+      </Container>
+
+
+      {/* <Box>
         <Header background="#FFFFFF" height="100px">
           <Button color={"#4B545A"} icon={<FormPrevious />} />
         </Header>
@@ -204,7 +193,7 @@ const Signup = () => {
             </Form>
           </Box>
         </Main>
-      </Box>
+      </Box> */}
     </Grommet>
   );
 };
