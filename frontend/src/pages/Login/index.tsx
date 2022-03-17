@@ -11,6 +11,8 @@ import api from "../../services/api";
 import { FieldValues, useForm } from "react-hook-form";
 import { UserContext } from "../../providers/user";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
 const schema = yup.object().shape({
   email: yup.string().email("Email inválido").required("Campo Obrigatório"),
@@ -44,33 +46,24 @@ const Login = () => {
 
   return (
     <Main>
-      {/* <Form onSubmit={handleSubmit(onSubmit)}>
-            <FormField
-              margin={{ bottom: "50px" }}
-              placeholder="ryan1456723@example.com"
-              icon={<MailOption />}
-              reverse
-              {...register("email")}
-              error={errors.email?.message}
-            />
-            <FormField
-              placeholder="***********"
-              icon={<Hide />}
-              reverse
-              {...register("password")}
-              error={errors.password?.message}
-            /> */}
-      <Box>
-        <div>
-          <InputText
-            placeholder="Email"
-            onChange={(e) => console.log(e.target.value)}
-          />
-          <MailOption style={{ position: "relative" }} />
-        </div>
-        {/* <MailOption style={{ position: "relative" }} /> */}
-        {/* <InputText placeholder="Senha" type="password" /> */}
-      </Box>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          placeholder="Digite seu email"
+          icon={<MailOption />}
+          register={register}
+          type="text"
+          name="email"
+          error={errors.email?.message}
+        />
+        <Input
+          placeholder="Digite sua senha"
+          type="password"
+          register={register}
+          name="password"
+          error={errors.password?.message}
+        />
+        <Button>Log In</Button>
+      </form>
     </Main>
   );
 };
