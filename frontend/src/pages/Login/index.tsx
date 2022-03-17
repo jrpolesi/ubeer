@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MailOption, Hide } from "grommet-icons";
 import * as yup from "yup";
 import {
@@ -16,6 +16,9 @@ import { grommet } from "grommet";
 import { deepMerge } from "grommet/utils";
 import backgroundMap from "../../assets/img/map.png";
 import myCustomTheme from "../../styles/theme";
+import api from "../../services/api";
+import { FieldValues } from "react-hook-form";
+import { UserContext } from "../../providers/user";
 
 interface loginProps {
   auth: boolean;
@@ -23,6 +26,19 @@ interface loginProps {
 }
 
 const Login = () => {
+  const { updateToken } = useContext(UserContext);
+
+  const onSubmit = (formData: FieldValues) => {
+    api
+      .post("/users/login", formData)
+      .then((response) => {
+        const { token, user } = response.data;
+        localStorage.setItem("@uBeer:user", user.id);
+        updateToken(token);
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <Grommet theme={myCustomTheme}>
       <Main background={`url(${backgroundMap})`} pad="large" fill="vertical">
@@ -31,7 +47,11 @@ const Login = () => {
           Entrar
         </Heading>
         <Box>
-          <Form>
+          <Form
+            onSubmit={() => {
+              onSubmit({ email: "teste@email.com", password: "12345678" });
+            }}
+          >
             <FormField
               margin={{ bottom: "50px" }}
               placeholder="ryan1456723@example.com"
@@ -48,7 +68,6 @@ const Login = () => {
               secondary
               alignSelf="center"
               fill="horizontal"
-              onClick={() => console.log("oi")}
               primary
               type="submit"
               justify="end"
