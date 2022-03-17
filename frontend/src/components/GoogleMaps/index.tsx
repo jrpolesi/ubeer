@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useContext } from "react";
 import {
   GoogleMap,
   LoadScript,
@@ -9,6 +9,12 @@ import {
   Autocomplete,
   DirectionsServiceProps,
 } from "@react-google-maps/api";
+import Modal from "../Modal";
+import ModalDriver from "../ModalDriver";
+import InputMaps from "../InputMaps";
+import { Search, Indicator } from "grommet-icons";
+import { TravelContext } from "../../providers/travel";
+import { DivModal } from "./style";
 
 const containerStyle = {
   width: "100vw",
@@ -29,9 +35,10 @@ const arrayPlace: (
 )[] = ["places"];
 
 function MapUbeer() {
+  const { travelStatus, updateTravelStatus } = useContext(TravelContext);
   const [center, setCenter] = useState({} as Location);
-  const [destination, setDestination] = useState("bauru");
-  const [origin, setOrigin] = useState("campinas");
+  const [origin, setOrigin] = useState<string>("");
+  const [destination, setDestination] = useState<string>("");
   const [response, setResponse] = useState<google.maps.DirectionsResult | null>(
     null
   );
@@ -42,12 +49,6 @@ function MapUbeer() {
       lng: position.coords.longitude,
     })
   ); */
-
-  /*   const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
-  });
- */
 
   const position = {
     lat: -27.49865,
@@ -64,7 +65,6 @@ function MapUbeer() {
   };
 
   const onPlacesChanged = () => {
-    console.log("oi");
     const places = searchBox?.getPlaces();
     console.log(places);
     const place = places?.[0];
@@ -113,29 +113,13 @@ function MapUbeer() {
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_KEY as string}
         libraries={arrayPlace}
       >
-        <StandaloneSearchBox onLoad={onLoad} onPlacesChanged={onPlacesChanged}>
-          <input
-            placeholder="digite aqui"
-            style={{
-              width: "240px",
-              height: "32px"
-            }}
-            onBlur={(event) => setOrigin(event.target.value)}
-          />
-        </StandaloneSearchBox>
-        <StandaloneSearchBox onLoad={onLoad} onPlacesChanged={onPlacesChanged}>
-          <input
-            placeholder="digite aqui"
-            style={{
-              width: "240px",
-              height: "32px"
-            }}
-            onBlur={(event) => setDestination(event.target.value)}
-          />
-        </StandaloneSearchBox>
         <GoogleMap
           onLoad={onMapLoad}
-          mapContainerStyle={{ width: "100vw", height: "60vh" }}
+          mapContainerStyle={
+            travelStatus === "waiting for driver"
+              ? { width: "100vw", height: "38vh" }
+              : { width: "100vw", height: "60vh" }
+          }
           center={position}
           zoom={15}
         >
@@ -153,11 +137,57 @@ function MapUbeer() {
             position={position}
             options={{
               label: {
-                text: "Posição Teste",
+                text: "Sua localização",
               },
             }}
           />
         </GoogleMap>
+        {travelStatus == false || travelStatus == "waiting for driver" ? (
+          <Modal setOrigin={setOrigin} setDestination={setDestination}>
+            {travelStatus === false ? (
+              <StandaloneSearchBox
+                onLoad={onLoad}
+                onPlacesChanged={onPlacesChanged}
+              >
+                <InputMaps
+                  icon={<Search color="#FBD50E" />}
+                  placeholder={origin ? origin : "Digite Aqui"}
+                  onBlur={(event) => {
+                    updateTravelStatus("waiting for driver");
+                    setOrigin(event.target.value);
+                  }}
+                />
+              </StandaloneSearchBox>
+            ) : travelStatus === "waiting for driver" ? (
+              <DivModal>
+                <StandaloneSearchBox
+                  onLoad={onLoad}
+                  onPlacesChanged={onPlacesChanged}
+                >
+                  <InputMaps
+                    icon={<Search color="#FBD50E" />}
+                    placeholder={origin ? origin : "Digite Aqui"}
+                    onBlur={(event) => setOrigin(event.target.value)}
+                  />
+                </StandaloneSearchBox>
+                <StandaloneSearchBox
+                  onLoad={onLoad}
+                  onPlacesChanged={onPlacesChanged}
+                >
+                  <InputMaps
+                    icon={<Indicator color="#FBD50E" />}
+                    placeholder="digite aqui"
+                    onBlur={(event) => setDestination(event.target.value)}
+                  />
+                </StandaloneSearchBox>
+              </DivModal>
+            ) : (
+              <></>
+            )}
+          </Modal>
+        ) : (
+          <ModalDriver></ModalDriver>
+        )}
       </LoadScript>
     </>
   );
