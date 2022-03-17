@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import PrivateRoute  from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import Signup from "../pages/Signup";
-import { Dashboard } from "grommet-icons";
+import DashBoard from "../pages/Dashboard";
 import Sobre from "../pages/sobre";
 
 const RoutesPages = () => {
@@ -20,7 +20,7 @@ const RoutesPages = () => {
           </PublicRoute>
         }
       />
-      <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+      <Route path="/dashboard" element={<PrivateRoute><DashBoard /></PrivateRoute>} />
       <Route path="/wallet" element={<PrivateRoute>carteira</PrivateRoute>} />
       <Route path="/history" element={<PrivateRoute>historico</PrivateRoute>} />
     </Routes>

@@ -113,6 +113,26 @@ function MapUbeer() {
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_KEY as string}
         libraries={arrayPlace}
       >
+        <StandaloneSearchBox onLoad={onLoad} onPlacesChanged={onPlacesChanged}>
+          <input
+            placeholder="digite aqui"
+            style={{
+              width: "240px",
+              height: "32px"
+            }}
+            onBlur={(event) => setOrigin(event.target.value)}
+          />
+        </StandaloneSearchBox>
+        <StandaloneSearchBox onLoad={onLoad} onPlacesChanged={onPlacesChanged}>
+          <input
+            placeholder="digite aqui"
+            style={{
+              width: "240px",
+              height: "32px"
+            }}
+            onBlur={(event) => setDestination(event.target.value)}
+          />
+        </StandaloneSearchBox>
         <GoogleMap
           onLoad={onMapLoad}
           mapContainerStyle={{ width: "100vw", height: "60vh" }}
@@ -129,20 +149,6 @@ function MapUbeer() {
           {response && (
             <DirectionsRenderer options={directionsRendererOptions} />
           )}
-          <StandaloneSearchBox
-            onLoad={onLoad}
-            onPlacesChanged={onPlacesChanged}
-          >
-            <input
-              placeholder="digite aqui"
-              style={{
-                width: "240px",
-                height: "32px",
-                position: "absolute",
-                left: "50%",
-              }}
-            />
-          </StandaloneSearchBox>
           <Marker
             position={position}
             options={{
