@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
     height: 20%;
     width: 100%;
-    background-color: #F7F8F9;
+    background-color: rgba(0, 0, 0, 0);
+    
     display: flex;
     align-items: center;
-
+    
     button{
       width: 84px;
       height: 84px;

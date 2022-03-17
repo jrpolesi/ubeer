@@ -22,7 +22,7 @@ const schema = yup.object().shape({
     .string()
     .min(8, "mínimo 8 digitos")
     .required("Campo obrigatório")
-    .matches(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/),
+    .matches(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/, "Senha com letra uma maiúscula e número"),
   password_confirm: yup
     .string()
     .oneOf([yup.ref("password"), "Senhas diferentes"])
