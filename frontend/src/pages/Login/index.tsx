@@ -1,25 +1,31 @@
-import React, { useContext } from "react";
-import { MailOption, Hide } from "grommet-icons";
+import React, { useContext, useState } from "react";
 import * as yup from "yup";
-import { Main, Box } from "./styled";
-import Header from "../../components/Header/index";
-import api from "../../services/api";
 import { FieldValues, useForm } from "react-hook-form";
-import { UserContext } from "../../providers/user";
-import Input from "../../components/Input/index";
 import { yupResolver } from "@hookform/resolvers/yup";
+import api from "../../services/api";
+
+import { UserContext } from "../../providers/user";
+
+import { Main, Box } from "./styled";
+
+import Header from "../../components/Header/index";
+import Input from "../../components/Input/index";
 import Button from "../../components/Button/index";
+
+import { MailOption, Hide } from "grommet-icons";
+import { Notification } from "grommet";
 
 const schema = yup.object().shape({
   email: yup.string().email("Email inválido").required("Campo Obrigatório"),
   password: yup
     .string()
-    .min(8, "mínimo 8 digitos")
     .required("Campo obrigatório"),
 });
 
 const Login = () => {
   const { updateToken } = useContext(UserContext);
+
+  const [showToast, setShowToast] = useState<boolean>(false);
 
   const {
     register,
@@ -28,22 +34,35 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
   const onSubmit = (formData: FieldValues) => {
-    console.log(formData);
+
     api
       .post("/users/login", formData)
       .then((response) => {
         const { token, user } = response.data;
+
         localStorage.setItem("@uBeer:user", user.id);
+
         updateToken(token);
       })
-      .catch((error) => console.log(error));
+      .catch(() => setShowToast(true));
   };
-  console.log(errors);
+
   return (
     <>
       <Header />
+
       <Main>
+        {showToast === true && (
+          <Notification
+            toast
+            status="critical"
+            title="Falha ao realizar cadastro"
+            message="Email ou senha inválido!"
+            onClose={() => setShowToast(false)}
+          />
+        )}
         <h1>Entrar</h1>
         <Box>
           <form onSubmit={handleSubmit(onSubmit)}>

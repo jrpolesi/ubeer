@@ -51,15 +51,15 @@ router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
   const user = Database.getByEmail("users", email);
-  
+
   if (!user) {
     return res.status(401).json({ message: "invalid password or email" });
   }
-  
+
   const { password: encryptedPassword, ...userWithoutPassword } = user;
-  
-  bcrypt.compare(password, encryptedPassword, (err) => {
-    if (err) {
+
+  bcrypt.compare(password, encryptedPassword, (err, decoded) => {
+    if (err || !decoded) {
       return res.status(401).json({ message: "invalid password or email" });
     }
 
