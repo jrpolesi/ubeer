@@ -9,6 +9,7 @@ import {
   grommet,
   Grommet,
   TextInput,
+  Notification,
 } from "grommet";
 import {
   FormPrevious,
@@ -22,17 +23,9 @@ import { FieldValues, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import { deepMerge } from "grommet/utils";
 import api from "../../services/api";
-
-interface Users {
-  name: string;
-  email: string;
-  password: string;
-  car: string;
-  plate: string;
-}
 
 const myCustomTheme = deepMerge(grommet, {
   global: {
@@ -68,11 +61,12 @@ const schema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password"), "Senhas diferentes"])
     .required("Campo obrigatório"),
-  car: yup.string().required("Campo obrigatório"),
+  model: yup.string().required("Campo obrigatório"),
   plate: yup.string().required("Campo obrigatório"),
 });
 
 const Signup = () => {
+  const [toast, setToast] = useState<boolean | null>();
   const {
     register,
     handleSubmit,
@@ -83,35 +77,46 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  function submit(user: FieldValues) {
-    const setUser = user;
-    console.log(setUser);
+  const submit = ({ model, plate, ...user }: FieldValues) => {
+    const userFormated = {
+      ...user,
+      car: { model, plate },
+    };
 
-    // api
-    //   .post("/users/signup", user)
-    //   .then((response) => {
-    //     console.log(response);
-    //     navigate("/login");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-  }
+    api
+      .post("/users/signup", userFormated)
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((err) => {
+        
+        setToast(true);
+        console.log(err.response);
+      });
+  };
 
   return (
     <Grommet theme={myCustomTheme}>
+      {toast === true && (
+        <Notification
+          toast
+          title="Sucess"
+          message="Verifique seu email!"
+          onClose={() => setToast(false)}
+        />
+      )}
       <Box>
-        <Header background="#FFFFFF" height="120px">
+        <Header background="#FFFFFF" height="100px">
           <Button color={"#4B545A"} icon={<FormPrevious />} />
         </Header>
-        <Main flex direction="column" align="center" margin="30px">
+        <Main flex direction="column" align="center" pad="20px">
           <Heading
             level="1"
             style={{ fontFamily: "comfortaa", fontSize: "35px" }}
           >
             Cadastro
           </Heading>
-          <Box width={"300px"} height={"500px"}>
+          <Box width={"300px"}>
             <Form onSubmit={handleSubmit(submit)}>
               <Box
                 flex
@@ -120,71 +125,72 @@ const Signup = () => {
                 align="center"
                 justify="around"
               >
-                <FormField>
-                  <TextInput
-                    placeholder="Nome Completo"
-                    icon={<User />}
-                    reverse
-                    {...register("name")}
-                  />
-                </FormField>
+                <FormField
+                  placeholder="Nome Completo"
+                  icon={<User />}
+                  reverse
+                  {...register("name")}
+                  required
+                  error={errors.name?.message}
+                />
 
-                <FormField>
-                  <TextInput
-                    placeholder="Email"
-                    type="email"
-                    icon={<MailOption />}
-                    reverse
-                    {...register("email")}
-                  />
-                </FormField>
-                <FormField>
-                  <TextInput
-                    placeholder="Email"
-                    type="email"
-                    icon={<MailOption />}
-                    reverse
-                    {...register("email_confirm")}
-                  />
-                </FormField>
-                <FormField>
-                  <TextInput
-                    placeholder="Senha"
-                    type="password"
-                    icon={<Hide size="30px" />}
-                    reverse
-                    {...register("password")}
-                  />
-                </FormField>
+                <FormField
+                  placeholder="Email"
+                  type="email"
+                  icon={<MailOption />}
+                  reverse
+                  {...register("email")}
+                  required
+                  error={errors.email?.message}
+                />
 
-                <FormField>
-                  <TextInput
-                    placeholder="Confirmar senha"
-                    type="password"
-                    icon={<Hide size="30px" />}
-                    reverse
-                    {...register("password_confirm")}
-                  />
-                </FormField>
+                <FormField
+                  placeholder="Email"
+                  type="email"
+                  icon={<MailOption />}
+                  reverse
+                  {...register("email_confirm")}
+                  required
+                  error={errors.email_confirm?.message}
+                />
 
-                <FormField>
-                  <TextInput
-                    placeholder="Modelo do Carro"
-                    icon={<Car size="30px" />}
-                    reverse
-                    {...register("car")}
-                  />
-                </FormField>
+                <FormField
+                  placeholder="Senha"
+                  type="password"
+                  icon={<Hide size="30px" />}
+                  reverse
+                  {...register("password")}
+                  required
+                  error={errors.password?.message}
+                />
 
-                <FormField>
-                  <TextInput
-                    placeholder="Placa do Carro"
-            
-                    icon={<Car size="30px" />}
-                    reverse
-                    {...register("plate")}
-                  />
-                </FormField>
+                <FormField
+                  placeholder="Confirmar senha"
+                  type="password"
+                  icon={<Hide size="30px" />}
+                  reverse
+                  {...register("password_confirm")}
+                  required
+                  error={errors.password_confirm?.message}
+                />
+
+                <FormField
+                  placeholder="Modelo do Carro"
+                  icon={<Car />}
+                  reverse
+                  {...register("model")}
+                  required
+                  error={errors.model?.message}
+                />
+
+                <FormField
+                  placeholder="Placa do Carro"
+                  icon={<Car />}
+                  reverse
+                  {...register("plate")}
+                  required
+                  error={errors.plate?.message}
+                />
 
                 <Button
                   color={"#FBD50E"}

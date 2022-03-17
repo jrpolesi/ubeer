@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/img/logo.png";
 import Motorista from "../../assets/img/imagemSobre.png";
 import Gabriel from "../../assets/img/Gabriel.jpeg";
@@ -18,6 +19,8 @@ import {
 } from "./styles";
 
 const Sobre = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Header>
@@ -49,11 +52,14 @@ const Sobre = () => {
               <img src={Motorista} alt="Motorista dirigindo bebado" />
             </figure>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only.
+              Todos os anos morrem milhares de pessoas no trânsito devido ao
+              consumo irresponsável de bebidas alcoólicas. Com o intuito de
+              reduzir o número de mortes no trânsito, nossa aplicação permite
+              que alguém que tenha saído com o seu próprio carro, e acabou
+              ingerindo bebidas alcoólicas, possa chamar um de nossos motoristas
+              altamente capacitados para buscar o usuário e seu veículo, e levar
+              os dois em segurança para casa. Com nosso aplicativo acreditamos
+              que podemos deixar o trânsito mais seguro para todos.
             </p>
           </div>
         </SobreArticle>
@@ -67,10 +73,18 @@ const Sobre = () => {
               <p>Gabriel Castedo</p>
               <span>Product Owner</span>
               <div className="links">
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/gabrielcastedo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Github />
                 </a>
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.linkedin.com/in/gabriel-castedo-38145b53"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Linkedin />
                 </a>
               </div>
@@ -84,10 +98,18 @@ const Sobre = () => {
               <p>Monalisa Menezes</p>
               <span>Scrum Master</span>
               <div className="links">
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/monafmenezes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Github />
                 </a>
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.linkedin.com/in/monalisafmenezes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Linkedin />
                 </a>
               </div>
@@ -151,7 +173,11 @@ const Sobre = () => {
               <p>Robert Costa</p>
               <span>Quality Assurance</span>
               <div className="links">
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/Robert663"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Github />
                 </a>
                 <a href="" target="_blank" rel="noopener noreferrer">
@@ -169,7 +195,7 @@ const Sobre = () => {
           color="accent-4"
           style={{ borderRadius: 6 }}
           size="small"
-          // onClick={() => history.push("/login")}
+          onClick={() => navigate("/login")}
         />
         <Button
           primary
@@ -177,7 +203,7 @@ const Sobre = () => {
           style={{ borderRadius: 6 }}
           size="small"
           color="dark-1"
-          // onClick={() => history.push("/signup")}
+          onClick={() => navigate("/Signup")}
         />
       </ButtonFooter>
     </>

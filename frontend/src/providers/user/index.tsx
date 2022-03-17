@@ -6,7 +6,7 @@ export const UserContext = createContext<UserContextInterface>(
   {} as UserContextInterface
 );
 
-export function UserProvider({ children }: { children: ReactNode }) {
+export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(
     JSON.parse(localStorage.getItem("@uBeer:token") || "null")
   );
@@ -22,7 +22,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          setToken(response.data);
+          updateUser(response.data);
         })
         .catch(() => {
           logOut();
@@ -39,7 +39,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }
 
   function updateUser(userUpdated: UserData) {
-    localStorage.setItem("@uBeer:token", userUpdated.id);
+    localStorage.setItem("@uBeer:user", userUpdated.id);
 
     setUser(userUpdated);
   }
@@ -59,4 +59,4 @@ export function UserProvider({ children }: { children: ReactNode }) {
       {children}
     </UserContext.Provider>
   );
-}
+};
