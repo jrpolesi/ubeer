@@ -2681,7 +2681,7 @@ axe-core@^4.3.5:
 
 axios@^0.26.1:
   version "0.26.1"
-  resolved "https://registry.npmjs.org/axios/-/axios-0.26.1.tgz"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
   integrity sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==
   dependencies:
     follow-redirects "^1.14.8"
@@ -7233,7 +7233,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.8.1:
+prop-types@^15.5.0, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7369,6 +7369,14 @@ react-error-overlay@^6.0.10:
   version "6.0.10"
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.10.tgz"
   integrity sha512-mKR90fX7Pm5seCOfz8q9F+66VCc1PGsWSBxKbITjfKVQHMNF2zudxHnMdJiB1fRCb+XsbQV9sO9DCkgsMQgBIA==
+
+react-google-autocomplete@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/react-google-autocomplete/-/react-google-autocomplete-2.6.1.tgz#84538cacd910ec2c47aac351b9866d3a6fe178b6"
+  integrity sha512-E5gVt2Z6deTpLRORSx+5Uvr5mDWAHCfc89pJfkiTmUz+mYr7CJEfig/9+HkkbGxo9ZDpyewBqqjbnER4LaofMA==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    prop-types "^15.5.0"
 
 react-hook-form@^7.28.0:
   version "7.28.0"
