@@ -27,15 +27,6 @@ import React, { useState } from "react";
 import { deepMerge } from "grommet/utils";
 import api from "../../services/api";
 
-
-interface Users {
-  name: string;
-  email: string;
-  password: string;
-  car: object;
-}
-
-
 const myCustomTheme = deepMerge(grommet, {
   global: {
     colors: {
@@ -79,32 +70,29 @@ const Signup = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const navigate = useNavigate();
-  console.log(errors);
-  function submit({email, name, password, model, plate } :FieldValues) {
-    
-    const car = {model, plate};
-    const user = {email, name, password, car};
-   
-    
+
+  const submit = ({ model, plate, ...user }: FieldValues) => {
+    const userFormated = {
+      ...user,
+      car: { model, plate },
+    };
+
     api
-      .post("/users/signup", user)
-      .then((response) => {
+      .post("/users/signup", userFormated)
+      .then(() => {
         navigate("/login");
         setToast(true);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
       });
-
-  }
-
- 
+  };
 
   return (
     <Grommet theme={myCustomTheme}>
@@ -119,7 +107,7 @@ const Signup = () => {
         <Header background="#FFFFFF" height="100px">
           <Button color={"#4B545A"} icon={<FormPrevious />} />
         </Header>
-        <Main flex direction="column" align="center" pad="20px" >
+        <Main flex direction="column" align="center" pad="20px">
           <Heading
             level="1"
             style={{ fontFamily: "comfortaa", fontSize: "35px" }}
@@ -152,7 +140,6 @@ const Signup = () => {
                   {...register("email")}
                   required
                   error={errors.email?.message}
-                
                 />
 
                 <FormField
@@ -180,14 +167,14 @@ const Signup = () => {
                   type="password"
                   icon={<Hide size="30px" />}
                   reverse
-                  {...register("password_confirm")}    
-                  required   
-                  error={errors.password_confirm?.message} 
+                  {...register("password_confirm")}
+                  required
+                  error={errors.password_confirm?.message}
                 />
 
                 <FormField
                   placeholder="Modelo do Carro"
-                  icon={<Car  />}
+                  icon={<Car />}
                   reverse
                   {...register("model")}
                   required
@@ -196,7 +183,7 @@ const Signup = () => {
 
                 <FormField
                   placeholder="Placa do Carro"
-                  icon={<Car/>}
+                  icon={<Car />}
                   reverse
                   {...register("plate")}
                   required
