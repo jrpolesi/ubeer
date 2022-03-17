@@ -66,7 +66,7 @@ const schema = yup.object().shape({
 });
 
 const Signup = () => {
-  const [toast, setToast] = useState(false);
+  const [toast, setToast] = useState<boolean | null>();
   const {
     register,
     handleSubmit,
@@ -87,22 +87,24 @@ const Signup = () => {
       .post("/users/signup", userFormated)
       .then(() => {
         navigate("/login");
-        setToast(true);
       })
       .catch((err) => {
+        
+        setToast(true);
         console.log(err.response);
       });
   };
 
   return (
     <Grommet theme={myCustomTheme}>
-      <Notification
-        toast
-        title="Sucess"
-        message="Cadastro concluído!"
-        onClose={() => setToast(false)}
-      />
-
+      {toast === true && (
+        <Notification
+          toast
+          title="Sucess"
+          message="Verifique seu email!"
+          onClose={() => setToast(false)}
+        />
+      )}
       <Box>
         <Header background="#FFFFFF" height="100px">
           <Button color={"#4B545A"} icon={<FormPrevious />} />
