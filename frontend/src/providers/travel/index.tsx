@@ -9,7 +9,7 @@ export const TravelContext = createContext<TravelContextInterface>(
   {} as TravelContextInterface
 );
 
-export function TravelProvider({ children }: { children: ReactNode }) {
+export const TravelProvider = ({ children }: { children: ReactNode }) => {
   const [travel, setTravel] = useState<TravelData>({} as TravelData);
   const [travelStatus, setTravelStatus] = useState<TravelStatus>(false);
 
@@ -28,4 +28,4 @@ export function TravelProvider({ children }: { children: ReactNode }) {
       {children}
     </TravelContext.Provider>
   );
-}
+};

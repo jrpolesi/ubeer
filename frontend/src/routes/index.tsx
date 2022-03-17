@@ -1,8 +1,8 @@
 import Login from "../pages/Login/index";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { PrivateRoute } from "./PrivateRoute";
-import { PublicRoute } from "./PublicRoute";
+import PrivateRoute  from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 import Signup from "../pages/Signup";
 import { Dashboard } from "grommet-icons";
 import Sobre from "../pages/sobre";
