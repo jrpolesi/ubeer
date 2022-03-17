@@ -9,16 +9,16 @@ import { UserContext } from "../../providers/user";
 import Input from "../../components/Input/index";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../../components/Button/index";
-import { FormField } from "grommet";
+
+const schema = yup.object().shape({
+  email: yup.string().email("Email inválido").required("Campo Obrigatório"),
+  password: yup
+    .string()
+    .min(8, "mínimo 8 digitos")
+    .required("Campo obrigatório"),
+});
 
 const Login = () => {
-  const schema = yup.object().shape({
-    email: yup.string().email("Email inválido").required("Campo Obrigatório"),
-    password: yup
-      .string()
-      .min(8, "mínimo 8 digitos")
-      .required("Campo obrigatório"),
-  });
   const { updateToken } = useContext(UserContext);
 
   const {
@@ -39,13 +39,14 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
   };
-  // console.log(errors);
+  console.log(errors);
   return (
     <>
       <Header />
       <Main>
+        <h1>Entrar</h1>
         <Box>
-          <FormField onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Input
               icon={<MailOption />}
               placeholder={"Email"}
@@ -63,7 +64,7 @@ const Login = () => {
               error={errors.password?.message}
             />
             <Button type="submit">Log in</Button>
-          </FormField>
+          </form>
         </Box>
       </Main>
     </>
