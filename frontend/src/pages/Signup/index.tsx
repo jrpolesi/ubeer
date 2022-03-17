@@ -26,13 +26,14 @@ import React from "react";
 import { deepMerge } from "grommet/utils";
 import api from "../../services/api";
 
+
 interface Users {
   name: string;
   email: string;
   password: string;
-  car: string;
-  plate: string;
+  car: object;
 }
+
 
 const myCustomTheme = deepMerge(grommet, {
   global: {
@@ -68,7 +69,7 @@ const schema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password"), "Senhas diferentes"])
     .required("Campo obrigatório"),
-  car: yup.string().required("Campo obrigatório"),
+  model: yup.string().required("Campo obrigatório"),
   plate: yup.string().required("Campo obrigatório"),
 });
 
@@ -83,35 +84,37 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  function submit(user: FieldValues) {
-    const setUser = user;
-    console.log(setUser);
+  function submit({email, name, password, model, plate } :FieldValues) {
+    
+    const car = {model, plate};
+    const user = {email, name, password, car};
+    console.log(user);
 
-    // api
-    //   .post("/users/signup", user)
-    //   .then((response) => {
-    //     console.log(response);
-    //     navigate("/login");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    api
+      .post("/users/signup", user)
+      .then((response) => {
+        console.log(response);
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
     <Grommet theme={myCustomTheme}>
       <Box>
-        <Header background="#FFFFFF" height="120px">
+        <Header background="#FFFFFF" height="100px">
           <Button color={"#4B545A"} icon={<FormPrevious />} />
         </Header>
-        <Main flex direction="column" align="center" margin="30px">
+        <Main flex direction="column" align="center" pad="20px" >
           <Heading
             level="1"
             style={{ fontFamily: "comfortaa", fontSize: "35px" }}
           >
             Cadastro
           </Heading>
-          <Box width={"300px"} height={"500px"}>
+          <Box width={"300px"}>
             <Form onSubmit={handleSubmit(submit)}>
               <Box
                 flex
@@ -120,71 +123,67 @@ const Signup = () => {
                 align="center"
                 justify="around"
               >
-                <FormField>
-                  <TextInput
-                    placeholder="Nome Completo"
-                    icon={<User />}
-                    reverse
-                    {...register("name")}
-                  />
-                </FormField>
+                <FormField
+                  placeholder="Nome Completo"
+                  icon={<User />}
+                  reverse
+                  {...register("name")}
+                  required
+                 
+                />
 
-                <FormField>
-                  <TextInput
-                    placeholder="Email"
-                    type="email"
-                    icon={<MailOption />}
-                    reverse
-                    {...register("email")}
-                  />
-                </FormField>
-                <FormField>
-                  <TextInput
-                    placeholder="Email"
-                    type="email"
-                    icon={<MailOption />}
-                    reverse
-                    {...register("email_confirm")}
-                  />
-                </FormField>
-                <FormField>
-                  <TextInput
-                    placeholder="Senha"
-                    type="password"
-                    icon={<Hide size="30px" />}
-                    reverse
-                    {...register("password")}
-                  />
-                </FormField>
+                <FormField
+                  placeholder="Email"
+                  type="email"
+                  icon={<MailOption />}
+                  reverse
+                  {...register("email")}
+                  required
+                />
 
-                <FormField>
-                  <TextInput
-                    placeholder="Confirmar senha"
-                    type="password"
-                    icon={<Hide size="30px" />}
-                    reverse
-                    {...register("password_confirm")}
-                  />
-                </FormField>
+                <FormField
+                  placeholder="Email"
+                  type="email"
+                  icon={<MailOption />}
+                  reverse
+                  {...register("email_confirm")}
+                  required
+                />
 
-                <FormField>
-                  <TextInput
-                    placeholder="Modelo do Carro"
-                    icon={<Car size="30px" />}
-                    reverse
-                    {...register("car")}
-                  />
-                </FormField>
+                <FormField
+                  placeholder="Senha"
+                  type="password"
+                  icon={<Hide size="30px" />}
+                  reverse
+                  {...register("password")}
+                  required
+                />
 
-                <FormField>
-                  <TextInput
-                    placeholder="Placa do Carro"
-            
-                    icon={<Car size="30px" />}
-                    reverse
-                    {...register("plate")}
-                  />
-                </FormField>
+                <FormField
+                  placeholder="Confirmar senha"
+                  type="password"
+                  icon={<Hide size="30px" />}
+                  reverse
+                  {...register("password_confirm")}    
+                  required    
+                />
+
+                <FormField
+                  placeholder="Modelo do Carro"
+                  icon={<Car  />}
+                  reverse
+                  {...register("model")}
+                  required
+          
+                />
+
+                <FormField
+                  placeholder="Placa do Carro"
+                  icon={<Car/>}
+                  reverse
+                  {...register("plate")}
+                  required
+                />
 
                 <Button
                   color={"#FBD50E"}
