@@ -3,15 +3,12 @@ import { MailOption, Hide, Mail } from "grommet-icons";
 import * as yup from "yup";
 import { Main, InputText, Box, Label } from "./styled";
 import backArrow from "../../assets/img/Union.svg";
-import { grommet } from "grommet";
-import { deepMerge } from "grommet/utils";
-import backgroundMap from "../../assets/img/map.png";
-import myCustomTheme from "../../styles/theme";
 import api from "../../services/api";
 import { FieldValues, useForm } from "react-hook-form";
 import { UserContext } from "../../providers/user";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import Button from "../../components/Button/index";
+import { useTheme } from "styled-components";
 const schema = yup.object().shape({
   email: yup.string().email("Email inválido").required("Campo Obrigatório"),
   password: yup
@@ -22,6 +19,7 @@ const schema = yup.object().shape({
 
 const Login = () => {
   const { updateToken } = useContext(UserContext);
+  const theme = useTheme();
 
   const {
     register,
@@ -70,6 +68,7 @@ const Login = () => {
         </div>
         {/* <MailOption style={{ position: "relative" }} /> */}
         {/* <InputText placeholder="Senha" type="password" /> */}
+        <Button onClick={() => console.log("Teste")}>Teste</Button>
       </Box>
     </Main>
   );
