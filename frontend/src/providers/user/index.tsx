@@ -6,7 +6,7 @@ export const UserContext = createContext<UserContextInterface>(
   {} as UserContextInterface
 );
 
-export function UserProvider({ children }: { children: ReactNode }) {
+export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(
     JSON.parse(localStorage.getItem("@uBeer:token") || "null")
   );
@@ -59,4 +59,4 @@ export function UserProvider({ children }: { children: ReactNode }) {
       {children}
     </UserContext.Provider>
   );
-}
+};
