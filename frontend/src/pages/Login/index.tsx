@@ -1,16 +1,7 @@
 import React, { useContext } from "react";
-import { MailOption, Hide } from "grommet-icons";
+import { MailOption, Hide, Mail } from "grommet-icons";
 import * as yup from "yup";
-import {
-  Box,
-  Main,
-  Button,
-  Form,
-  Heading,
-  Image,
-  FormField,
-  Grommet,
-} from "grommet";
+import { Main, InputText, Box, Label } from "./styled";
 import backArrow from "../../assets/img/Union.svg";
 import { grommet } from "grommet";
 import { deepMerge } from "grommet/utils";
@@ -20,11 +11,8 @@ import api from "../../services/api";
 import { FieldValues, useForm } from "react-hook-form";
 import { UserContext } from "../../providers/user";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-interface loginProps {
-  auth: boolean;
-  setAuth: boolean;
-}
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
 const schema = yup.object().shape({
   email: yup.string().email("Email inválido").required("Campo Obrigatório"),
@@ -44,7 +32,6 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   const onSubmit = (formData: FieldValues) => {
     console.log(formData);
     api
@@ -58,45 +45,26 @@ const Login = () => {
   };
 
   return (
-    <Grommet theme={myCustomTheme}>
-      <Main background={`url(${backgroundMap})`} pad="large" fill="vertical">
-        <Image alignSelf="start" src={backArrow} />
-        <Heading style={{ fontFamily: "comfortaa", margin: "40px" }}>
-          Entrar
-        </Heading>
-        <Box>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <FormField
-              margin={{ bottom: "50px" }}
-              placeholder="ryan1456723@example.com"
-              icon={<MailOption />}
-              reverse
-              {...register("email")}
-            />
-            <FormField
-              placeholder="***********"
-              icon={<Hide />}
-              reverse
-              {...register("password")}
-            />
-            <Button
-              style={{
-                border: "2px solid black",
-                color: "#000000",
-                marginTop: "485px",
-              }}
-              secondary
-              alignSelf="center"
-              fill="horizontal"
-              primary
-              type="submit"
-              justify="end"
-              label="Log in"
-            />
-          </Form>
-        </Box>
-      </Main>
-    </Grommet>
+    <Main>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          placeholder="Digite seu email"
+          icon={<MailOption />}
+          register={register}
+          type="text"
+          name="email"
+          error={errors.email?.message}
+        />
+        <Input
+          placeholder="Digite sua senha"
+          type="password"
+          register={register}
+          name="password"
+          error={errors.password?.message}
+        />
+        <Button>Log In</Button>
+      </form>
+    </Main>
   );
 };
 
