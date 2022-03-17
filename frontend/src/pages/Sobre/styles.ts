@@ -2,13 +2,7 @@ import styled from "styled-components";
 import logo from "../../assets/img/background.png";
 
 export const Main = styled.main`
-  height: 490px;
-  overflow-x: auto;
-  overflow-y: auto;
-
-  @media (min-width: 767px) {
-    height: auto;
-  }
+  margin-bottom: 90px;
 `;
 
 export const Header = styled.header`
@@ -99,6 +93,7 @@ export const SobreArticle = styled.article`
   flex-direction: column;
   align-items: center;
   padding: 0px 25px;
+  margin: 50px 0px;
 
   div {
     display: flex;
@@ -108,6 +103,7 @@ export const SobreArticle = styled.article`
 
   h2 {
     font-size: 40px;
+    margin-bottom: 20px;
   }
   figure {
     width: 200px;
@@ -125,12 +121,31 @@ export const SobreArticle = styled.article`
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
+      width: 100%;
       margin-top: 20px;
     }
 
     p {
-      font-size: 20px;
-      width: 40%;
+      font-size: 18px;
+      width: 55%;
+    }
+  }
+  @media (min-width: 1024px) {
+    figure {
+      width: 250px;
+      height: 250px;
+    }
+    p {
+      font-size: 22px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    h2 {
+      font-size: 50px;
+    }
+    p {
+      font-size: 26px;
     }
   }
 `;
@@ -145,7 +160,7 @@ export const TimeSection = styled.section`
   h2 {
     align-self: center;
     font-size: 40px;
-    margin: 20px 0px;
+    margin-bottom: 30px;
   }
 
   div {
@@ -262,9 +277,13 @@ export const ButtonFooter = styled.footer`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 95%;
   height: 75px;
   background-color: #c7c7c7;
   padding: 0px 10px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 
   button {
     width: 45%;
@@ -272,6 +291,10 @@ export const ButtonFooter = styled.footer`
     border: solid 2px #333333;
     font-size: 12px;
     font-weight: bold;
+  }
+
+  @media (min-width: 400px) {
+    width: 97%;
   }
 
   @media (min-width: 767px) {
