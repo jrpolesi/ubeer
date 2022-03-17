@@ -1,18 +1,14 @@
 import React, { useContext } from "react";
-import { MailOption, Hide, Mail } from "grommet-icons";
+import { MailOption, Hide } from "grommet-icons";
 import * as yup from "yup";
-import { Main, InputText, Box, Label } from "./styled";
-import backArrow from "../../assets/img/Union.svg";
-import { grommet } from "grommet";
-import { deepMerge } from "grommet/utils";
-import backgroundMap from "../../assets/img/map.png";
-import myCustomTheme from "../../styles/theme";
+import { Main, Box } from "./styled";
+import Header from "../../components/Header/index";
 import api from "../../services/api";
 import { FieldValues, useForm } from "react-hook-form";
 import { UserContext } from "../../providers/user";
+import Input from "../../components/Input/index";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Button from "../../components/Button/index";
 
 const schema = yup.object().shape({
   email: yup.string().email("Email inválido").required("Campo Obrigatório"),
@@ -43,28 +39,35 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
   };
-
+  console.log(errors);
   return (
-    <Main>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          placeholder="Digite seu email"
-          icon={<MailOption />}
-          register={register}
-          type="text"
-          name="email"
-          error={errors.email?.message}
-        />
-        <Input
-          placeholder="Digite sua senha"
-          type="password"
-          register={register}
-          name="password"
-          error={errors.password?.message}
-        />
-        <Button>Log In</Button>
-      </form>
-    </Main>
+    <>
+      <Header />
+      <Main>
+        <h1>Entrar</h1>
+        <Box>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Input
+              icon={<MailOption />}
+              placeholder={"Email"}
+              name="email"
+              type="email"
+              register={register}
+              error={errors.email?.message}
+            />
+            <Input
+              icon={<Hide />}
+              placeholder={"Senha"}
+              type="password"
+              name="password"
+              register={register}
+              error={errors.password?.message}
+            />
+            <Button type="submit">Log in</Button>
+          </form>
+        </Box>
+      </Main>
+    </>
   );
 };
 
