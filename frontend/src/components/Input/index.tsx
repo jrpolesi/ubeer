@@ -4,7 +4,7 @@ import { Hide, FormView } from "grommet-icons";
 import { Container } from "./styles";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  icon: JSX.Element;
+  icon?: JSX.Element;
   name: string;
   error?: string;
   register: UseFormRegister<FieldValues>;
@@ -31,24 +31,25 @@ const Input = ({
 
   return (
     <Container>
-      <input
-        type={controledType}
-        placeholder={placeholder}
-        {...register(name)}
-        {...rest}
-      />
-
-      {type === "password" ? (
-        <>
-          {showPassword ? (
-            <Hide onClick={toggleType} />
-          ) : (
-            <FormView onClick={toggleType} />
-          )}
-        </>
-      ) : (
-        icon
-      )}
+      <div className="inputContent">
+        <input
+          type={controledType}
+          placeholder={placeholder}
+          {...register(name)}
+          {...rest}
+        />
+        {type === "password" ? (
+          <>
+            {showPassword ? (
+              <FormView onClick={toggleType} />
+            ) : (
+              <Hide onClick={toggleType} />
+            )}
+          </>
+        ) : (
+          icon
+        )}
+      </div>
 
       {!!error && <label>{error}</label>}
     </Container>
