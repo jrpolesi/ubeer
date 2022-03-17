@@ -9,6 +9,7 @@ import {
   grommet,
   Grommet,
   TextInput,
+  Notification,
 } from "grommet";
 import {
   FormPrevious,
@@ -22,7 +23,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import { deepMerge } from "grommet/utils";
 import api from "../../services/api";
 
@@ -74,35 +75,46 @@ const schema = yup.object().shape({
 });
 
 const Signup = () => {
+  const [toast, setToast] = useState(false);
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const navigate = useNavigate();
-
+  console.log(errors);
   function submit({email, name, password, model, plate } :FieldValues) {
     
     const car = {model, plate};
     const user = {email, name, password, car};
-    console.log(user);
-
+   
+    
     api
       .post("/users/signup", user)
       .then((response) => {
-        console.log(response);
         navigate("/login");
+        setToast(true);
       })
       .catch((err) => {
         console.log(err);
       });
+
   }
+
+ 
 
   return (
     <Grommet theme={myCustomTheme}>
+      <Notification
+        toast
+        title="Sucess"
+        message="Cadastro concluído!"
+        onClose={() => setToast(false)}
+      />
+
       <Box>
         <Header background="#FFFFFF" height="100px">
           <Button color={"#4B545A"} icon={<FormPrevious />} />
@@ -129,7 +141,7 @@ const Signup = () => {
                   reverse
                   {...register("name")}
                   required
-                 
+                  error={errors.name?.message}
                 />
 
                 <FormField
@@ -139,6 +151,8 @@ const Signup = () => {
                   reverse
                   {...register("email")}
                   required
+                  error={errors.email?.message}
+                
                 />
 
                 <FormField
@@ -148,6 +162,7 @@ const Signup = () => {
                   reverse
                   {...register("email_confirm")}
                   required
+                  error={errors.email_confirm?.message}
                 />
 
                 <FormField
@@ -157,6 +172,7 @@ const Signup = () => {
                   reverse
                   {...register("password")}
                   required
+                  error={errors.password?.message}
                 />
 
                 <FormField
@@ -165,7 +181,8 @@ const Signup = () => {
                   icon={<Hide size="30px" />}
                   reverse
                   {...register("password_confirm")}    
-                  required    
+                  required   
+                  error={errors.password_confirm?.message} 
                 />
 
                 <FormField
@@ -174,7 +191,7 @@ const Signup = () => {
                   reverse
                   {...register("model")}
                   required
-          
+                  error={errors.model?.message}
                 />
 
                 <FormField
@@ -183,6 +200,7 @@ const Signup = () => {
                   reverse
                   {...register("plate")}
                   required
+                  error={errors.plate?.message}
                 />
 
                 <Button
