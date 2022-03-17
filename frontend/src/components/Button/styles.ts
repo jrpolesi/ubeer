@@ -4,7 +4,6 @@ interface Props {
   variant?: string;
 }
 export const Container = styled.button<Props>`
-  width: 332px;
   height: 48px;
   color: ${({ variant }) => (variant == "primary" ? "#ffffff" : "#000000")};
   background-color: #f8d50e;
