@@ -2,7 +2,7 @@ import React, { ReactNode, useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { UserContext } from "../../providers/user";
 
-export function PublicRoute({ children }: { children: ReactNode }) {
+const PublicRoute = ({ children }: { children: ReactNode }) => {
   const { token } = useContext(UserContext);
 
   const location = useLocation();
@@ -12,4 +12,6 @@ export function PublicRoute({ children }: { children: ReactNode }) {
   }
 
   return <>{children}</>;
-}
+};
+
+export default PublicRoute;
