@@ -17,18 +17,36 @@ import { deepMerge } from "grommet/utils";
 import backgroundMap from "../../assets/img/map.png";
 import myCustomTheme from "../../styles/theme";
 import api from "../../services/api";
-import { FieldValues } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { UserContext } from "../../providers/user";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 interface loginProps {
   auth: boolean;
   setAuth: boolean;
 }
 
+const schema = yup.object().shape({
+  email: yup.string().email("Email inválido").required("Campo Obrigatório"),
+  password: yup
+    .string()
+    .min(8, "mínimo 8 digitos")
+    .required("Campo obrigatório"),
+});
+
 const Login = () => {
   const { updateToken } = useContext(UserContext);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   const onSubmit = (formData: FieldValues) => {
+    console.log(formData);
     api
       .post("/users/login", formData)
       .then((response) => {
@@ -47,18 +65,20 @@ const Login = () => {
           Entrar
         </Heading>
         <Box>
-          <Form
-            onSubmit={() => {
-              onSubmit({ email: "teste@email.com", password: "12345678" });
-            }}
-          >
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <FormField
               margin={{ bottom: "50px" }}
               placeholder="ryan1456723@example.com"
               icon={<MailOption />}
               reverse
+              {...register("email")}
             />
-            <FormField placeholder="***********" icon={<Hide />} reverse />
+            <FormField
+              placeholder="***********"
+              icon={<Hide />}
+              reverse
+              {...register("password")}
+            />
             <Button
               style={{
                 border: "2px solid black",
