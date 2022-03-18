@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Fundo from "../../assets/img/backdroundCarteira.png";
 import Map from "../../assets/img/map.png";
 
 export const Header = styled.header`
@@ -29,7 +28,6 @@ export const Header = styled.header`
     @media (min-width: 768px) {
     display: none;
     }
-  }
 `;
 
 export const HeaderDesktop = styled.header`
