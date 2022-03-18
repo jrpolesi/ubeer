@@ -31,8 +31,8 @@ const Sobre = () => {
           <h3>uBeer</h3>
         </div>
         <Nav direction="row">
-          <Button primary label="Entrar" color="light-1" />
-          <Button primary label="Cadastre-se" color="light-1" />
+          <Button primary label="Entrar" color="light-1" onClick={() => navigate("/login")}/>
+          <Button primary label="Cadastre-se" color="light-1" onClick={() => navigate("/Signup")}/>
         </Nav>
       </Header>
       <Main>
