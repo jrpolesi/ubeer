@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
     height: 20%;
     width: 100%;
-    background-color: #F7F8F9;
+    background-color: rgba(0, 0, 0, 0);
+    
     display: flex;
     align-items: center;
-
+    
     button{
       position: absolute;
       top: 5%;
@@ -20,5 +21,13 @@ export const Container = styled.div`
     }
     button:hover{
         filter: brightness(0.9);
+    }
+
+    @media (max-width: 900px){
+      button {
+        height: 37px;
+        width: 37px;
+        top: 2%;
+      }
     }
 `;

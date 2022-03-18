@@ -4,10 +4,11 @@ import map from "../../images/map.svg";
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
+  min-height: 775px;
   display: flex;
   flex-direction: column;
-  
-  
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 export const Main = styled.div`
@@ -41,7 +42,7 @@ export const Main = styled.div`
     h1 {
         font-family: "comfortaa";
         font-size: 35px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         text-align: center;
     }
 
