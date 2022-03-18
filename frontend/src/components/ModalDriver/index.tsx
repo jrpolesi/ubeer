@@ -7,7 +7,7 @@ function ModalDriver() {
   const { travelStatus, updateTravelStatus } = useContext(TravelContext);
   return (
     <>
-      {travelStatus === "in transit" ? (
+      {travelStatus === "waiting for driver" ? (
         <PopupDriver>
           <section>
             <div>
@@ -21,9 +21,9 @@ function ModalDriver() {
               <p>Preço da Viagem</p>
             </div>
           </section>
-          <button onClick={() => updateTravelStatus("finished")}>Chegou</button>
+          <button onClick={() => updateTravelStatus("in transit")}>Chegou</button>
         </PopupDriver>
-      ) : travelStatus === "finished" ? (
+      ) : travelStatus === "in transit" ? (
         <PopupWaitingDriver>
           <section>
             <div>
