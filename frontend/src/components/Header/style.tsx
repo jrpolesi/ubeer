@@ -22,4 +22,12 @@ export const Container = styled.div`
     button:hover{
         filter: brightness(0.9);
     }
+
+    @media (max-width: 900px){
+      button {
+        height: 37px;
+        width: 37px;
+        top: 2%;
+      }
+    }
 `;
