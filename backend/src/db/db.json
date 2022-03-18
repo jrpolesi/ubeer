@@ -1,1 +1,357 @@
-{"users":[{"id":"2b3a4bc8-ee02-480d-b352-7d8e55de30b6","email":"carlos@kenzie.com.br","name":"carlos","car":{"model":"onix","plate":"AZP-3705"},"password":"$2a$10$pcyCXgTaCPdRcATwQkUI8unBkn3pbxHiAw2fJu9BtieWqcdrUlbNG","budget":0,"favoritesPlaces":[],"travelHistoric":[]},{"id":"434fc60c-06e1-48d8-b1bc-af2efc2cc85d","email":"josejose@kenzie.com.br","name":"carlos","car":{"model":"onix","plate":"AZP-3705"},"password":"$2a$10$htySTohyT1fvKIQTmzHDnOjP/daFHveks.AK6u2GGz2/4P8QtXQce","budget":0,"favoritesPlaces":[],"travelHistoric":[]},{"id":"6155957e-bd2a-4675-bff4-bf10805b422c","email":"gabrielcastedo@kenzie.com.br","name":"Gabriel","car":{"model":"fusion","plate":"AZP-3705"},"password":"$2a$10$vPpQR5PWWFOE9TgTSJTiQ.OlqPRRFDwURHpQrgPBEdJZvJzMOBY9q","budget":500,"favoritesPlaces":[{"id":"c49a2fc8-b28f-41c4-a19f-173a6ff62640","name":"SaoPaulo"}],"travelHistoric":[{"id":"95eec9cb-1b0c-44e7-b24e-232fb7133c96","from":"mrHoppyAguaVerde","departureDate":1647384668133,"arrivedDate":"","value":null},{"id":"977cc5ab-cc7e-47ca-85e9-9060e3af9057","from":"mrHoppyAguaVerde","departureDate":1647384900242,"arrivedDate":"","value":null},{"id":"a04f0049-ffda-45b7-8180-e870fce7c286","from":"mrHoppyAguaVerde","departureDate":1647385051990,"arrivedDate":"","value":null},{"id":"f7f3d8be-6107-4e44-90fd-02fb3d8b7561","from":"mrHoppyAguaVerde","departureDate":1647385092181,"arrivedDate":"","value":null},{"id":"1e4f6415-827a-4e3d-926f-c0345fd44739","from":"mrHoppyAguaVerde","to":"casa","departureDate":1647385139913,"arrivedDate":"","value":21.672491001952356},{"id":"9fd72317-ce66-46b9-9432-54dd0b7735e6","from":"mrHoppyAguaVerde","to":"casa","departureDate":1647385165677,"arrivedDate":"","value":855.5156140114693},{"id":"3f5a16ba-cf6c-4068-9567-1b63c00769af","from":"Habbis","to":"casa","departureDate":1647385820704,"arrivedDate":"","value":984.184901316221},{"id":"2770d22c-fd3f-47b6-a380-24b6acfb275d","from":"Habbis","to":"casa","departureDate":1647385831897,"arrivedDate":"","value":0.4837850969180538},{"id":"892993da-b99c-49ca-bda8-04f871969681","from":"Habbis","to":"casa","departureDate":1647385831899,"arrivedDate":"","value":0.4837850969180538},{"id":"1c6a118f-5372-494b-9cbb-a7282fd0837d","from":"Habbis","to":"casa","departureDate":1647385914017,"arrivedDate":"","value":0.4837850969180538},{"id":"12e87772-faf2-42a1-a7a1-69aed2b1f062","from":"Habbis","to":"casa","departureDate":1647385916919,"arrivedDate":"","value":0.4837850969180538},{"id":"5af1a3bd-b192-4752-9f3e-82fe437d930c","from":"Habbis","to":"casa","departureDate":1647385926491,"arrivedDate":"","value":4.837850969180538},{"id":"cbc3520b-b6a5-4faa-8665-6163af9e7c4d","from":"Habbis","to":"casa","departureDate":1647385940488,"arrivedDate":"","value":48.37850969180538},{"id":"07351287-4c6c-49ef-a3fa-1b3087fd7068","from":"Habbis","to":"casa","departureDate":1647385960943,"arrivedDate":"","value":53.21636066098592},{"id":"31e9131f-8410-479b-9899-8e91451017c2","from":"Habbis","to":"casa","departureDate":1647386133063,"arrivedDate":"","value":39.31917649188968},{"id":"c5723476-be0a-49a0-b79c-e2d0cac89054","from":"Habbis","to":"casa","departureDate":1647386173278,"arrivedDate":"","value":35.74470590171789},{"id":"26f4969b-33d0-4ee4-95a1-11a1073701ca","from":"Habbis","to":"casa","departureDate":1647386214533,"arrivedDate":"","value":71.48941180343579},{"id":"d8c96d59-d8b0-4169-b5f2-4aa14b025d7b","from":"Habbis","to":"casa","departureDate":1647386736408,"arrivedDate":1647386923400,"value":71.48941180343579}]},{"id":"fda3e38b-d21e-43f1-b3c3-0870275c251f","email":"teste6@email.com","name":"MONALISA FREDERICO DE MENEZES","car":{"model":"gfdgfdgdfgfd","plate":"dfgdfgfdgfdg"},"password":"$2a$10$wd8GImN0.RCfGxIQeWGu9eackm/m7a4mQRy5K0RWOfSEDQ6jg20yK","budget":0,"favoritesPlaces":[],"travelHistoric":[]},{"id":"c7f09c2b-0f48-4dce-97c6-0ce728c7d344","email":"email@email.com","name":"MONALISA FREDERICO DE MENEZES","car":{"model":"fdgfdgd","plate":"gdfgfdgdf"},"password":"$2a$10$pUaAe1QbsqiKwVoE9Fvi1.DHKvynwPlzcIvO19BI9jXJbhMNlOnSG","budget":0,"favoritesPlaces":[],"travelHistoric":[]},{"id":"bba60bbb-63b4-46e4-98dd-57732ba8c2b6","name":"top","email":"123@email.com","email_confirm":"123@email.com","password_confirm":"12345678","car":{"model":"ousahdf","plate":"alkdhfadçfnç"},"password":"$2a$10$7Y6byoAky1/VeNOuaCb3k.J3f.JVokq7.sKFhFUYM...qfiHB7gXu","budget":0,"favoritesPlaces":[],"travelHistoric":[]},{"id":"4a24878d-8734-4bc9-a83d-cefddf40a4b1","name":"MONALISA FREDERICO DE MENEZES","email":"email2@gmail.com","email_confirm":"email2@gmail.com","password_confirm":"Monalisa1","car":{"model":"Uno ","plate":"abc-1234"},"password":"$2a$10$Bt8MQakqHvtCVpPsJKXJMe5LIgo7CIa5cYMfuCKM.gxFWtHdWfSKC","budget":0,"favoritesPlaces":[],"travelHistoric":[]}],"drivers":[{"id":"101","name":"Lucas","image":"https://github.com/jrpolesi.png","car":{"model":"Ford Fiesta","plate":"AGH-2679"},"rating":{"starsAverage":3.3333333333333335,"feedbacks":[{"id":"2c05692f-2225-44c1-a8f5-611a8a0c825e","stars":4,"description":"\"obrigado pelo serviço\""},{"id":"e6131898-6bf9-478e-ae0e-236539b32552","stars":4,"description":"\"obrigado pelo serviço\""},{"id":"3a6f96ff-f250-42e2-858c-47554be5ba78","stars":2,"description":"\"obrigado pelo serviço\""}]}}]}
+{
+  "users": [
+    {
+      "id": "2b3a4bc8-ee02-480d-b352-7d8e55de30b6",
+      "email": "carlos@kenzie.com.br",
+      "name": "carlos",
+      "car": { "model": "onix", "plate": "AZP-3705" },
+      "password": "$2a$10$pcyCXgTaCPdRcATwQkUI8unBkn3pbxHiAw2fJu9BtieWqcdrUlbNG",
+      "budget": 0,
+      "favoritesPlaces": [],
+      "travelHistoric": []
+    },
+    {
+      "id": "434fc60c-06e1-48d8-b1bc-af2efc2cc85d",
+      "email": "josejose@kenzie.com.br",
+      "name": "carlos",
+      "car": { "model": "onix", "plate": "AZP-3705" },
+      "password": "$2a$10$htySTohyT1fvKIQTmzHDnOjP/daFHveks.AK6u2GGz2/4P8QtXQce",
+      "budget": 0,
+      "favoritesPlaces": [],
+      "travelHistoric": []
+    },
+    {
+      "id": "6155957e-bd2a-4675-bff4-bf10805b422c",
+      "email": "gabrielcastedo@kenzie.com.br",
+      "name": "Gabriel",
+      "car": { "model": "fusion", "plate": "AZP-3705" },
+      "password": "$2a$10$vPpQR5PWWFOE9TgTSJTiQ.OlqPRRFDwURHpQrgPBEdJZvJzMOBY9q",
+      "budget": 500,
+      "favoritesPlaces": [
+        { "id": "c49a2fc8-b28f-41c4-a19f-173a6ff62640", "name": "SaoPaulo" }
+      ],
+      "travelHistoric": [
+        {
+          "id": "95eec9cb-1b0c-44e7-b24e-232fb7133c96",
+          "from": "mrHoppyAguaVerde",
+          "departureDate": 1647384668133,
+          "arrivedDate": "",
+          "value": null
+        },
+        {
+          "id": "977cc5ab-cc7e-47ca-85e9-9060e3af9057",
+          "from": "mrHoppyAguaVerde",
+          "departureDate": 1647384900242,
+          "arrivedDate": "",
+          "value": null
+        },
+        {
+          "id": "a04f0049-ffda-45b7-8180-e870fce7c286",
+          "from": "mrHoppyAguaVerde",
+          "departureDate": 1647385051990,
+          "arrivedDate": "",
+          "value": null
+        },
+        {
+          "id": "f7f3d8be-6107-4e44-90fd-02fb3d8b7561",
+          "from": "mrHoppyAguaVerde",
+          "departureDate": 1647385092181,
+          "arrivedDate": "",
+          "value": null
+        },
+        {
+          "id": "1e4f6415-827a-4e3d-926f-c0345fd44739",
+          "from": "mrHoppyAguaVerde",
+          "to": "casa",
+          "departureDate": 1647385139913,
+          "arrivedDate": "",
+          "value": 21.672491001952356
+        },
+        {
+          "id": "9fd72317-ce66-46b9-9432-54dd0b7735e6",
+          "from": "mrHoppyAguaVerde",
+          "to": "casa",
+          "departureDate": 1647385165677,
+          "arrivedDate": "",
+          "value": 855.5156140114693
+        },
+        {
+          "id": "3f5a16ba-cf6c-4068-9567-1b63c00769af",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647385820704,
+          "arrivedDate": "",
+          "value": 984.184901316221
+        },
+        {
+          "id": "2770d22c-fd3f-47b6-a380-24b6acfb275d",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647385831897,
+          "arrivedDate": "",
+          "value": 0.4837850969180538
+        },
+        {
+          "id": "892993da-b99c-49ca-bda8-04f871969681",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647385831899,
+          "arrivedDate": "",
+          "value": 0.4837850969180538
+        },
+        {
+          "id": "1c6a118f-5372-494b-9cbb-a7282fd0837d",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647385914017,
+          "arrivedDate": "",
+          "value": 0.4837850969180538
+        },
+        {
+          "id": "12e87772-faf2-42a1-a7a1-69aed2b1f062",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647385916919,
+          "arrivedDate": "",
+          "value": 0.4837850969180538
+        },
+        {
+          "id": "5af1a3bd-b192-4752-9f3e-82fe437d930c",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647385926491,
+          "arrivedDate": "",
+          "value": 4.837850969180538
+        },
+        {
+          "id": "cbc3520b-b6a5-4faa-8665-6163af9e7c4d",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647385940488,
+          "arrivedDate": "",
+          "value": 48.37850969180538
+        },
+        {
+          "id": "07351287-4c6c-49ef-a3fa-1b3087fd7068",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647385960943,
+          "arrivedDate": "",
+          "value": 53.21636066098592
+        },
+        {
+          "id": "31e9131f-8410-479b-9899-8e91451017c2",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647386133063,
+          "arrivedDate": "",
+          "value": 39.31917649188968
+        },
+        {
+          "id": "c5723476-be0a-49a0-b79c-e2d0cac89054",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647386173278,
+          "arrivedDate": "",
+          "value": 35.74470590171789
+        },
+        {
+          "id": "26f4969b-33d0-4ee4-95a1-11a1073701ca",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647386214533,
+          "arrivedDate": "",
+          "value": 71.48941180343579
+        },
+        {
+          "id": "d8c96d59-d8b0-4169-b5f2-4aa14b025d7b",
+          "from": "Habbis",
+          "to": "casa",
+          "departureDate": 1647386736408,
+          "arrivedDate": 1647386923400,
+          "value": 71.48941180343579
+        },
+        {
+          "id": "211a257b-3aa4-4c93-96af-84b2c05db621",
+          "departureDate": "2022-03-18T14:27:35.111Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "ba90d8ca-e081-44d6-ab80-732954d32f24",
+          "departureDate": "2022-03-18T16:16:58.353Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "218a64fc-b861-4d63-9e16-0e0cb587dffa",
+          "departureDate": "2022-03-18T18:01:44.350Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "47d6db5e-b2c9-41c6-9c10-17acfed05cb3",
+          "departureDate": "2022-03-18T18:01:56.829Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "40084aa0-fe6d-44fa-813f-3e7ebca83e9c",
+          "departureDate": "2022-03-18T18:45:10.752Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "6aef9f2d-788b-4a4b-99ca-18ae81e4dbab",
+          "departureDate": "2022-03-18T18:56:06.455Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "67c2befd-4173-46db-aa41-073481d6d847",
+          "departureDate": "2022-03-18T18:56:58.799Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "110193ab-4e4b-4887-bf63-ef4572904c1a",
+          "departureDate": "2022-03-18T19:12:03.382Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "29847ac1-595e-41c1-a081-e9efad8535b6",
+          "departureDate": "2022-03-18T19:13:20.679Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "0c36f85d-194e-43bf-aee6-21fa83365924",
+          "departureDate": "2022-03-18T19:16:45.141Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "45db9505-6f62-4d08-aba9-52ac81328162",
+          "departureDate": "2022-03-18T19:18:29.950Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "e3fa145c-21bb-4322-80f2-beb587caab57",
+          "departureDate": "2022-03-18T19:19:26.864Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "5a1938f7-3592-4e84-b5b6-8b0017fdeafa",
+          "departureDate": "2022-03-18T19:49:57.860Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "ef5b5deb-a763-4462-ab5b-0a2f4e01e459",
+          "departureDate": "2022-03-18T19:50:06.082Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "9c8a9617-6dc5-4e7a-9d90-3e6538e30b89",
+          "departureDate": "2022-03-18T20:01:50.278Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "8b28c889-8c11-4658-b919-aed61c949a07",
+          "departureDate": "2022-03-18T20:18:53.849Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "e774c2e4-18c4-44ae-ba4b-a992d8aeb83f",
+          "departureDate": "2022-03-18T20:19:22.779Z",
+          "arrivedDate": "",
+          "value": 13080
+        },
+        {
+          "id": "02984eb6-786e-471d-8064-6625b37aeaf2",
+          "departureDate": "2022-03-18T20:20:35.077Z",
+          "arrivedDate": "",
+          "value": 13080
+        }
+      ]
+    },
+    {
+      "id": "fda3e38b-d21e-43f1-b3c3-0870275c251f",
+      "email": "teste6@email.com",
+      "name": "MONALISA FREDERICO DE MENEZES",
+      "car": { "model": "gfdgfdgdfgfd", "plate": "dfgdfgfdgfdg" },
+      "password": "$2a$10$wd8GImN0.RCfGxIQeWGu9eackm/m7a4mQRy5K0RWOfSEDQ6jg20yK",
+      "budget": 0,
+      "favoritesPlaces": [],
+      "travelHistoric": []
+    },
+    {
+      "id": "c7f09c2b-0f48-4dce-97c6-0ce728c7d344",
+      "email": "email@email.com",
+      "name": "MONALISA FREDERICO DE MENEZES",
+      "car": { "model": "fdgfdgd", "plate": "gdfgfdgdf" },
+      "password": "$2a$10$pUaAe1QbsqiKwVoE9Fvi1.DHKvynwPlzcIvO19BI9jXJbhMNlOnSG",
+      "budget": 0,
+      "favoritesPlaces": [],
+      "travelHistoric": []
+    },
+    {
+      "id": "bba60bbb-63b4-46e4-98dd-57732ba8c2b6",
+      "name": "top",
+      "email": "123@email.com",
+      "email_confirm": "123@email.com",
+      "password_confirm": "12345678",
+      "car": { "model": "ousahdf", "plate": "alkdhfadçfnç" },
+      "password": "$2a$10$7Y6byoAky1/VeNOuaCb3k.J3f.JVokq7.sKFhFUYM...qfiHB7gXu",
+      "budget": 0,
+      "favoritesPlaces": [],
+      "travelHistoric": []
+    },
+    {
+      "id": "4a24878d-8734-4bc9-a83d-cefddf40a4b1",
+      "name": "MONALISA FREDERICO DE MENEZES",
+      "email": "email2@gmail.com",
+      "email_confirm": "email2@gmail.com",
+      "password_confirm": "Monalisa1",
+      "car": { "model": "Uno ", "plate": "abc-1234" },
+      "password": "$2a$10$Bt8MQakqHvtCVpPsJKXJMe5LIgo7CIa5cYMfuCKM.gxFWtHdWfSKC",
+      "budget": 0,
+      "favoritesPlaces": [],
+      "travelHistoric": []
+    }
+  ],
+  "drivers": [
+    {
+      "id": "101",
+      "name": "Lucas",
+      "image": "https://github.com/jrpolesi.png",
+      "car": { "model": "Ford Fiesta", "plate": "AGH-2679" },
+      "rating": {
+        "starsAverage": 3.3333333333333335,
+        "feedbacks": [
+          {
+            "id": "2c05692f-2225-44c1-a8f5-611a8a0c825e",
+            "stars": 4,
+            "description": "\"obrigado pelo serviço\""
+          },
+          {
+            "id": "e6131898-6bf9-478e-ae0e-236539b32552",
+            "stars": 4,
+            "description": "\"obrigado pelo serviço\""
+          },
+          {
+            "id": "3a6f96ff-f250-42e2-858c-47554be5ba78",
+            "stars": 2,
+            "description": "\"obrigado pelo serviço\""
+          }
+        ]
+      }
+    }
+  ]
+}

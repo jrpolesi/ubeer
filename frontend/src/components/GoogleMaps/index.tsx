@@ -188,6 +188,12 @@ function MapUbeer() {
                       onBlur={(event) => setDestination(event.target.value)}
                     />
                   </StandaloneSearchBox>
+                  {/* <p>
+                    {" "}
+                    R$
+                    {response &&
+                      response.routes[0].legs[0].distance.value / 1000}
+                  </p> */}
 
                   <Button
                     variant="rounded"
