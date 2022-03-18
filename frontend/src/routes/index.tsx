@@ -6,6 +6,7 @@ import PublicRoute from "./PublicRoute";
 import Signup from "../pages/Signup";
 import DashBoard from "../pages/Dashboard";
 import Sobre from "../pages/Sobre";
+import Carteira from "../pages/Carteira";
 
 const RoutesPages = () => {
   return (
@@ -21,7 +22,7 @@ const RoutesPages = () => {
         }
       />
       <Route path="/dashboard" element={<PrivateRoute><DashBoard /></PrivateRoute>} />
-      <Route path="/wallet" element={<PrivateRoute>carteira</PrivateRoute>} />
+      <Route path="/wallet" element={<PrivateRoute><Carteira/></PrivateRoute>} />
       <Route path="/history" element={<PrivateRoute>historico</PrivateRoute>} />
     </Routes>
   );
