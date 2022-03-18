@@ -51,9 +51,11 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  const submit = ({ model, plate, ...user }: FieldValues) => {
+  const submit = ({ model, plate, email, password, name }: FieldValues) => {
     const userFormated = {
-      ...user,
+      email,
+      password,
+      name,
       car: { model, plate },
     };
 
