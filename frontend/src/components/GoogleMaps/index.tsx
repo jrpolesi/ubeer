@@ -50,23 +50,28 @@ function MapUbeer() {
     })
   ); */
 
-  const position = {
-    lat: -27.49865,
-    lng: -48.13651,
-  };
+  navigator.geolocation.getCurrentPosition((position) => {
+    setCenter({
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    });
+  });
+  /* const position = {
+    lat: -29.49865,
+    lng: -51.13651,
+  }; */
 
   const [map, setMap] = useState<google.maps.Map>();
   const [searchBox, setSearchBox] =
     useState<google.maps.places.SearchBox | null>(null);
 
   const onLoad = (ref: google.maps.places.SearchBox) => {
-    console.log("olá, mundo");
+    console.log(ref);
     setSearchBox(ref);
   };
 
   const onPlacesChanged = () => {
     const places = searchBox?.getPlaces();
-    console.log(places);
     const place = places?.[0];
     const location = {
       lat: place?.geometry?.location?.lat() || 0,
@@ -120,7 +125,7 @@ function MapUbeer() {
               ? { width: "100vw", height: "38vh" }
               : { width: "100vw", height: "60vh" }
           }
-          center={position}
+          center={center}
           zoom={15}
         >
           {origin && destination && (
@@ -134,7 +139,7 @@ function MapUbeer() {
             <DirectionsRenderer options={directionsRendererOptions} />
           )}
           <Marker
-            position={position}
+            position={center}
             options={{
               label: {
                 text: "Sua localização",
@@ -176,7 +181,7 @@ function MapUbeer() {
                 >
                   <InputMaps
                     icon={<Indicator color="#FBD50E" />}
-                    placeholder="digite aqui"
+                    placeholder={destination ? destination : "Digite Aqui"}
                     onBlur={(event) => setDestination(event.target.value)}
                   />
                 </StandaloneSearchBox>

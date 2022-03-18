@@ -65,6 +65,20 @@ function DashBoard() {
           </Header>
           <MapUbeer />
         </>
+      ) : travelStatus === "finished" ? (
+        <>
+          <Header background="light-1" pad="small">
+            <Box background="white">
+              <Button
+                icon={<Menu color="accent-4" />}
+                hoverIndicator
+                onClick={() => console.log("oi")}
+              />
+            </Box>
+            Em Rota
+          </Header>
+          <MapUbeer />
+        </>
       ) : (
         <></>
       )}

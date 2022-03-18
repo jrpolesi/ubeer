@@ -2,9 +2,11 @@ import React, { ReactNode, useContext } from "react";
 import { TravelContext } from "../../providers/travel/index";
 import { PopupDriver, PopupWaitingDriver } from "./style";
 import { Indicator } from "grommet-icons";
+import axios from "axios";
 
 function ModalDriver() {
   const { travelStatus, updateTravelStatus } = useContext(TravelContext);
+
   return (
     <>
       {travelStatus === "in transit" ? (
@@ -32,8 +34,8 @@ function ModalDriver() {
               <p>Rating</p>
             </div>
             <div>
-              <p>Placa do Carro</p>
-              <p>Modelo do Carro</p>
+              <p>Placa do Carro do Usuario</p>
+              <p>Modelo do Carro do Usuario</p>
               <p>Preço da Viagem</p>
             </div>
           </section>
