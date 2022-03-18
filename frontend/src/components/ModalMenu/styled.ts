@@ -1,18 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 export const Popup = styled.main`
-  header {
-    height: 260px;
-    width: 60%;
-    background-color: red;
-    position: absolute;
-    top: 0%;
-  }
   main {
     height: 100vh;
-    animation-name: teste;
+    animation-name: animation-left-to-right;
     animation-duration: 0.5s;
-    width: 60%;
+    width: 40%;
     left: 0%;
     bottom: 0%;
     position: absolute;
@@ -22,7 +15,7 @@ export const Popup = styled.main`
       bottom: 10%;
     }
   }
-  @keyframes teste {
+  @keyframes animation-left-to-right {
     from {
       width: 0%;
     }
@@ -31,7 +24,7 @@ export const Popup = styled.main`
     }
   }
   div {
-    height: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
