@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import {UserContext} from "../../providers/user/index";
@@ -15,24 +15,21 @@ const Carteira = () => {
 
   const {updateUser, user, token} = useContext(UserContext);
   console.log(user);
-  console.log(user?.budget);
-  const budget = user?.budget;
-  const id = user?.id;
-  const name = user?.name;
-  const email = user?.email;
 
   const handleClick = (value: number) =>{
 
-    // const allValue = budget? + value: number;
-    // console.log(allValue);
+    if(user){
+      const Allvalue = value + user.budget;
 
-    // api.put(`/users/${id}/budget?value=${allValue}`, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`
-    //   }
-    // })
-    //   .then(response => console.log(response))
-    //   .catch(err => console.log(err));
+      api.put(`/users/${user.id}/budget?value=${Allvalue}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then(response => updateUser(response.data))
+        .catch(err => console.log(err.response));
+    }
+    
 
   };
 
@@ -55,8 +52,8 @@ const Carteira = () => {
         </figure>
         <div>
           <div>
-            <p>{name}</p>
-            <span>{email}</span>
+            <p>{user?.name}</p>
+            <span>{user?.email}</span>
           </div>
           <img src={Usuario} alt="Imagem do usuário" onClick={() => console.log("Entrar no menu")}/>
         </div>
@@ -79,7 +76,7 @@ const Carteira = () => {
         <Footer>
           <div>
             <p>O seu saldo atual é:</p>
-            <input value={`R$ ${budget} `} />
+            <input value={`R$ ${user?.budget} `} readOnly/>
           </div>
           <Button variant="primary" onClick={() => navigate("/Dashboard")}>Ok</Button>
         </Footer>
