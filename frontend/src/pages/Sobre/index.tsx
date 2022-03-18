@@ -1,6 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import Logo from "../../assets/img/logo.png";
+import Motorista from "../../assets/img/imagemSobre.png";
+import Gabriel from "../../assets/img/Gabriel.jpeg";
+import Monalisa from "../../assets/img/Monalisa.jpeg";
+import Jose from "../../assets/img/Jose.jpeg";
+import Carlos from "../../assets/img/Carlos.jpeg";
+import Robert from "../../assets/img/Robert.png";
+import { Button, Nav } from "grommet";
+import { Github, Linkedin } from "grommet-icons";
 import {
   ButtonFooter,
   Header,
@@ -9,18 +17,6 @@ import {
   SobreArticle,
   TimeSection,
 } from "./styles";
-
-import Button from "../../components/Button";
-
-import { Github, Linkedin } from "grommet-icons";
-
-import Logo from "../../assets/img/logo.png";
-import Motorista from "../../assets/img/imagemSobre.png";
-import Gabriel from "../../assets/img/Gabriel.jpeg";
-import Monalisa from "../../assets/img/Monalisa.jpeg";
-import Jose from "../../assets/img/Jose.jpeg";
-import Carlos from "../../assets/img/Carlos.jpeg";
-import Robert from "../../assets/img/Robert.png";
 
 const Sobre = () => {
   const navigate = useNavigate();
@@ -34,10 +30,10 @@ const Sobre = () => {
           </figure>
           <h3>uBeer</h3>
         </div>
-        <nav>
-          <button onClick={() => navigate("/login")}>Log In</button>
-          <button onClick={() => navigate("/Signup")}>Cadastre-se</button>
-        </nav>
+        <Nav direction="row">
+          <Button primary label="Entrar" color="light-1" onClick={() => navigate("/login")}/>
+          <Button primary label="Cadastre-se" color="light-1" onClick={() => navigate("/Signup")}/>
+        </Nav>
       </Header>
       <Main>
         <LogoSection>
@@ -193,8 +189,22 @@ const Sobre = () => {
         </TimeSection>
       </Main>
       <ButtonFooter>
-        <Button onClick={() => navigate("/login")}>LOG IN</Button>
-        <Button bg="dark" onClick={() => navigate("/Signup")}>CADASTRE-SE</Button>
+        <Button
+          primary
+          label="LOG IN"
+          color="accent-4"
+          style={{ borderRadius: 6 }}
+          size="small"
+          onClick={() => navigate("/login")}
+        />
+        <Button
+          primary
+          label="CADASTRE-SE"
+          style={{ borderRadius: 6 }}
+          size="small"
+          color="dark-1"
+          onClick={() => navigate("/Signup")}
+        />
       </ButtonFooter>
     </>
   );

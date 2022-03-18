@@ -1,31 +1,29 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
+import { MailOption, Hide, Mail } from "grommet-icons";
 import * as yup from "yup";
-import { FieldValues, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Main, InputText, Box, Label } from "./styled";
+import backArrow from "../../assets/img/Union.svg";
+import { grommet } from "grommet";
+import { deepMerge } from "grommet/utils";
+import backgroundMap from "../../assets/img/map.png";
+import myCustomTheme from "../../styles/theme";
 import api from "../../services/api";
-
+import { FieldValues, useForm } from "react-hook-form";
 import { UserContext } from "../../providers/user";
-
-import { Main, Box } from "./styled";
-
-import Header from "../../components/Header/index";
-import Input from "../../components/Input/index";
-import Button from "../../components/Button/index";
-
-import { MailOption, Hide } from "grommet-icons";
-import { Notification } from "grommet";
+import { yupResolver } from "@hookform/resolvers/yup";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
 const schema = yup.object().shape({
   email: yup.string().email("Email inválido").required("Campo Obrigatório"),
   password: yup
     .string()
+    .min(8, "mínimo 8 digitos")
     .required("Campo obrigatório"),
 });
 
 const Login = () => {
   const { updateToken } = useContext(UserContext);
-
-  const [showToast, setShowToast] = useState<boolean>(false);
 
   const {
     register,
@@ -34,59 +32,39 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   const onSubmit = (formData: FieldValues) => {
-
+    console.log(formData);
     api
       .post("/users/login", formData)
       .then((response) => {
         const { token, user } = response.data;
-
         localStorage.setItem("@uBeer:user", user.id);
-
         updateToken(token);
       })
-      .catch(() => setShowToast(true));
+      .catch((error) => console.log(error));
   };
 
   return (
-    <>
-      <Header />
-
-      <Main>
-        {showToast === true && (
-          <Notification
-            toast
-            status="critical"
-            title="Falha ao realizar cadastro"
-            message="Email ou senha inválido!"
-            onClose={() => setShowToast(false)}
-          />
-        )}
-        <h1>Entrar</h1>
-        <Box>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Input
-              icon={<MailOption />}
-              placeholder={"Email"}
-              name="email"
-              type="email"
-              register={register}
-              error={errors.email?.message}
-            />
-            <Input
-              icon={<Hide />}
-              placeholder={"Senha"}
-              type="password"
-              name="password"
-              register={register}
-              error={errors.password?.message}
-            />
-            <Button type="submit">Log in</Button>
-          </form>
-        </Box>
-      </Main>
-    </>
+    <Main>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          placeholder="Digite seu email"
+          icon={<MailOption />}
+          register={register}
+          type="text"
+          name="email"
+          error={errors.email?.message}
+        />
+        <Input
+          placeholder="Digite sua senha"
+          type="password"
+          register={register}
+          name="password"
+          error={errors.password?.message}
+        />
+        <Button>Log In</Button>
+      </form>
+    </Main>
   );
 };
 

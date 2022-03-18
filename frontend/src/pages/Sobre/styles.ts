@@ -9,39 +9,25 @@ export const Header = styled.header`
   display: none;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
   background-color: #f8f8f8;
-  padding: 17px 50px;
-  font-family: "Comfortaa", sans-serif;
+  padding: 0px 20px;
 
   div {
     display: flex;
     align-items: flex-end;
-    gap: 20px;
-
-    figure {
-
-      img {
-        width: 55px;
-      }
-    }
-
-    h3 {
-      font-size: 40px;
-    }
+  }
+  figure {
+    width: 40px;
   }
 
-  nav {
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
+  img {
+    width: 100%;
+  }
 
-    button {
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      font-size: 25px;
-      font-family: inherit;
-    }
+  h3 {
+    font-size: 30px;
+    margin: 0px 0px 2px 10px;
   }
 
   @media (min-width: 767px) {
@@ -289,9 +275,8 @@ export const TimeSection = styled.section`
 
 export const ButtonFooter = styled.footer`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 12px;
   width: 95%;
   height: 75px;
   background-color: #c7c7c7;
@@ -301,8 +286,11 @@ export const ButtonFooter = styled.footer`
   bottom: 0;
 
   button {
-    max-width: 230px;
-    flex: 1;
+    width: 45%;
+    height: 52px;
+    border: solid 2px #333333;
+    font-size: 12px;
+    font-weight: bold;
   }
 
   @media (min-width: 400px) {

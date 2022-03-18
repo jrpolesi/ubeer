@@ -4,47 +4,42 @@ import map from "../../images/map.svg";
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
-  min-height: 775px;
   display: flex;
   flex-direction: column;
-  background-position: center;
-  background-repeat: no-repeat;
+  header {
+      height: 15%;
+      background-color: #F7F8F9;
+  button{
+      width: 84px;
+      height: 84px;
+      border: none;
+      border-radius: 50%;
+    }
+
+
+  }
+
+  
 `;
 
 export const Main = styled.div`
   height: 100vh;
-  background: url(${map}) no-repeat center center fixed;
-  background-size: cover;
+  background: url(${map});
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
-
-    form {
-      width: 95%;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-
-      >div {
-        width: 100%;
-      }
-
-      button {
-        margin-top: 60px;
-        width: 100%;
-      }
-    }
 
     h1 {
         font-family: "comfortaa";
         font-size: 35px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         text-align: center;
     }
+
+    
 
   @media (max-width: 900px){
       background: #F7F8F9;
@@ -52,12 +47,5 @@ export const Main = styled.div`
       h1 {
         text-align: left;
       }
-
-      form {
-
-      button {
-        margin-top: 20px;
-      }
-    }
   }
 `;

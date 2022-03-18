@@ -17,10 +17,4 @@ export const Container = styled.div`
       outline: none;
     }
   }
-
-  label {
-    display: block;
-    color: red;
-    margin-top: 4px;
-  }
 `;

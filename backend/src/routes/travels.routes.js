@@ -6,12 +6,21 @@ const router = express.Router();
 const pricePerKm = 20;
 
 router.post("/newTravel/users/:userId", (req, res) => {
-  const { from, to, distance } = req.body;
+  const { from, to } = req.body;
   const userId = req.params.userId;
 
   const user = Database.getById("users", userId);
 
+  const distance =
+    Math.hypot(
+      Number(from.lat) - Number(to.lat),
+      Number(from.long) - Number(to.long)
+    ) * 100;
+  console.log(from, to);
+  console.log({ distance });
+
   const totalPrice = distance * pricePerKm;
+  console.log(totalPrice);
 
   const travel = {
     id: uuid4(),
