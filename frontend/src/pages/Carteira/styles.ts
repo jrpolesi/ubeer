@@ -17,6 +17,7 @@ export const Header = styled.header`
         box-shadow: 1px 1px 8px #ccc;
         width: 46px;
         height: 36px;
+        cursor: pointer;
     }
 
     h1{
@@ -47,6 +48,7 @@ export const HeaderDesktop = styled.header`
         box-shadow: 1px 1px 8px #00000066;
         width: 60px;
         height: 60px;
+        cursor: pointer;
     }
 
     figure img{
@@ -71,6 +73,7 @@ export const HeaderDesktop = styled.header`
     div img{
         width: 70px;
         height: 70px;
+        cursor: pointer;
     }
 
     p{
