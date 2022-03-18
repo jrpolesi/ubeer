@@ -3,51 +3,41 @@ import { TravelContext } from "../../providers/travel/index";
 import { PopupDriver, PopupWaitingDriver } from "./style";
 import { Indicator } from "grommet-icons";
 
-function ModalDriver({ children }: { children: ReactNode }) {
+function ModalDriver() {
   const { travelStatus, updateTravelStatus } = useContext(TravelContext);
   return (
     <>
       {travelStatus === "in transit" ? (
         <PopupDriver>
-          <div>
-            {children}
-            <h2>Favorios</h2>
+          <section>
             <div>
-              <Indicator />
-              <div>
-                {/*             {favoritesplaces.map((element) => (
-      <>
-        <h4>{element.place}</h4>
-        <p>{element.city}</p>
-      </>
-    ))} */}
-              </div>
+              <img src="" alt="" />
+              <h2>Nome do Motorista</h2>
+              <p>Rating</p>
             </div>
-          </div>
+            <div>
+              <p>Placa do Carro</p>
+              <p>Modelo do Carro</p>
+              <p>Preço da Viagem</p>
+            </div>
+          </section>
+          <button onClick={() => updateTravelStatus("finished")}>Chegou</button>
         </PopupDriver>
       ) : travelStatus === "finished" ? (
         <PopupWaitingDriver>
-          <div>
-            <button
-              onClick={() => {
-                updateTravelStatus("finished");
-              }}
-            >
-              Chamar o Motorista
-            </button>
-            <h2>Favorios</h2>
+          <section>
             <div>
-              <Indicator />
-              <div>
-                {/*             {favoritesplaces.map((element) => (
-          <>
-            <h4>{element.place}</h4>
-            <p>{element.city}</p>
-          </>
-        ))} */}
-              </div>
+              <img src="" alt="" />
+              <h2>Nome do Motorista</h2>
+              <p>Rating</p>
             </div>
-          </div>
+            <div>
+              <p>Placa do Carro</p>
+              <p>Modelo do Carro</p>
+              <p>Preço da Viagem</p>
+            </div>
+          </section>
+          <button onClick={() => updateTravelStatus("finished")}>Chegou</button>
         </PopupWaitingDriver>
       ) : (
         <></>
