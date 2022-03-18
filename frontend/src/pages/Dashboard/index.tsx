@@ -36,17 +36,6 @@ function DashBoard() {
             Localização Atual
           </Header>
           <MapUbeer />
-          <Card pad="small" background="accent-4" gap="medium">
-            <TextInput
-              placeholder="Digite o Local"
-              icon={<Search color="black" />}
-              onClick={() => updateTravelStatus("waiting for driver")}
-            />
-            <div>
-              <Heading>Favoritos</Heading>
-              <List primaryKey="local" data={[]} />
-            </div>
-          </Card>
         </>
       ) : travelStatus === "waiting for driver" ? (
         <>
@@ -61,33 +50,6 @@ function DashBoard() {
             Selecione o Endereço
           </Header>
           <MapUbeer />
-          <Card pad="small" background="accent-4" gap="medium">
-            <TextInput
-              placeholder="Digite onde você está"
-              icon={<Search color="black" />}
-            />
-            <input />
-            <TextInput
-              placeholder="Digite para onde você quer ir"
-              icon={<LocationPin color="black" />}
-            />
-            <Button
-              color="black"
-              hoverIndicator
-              onClick={() => updateTravelStatus("in transit")}
-            >
-              Chamar Motorista
-            </Button>
-            <div>
-              <Heading>Favoritos</Heading>
-              <List
-                primaryKey="local"
-                data={[]}
-                //preciso passar um axios para consumir a API das rotas favoritas
-                onClick={() => console.log("oi")}
-              />
-            </div>
-          </Card>
         </>
       ) : travelStatus === "in transit" ? (
         <>
@@ -99,35 +61,9 @@ function DashBoard() {
                 onClick={() => console.log("oi")}
               />
             </Box>
-            Selecione o Endereço
+            Chegou!
           </Header>
           <MapUbeer />
-          <Card pad="small" background="accent-4" gap="medium">
-            <TextInput
-              placeholder="Digite onde você está"
-              icon={<Search color="black" />}
-            />
-            <TextInput
-              placeholder="Digite para onde você quer ir"
-              icon={<LocationPin color="black" />}
-            />
-            <Button
-              icon={<Menu color="accent-4" />}
-              hoverIndicator
-              onClick={() => updateTravelStatus("in transit")}
-            >
-              Chamar Motorista
-            </Button>
-            <div>
-              <Heading>Favoritos</Heading>
-              <List
-                primaryKey="local"
-                data={[]}
-                //preciso passar um axios para consumir a API das rotas favoritas
-                onClick={() => console.log("oi")}
-              />
-            </div>
-          </Card>
         </>
       ) : (
         <></>

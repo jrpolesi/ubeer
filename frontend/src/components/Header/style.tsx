@@ -9,6 +9,9 @@ export const Container = styled.div`
     align-items: center;
     
     button{
+      position: absolute;
+      top: 5%;
+      left: 5%;  
       width: 84px;
       height: 84px;
       border: none;
@@ -19,12 +22,4 @@ export const Container = styled.div`
     button:hover{
         filter: brightness(0.9);
     }
-
-    @media (max-width: 900px){
-        button{
-            width: 30px;
-            height: 30px;
-        }
-    }
-    
 `;

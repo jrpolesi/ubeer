@@ -1,4 +1,10 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useContext,
+  useEffect,
+} from "react";
 import {
   GoogleMap,
   LoadScript,
@@ -6,14 +12,16 @@ import {
   StandaloneSearchBox,
   DirectionsService,
   DirectionsRenderer,
-  Autocomplete,
-  DirectionsServiceProps,
 } from "@react-google-maps/api";
-
-const containerStyle = {
-  width: "100vw",
-  height: "60vh",
-};
+import Modal from "../Modal";
+import ModalDriver from "../ModalDriver";
+import InputMaps from "../InputMaps";
+import { Search, Indicator } from "grommet-icons";
+import { TravelContext } from "../../providers/travel";
+import { DivModal, MapContainer } from "./styles";
+import Button from "../Button";
+import api from "../../services/api";
+import { UserContext } from "../../providers/user";
 
 interface Location {
   lat: number;
@@ -29,50 +37,45 @@ const arrayPlace: (
 )[] = ["places"];
 
 function MapUbeer() {
+  const { travelStatus, updateTravelStatus, updateTravel } =
+    useContext(TravelContext);
+  const { user, token } = useContext(UserContext);
+  const [hasOrigin, setHasOrigin] = useState(false);
   const [center, setCenter] = useState({} as Location);
-  const [destination, setDestination] = useState("bauru");
-  const [origin, setOrigin] = useState("campinas");
+  const [origin, setOrigin] = useState<string>("");
+  const [destination, setDestination] = useState<string>("");
   const [response, setResponse] = useState<google.maps.DirectionsResult | null>(
     null
   );
 
-  /*   navigator.geolocation.watchPosition((position) =>
-    setCenter({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-    })
-  ); */
-
-  /*   const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
-  });
- */
-
-  const position = {
-    lat: -27.49865,
-    lng: -48.13651,
-  };
+  useEffect(() => {
+    navigator.geolocation.watchPosition((position) =>
+      setCenter({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      })
+    );
+  }, []);
 
   const [map, setMap] = useState<google.maps.Map>();
+
   const [searchBox, setSearchBox] =
     useState<google.maps.places.SearchBox | null>(null);
 
   const onLoad = (ref: google.maps.places.SearchBox) => {
-    console.log("olá, mundo");
     setSearchBox(ref);
   };
 
   const onPlacesChanged = () => {
-    console.log("oi");
     const places = searchBox?.getPlaces();
-    console.log(places);
     const place = places?.[0];
-    const location = {
+
+    setCenter({
       lat: place?.geometry?.location?.lat() || 0,
       lng: place?.geometry?.location?.lng() || 0,
-    };
-    map?.panTo(location);
+    });
+
+    map?.panTo(center);
   };
 
   const onMapLoad = (map: google.maps.Map) => {
@@ -108,35 +111,19 @@ function MapUbeer() {
   }, [response]);
 
   return (
-    <>
+    <MapContainer>
       <LoadScript
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_KEY as string}
         libraries={arrayPlace}
       >
-        <StandaloneSearchBox onLoad={onLoad} onPlacesChanged={onPlacesChanged}>
-          <input
-            placeholder="digite aqui"
-            style={{
-              width: "240px",
-              height: "32px"
-            }}
-            onBlur={(event) => setOrigin(event.target.value)}
-          />
-        </StandaloneSearchBox>
-        <StandaloneSearchBox onLoad={onLoad} onPlacesChanged={onPlacesChanged}>
-          <input
-            placeholder="digite aqui"
-            style={{
-              width: "240px",
-              height: "32px"
-            }}
-            onBlur={(event) => setDestination(event.target.value)}
-          />
-        </StandaloneSearchBox>
         <GoogleMap
           onLoad={onMapLoad}
-          mapContainerStyle={{ width: "100vw", height: "60vh" }}
-          center={position}
+          mapContainerStyle={
+            hasOrigin
+              ? { width: "100vw", height: "38vh" }
+              : { width: "100vw", height: "60vh" }
+          }
+          center={center}
           zoom={15}
         >
           {origin && destination && (
@@ -149,17 +136,93 @@ function MapUbeer() {
           {response && (
             <DirectionsRenderer options={directionsRendererOptions} />
           )}
-          <Marker
-            position={position}
-            options={{
-              label: {
-                text: "Posição Teste",
-              },
-            }}
-          />
+
+          {!response && (
+            <Marker
+              position={center}
+              options={{
+                label: {
+                  text: "Sua localização",
+                  color: "red",
+                  className: "marker",
+                },
+              }}
+            />
+          )}
         </GoogleMap>
+
+        {!travelStatus && (
+          <Modal
+            setOrigin={setOrigin}
+            setDestination={setDestination}
+            setHasOrigin={setHasOrigin}
+            hasOrigin={hasOrigin}
+          >
+            <DivModal>
+              <StandaloneSearchBox
+                onLoad={onLoad}
+                onPlacesChanged={onPlacesChanged}
+              >
+                <InputMaps
+                  icon={<Search color="#FBD50E" />}
+                  placeholder={origin ? origin : "Digite Aqui"}
+                  onBlur={(event) => {
+                    if (!hasOrigin) {
+                      setHasOrigin(true);
+                    }
+
+                    setOrigin(event.target.value);
+                  }}
+                />
+              </StandaloneSearchBox>
+
+              {hasOrigin && (
+                <>
+                  <StandaloneSearchBox
+                    onLoad={onLoad}
+                    onPlacesChanged={onPlacesChanged}
+                  >
+                    <InputMaps
+                      icon={<Indicator color="#FBD50E" />}
+                      placeholder={destination ? destination : "Digite Aqui"}
+                      onBlur={(event) => setDestination(event.target.value)}
+                    />
+                  </StandaloneSearchBox>
+
+                  <Button
+                    variant="rounded"
+                    onClick={() => {
+                      const travelRequest = {
+                        from: origin,
+                        to: destination,
+                        distance: 654,
+                      };
+
+                      // Chamada da API
+                      api
+                        .post(
+                          `/travels/newTravel/users/${user && user.id}`,
+                          travelRequest,
+                          { headers: { Authorization: `Bearer ${token}` } }
+                        )
+                        .then((response) => {
+                          updateTravelStatus("waiting for driver");
+                          updateTravel(response.data);
+                          console.log(response.data);
+                        });
+                    }}
+                  >
+                    Chamar motorista
+                  </Button>
+                </>
+              )}
+            </DivModal>
+          </Modal>
+        )}
+
+        <ModalDriver />
       </LoadScript>
-    </>
+    </MapContainer>
   );
 }
 

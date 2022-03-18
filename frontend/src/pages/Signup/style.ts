@@ -13,13 +13,31 @@ export const Container = styled.div`
 
 export const Main = styled.div`
   height: 100vh;
- 
-  
+  background: url(${map}) no-repeat center center fixed;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
+  padding: 20px 0;
+
+    form {
+      width: 95%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      >div {
+        width: 100%;
+      }
+
+      button {
+        margin-top: 60px;
+        width: 100%;
+      }
+    }
 
     h1 {
         font-family: "comfortaa";
@@ -28,30 +46,18 @@ export const Main = styled.div`
         text-align: center;
     }
 
-    form{
-      width: 300px;
-      margin-bottom: 10px;
-
-      div{
-
-        margin-bottom: 5px;
-      }
-      button {
-        border-radius: 6px;
-      }
-      label{
-        font-size: 12px;
-        margin: 2px;
-      }
-    }
-
-    
-
   @media (max-width: 900px){
       background: #F7F8F9;
 
       h1 {
         text-align: left;
       }
+
+      form {
+
+      button {
+        margin-top: 20px;
+      }
+    }
   }
 `;
