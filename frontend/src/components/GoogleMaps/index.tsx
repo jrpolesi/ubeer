@@ -151,7 +151,7 @@ function MapUbeer() {
           )}
         </GoogleMap>
 
-        {!travelStatus && (
+        {!travelStatus ? (
           <Modal
             setOrigin={setOrigin}
             setDestination={setDestination}
@@ -212,9 +212,9 @@ function MapUbeer() {
                           { headers: { Authorization: `Bearer ${token}` } }
                         )
                         .then((response) => {
-                          updateTravelStatus("waiting for driver");
                           updateTravel(response.data);
                           console.log(response.data);
+                          updateTravelStatus("waiting for driver");
                         });
                     }}
                   >
@@ -224,9 +224,11 @@ function MapUbeer() {
               )}
             </DivModal>
           </Modal>
+        ) : (
+          <>
+            <ModalDriver />
+          </>
         )}
-
-        <ModalDriver />
       </LoadScript>
     </MapContainer>
   );
