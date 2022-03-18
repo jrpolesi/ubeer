@@ -16,18 +16,20 @@ export const Main = styled.main`
     margin-top: 370px;
     width: 100%;
   }
-  h1{
+  h1 {
     align-self: start;
     margin-left: 150px;
     margin-bottom: 10px;
     font-size: 35px;
   }
   @media (min-width: 768px) {
-    background-image: url(${backgroundMap});
-    h1{
-      align-self:center;
+    background: url(${backgroundMap}) no-repeat center center fixed;
+    background-size: cover;
+    
+    h1 {
+      align-self: center;
       margin-left: 0;
-      margin-bottom: 10px; 
+      margin-bottom: 10px;
     }
   }
 `;
