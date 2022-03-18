@@ -234,16 +234,9 @@ Para pedir uma viagem utilize a rota abaixo:
 
 ```json
 {
-  "from": {
-    "name": "Habbis",
-    "lat": "-25.42977",
-    "long": "-49.21768"
-  },
-  "to": {
-    "name": "casa",
-    "lat": "-25.43359",
-    "long": "-49.18214"
-  }
+  "from": "Habbis",
+  "to": "Bar do zé",
+  "distance": 12
 }
 ```
 
