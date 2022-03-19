@@ -1,31 +1,48 @@
-import React from "react";
-import { Menu } from "grommet-icons";
-import { Popup } from "./styled";
+import React, { Dispatch, SetStateAction, useContext } from "react";
+import { Background } from "./styles";
 import Button from "../Button/index";
-import { useContext, useState } from "react";
 import { UserContext } from "../../providers/user";
-import { Link } from "react-router-dom";
-const ModalMenu = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { logOut } = useContext(UserContext);
+import userImg from "../../assets/img/Usuario.png";
+import { useNavigate } from "react-router-dom";
+
+interface Props {
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const ModalMenu = ({ isOpen, setIsOpen }: Props) => {
+  const { logOut, user } = useContext(UserContext);
+  const navigate = useNavigate();
+
   return (
-    <>
-      <Popup>
-        <main>
-          <header />
-          <div>
-            <span>Serviços</span>
-            <Button variant="rounded"> Adicionar saldo </Button>
-            <Button variant="rounded"> Informações da conta</Button>
-            <Button variant="rounded"> Preferências </Button>
-            <Button variant="rounded"> Suporte </Button>
+    <Background className={isOpen ? "" : "hide"}>
+      <div className="menu">
+        {user && (
+          <div className="header">
+            <div>
+              <img src={userImg} alt="user avatar" />
+              <h2>{user.name}</h2>
+              <span>{user.email}</span>
+            </div>
+            <span className="closeButton" onClick={() => setIsOpen(false)}>
+              X
+            </span>
           </div>
-          <a onClick={logOut} href="/">
-            Sign out
-          </a>
-        </main>
-      </Popup>
-    </>
+        )}
+        <div className="buttons">
+          <Button variant="rounded" onClick={() => navigate("/wallet")}>
+            {" "}
+            Adicionar saldo{" "}
+          </Button>
+          <Button variant="rounded"> Informações da conta</Button>
+          <Button variant="rounded"> Preferências </Button>
+          <Button variant="rounded"> Suporte </Button>
+        </div>
+        <span className="signout" onClick={logOut}>
+          Sign out
+        </span>
+      </div>
+    </Background>
   );
 };
 

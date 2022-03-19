@@ -13,4 +13,7 @@ export const Container = styled.header`
         position: static;
     }
 
+    .avatar {
+        cursor: pointer;
+    }
 `;
