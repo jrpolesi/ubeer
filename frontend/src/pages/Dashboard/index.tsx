@@ -2,7 +2,7 @@
 import React from "react";
 import { useContext } from "react";
 import { TravelContext } from "../../providers/travel/index";
-import MapUbeer from "../../components/GoogleMaps";
+import MapUbeer from "../../components/MapUbeer";
 import Header from "../../components/Header";
 
 function DashBoard() {
