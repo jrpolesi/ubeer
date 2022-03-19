@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Map from "../../assets/img/map.png";
 
-export const Header = styled.header`
+export const HeaderContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
