@@ -1,100 +1,14 @@
 import styled from "styled-components";
 import Map from "../../assets/img/map.png";
 
-export const HeaderContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #F7F8F9;
-    padding: 0px 20px;
-    height: 66px;
-
-    figure{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 90px; 
-        box-shadow: 1px 1px 8px #ccc;
-        width: 46px;
-        height: 36px;
-        cursor: pointer;
-    }
-
-    h1{
-        width: 100%;
-        text-align: center;
-        margin-right: 34px;
-    }
-
-    @media (min-width: 768px) {
-    display: none;
-    }
-`;
-
-export const HeaderDesktop = styled.header`
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #FBD50E;
-    padding: 0px 20px;
-    height: 85px;
-
-    figure{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #FFF;
-        border-radius: 90px;
-        box-shadow: 1px 1px 8px #00000066;
-        width: 60px;
-        height: 60px;
-        cursor: pointer;
-    }
-
-    figure img{
-        margin-right: 5px;
-    }
-
-    div{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: row;
-        color: #FFF;
-    }
-
-    div div{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-right: 20px;
-    }
-
-    div img{
-        width: 70px;
-        height: 70px;
-        cursor: pointer;
-    }
-
-    p{
-        font-weight: bold;
-    }
-    span{
-
-    }
-    
-    @media (min-width: 768px) {
-    display: flex;
-    }
-`;
-
 export const Main = styled.main`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
     background-color: #F7F8F9;
     padding: 0px 20px;
+    height: 100vh;
 
     button{
         width: 85%;
@@ -115,7 +29,6 @@ export const Main = styled.main`
     @media (min-width: 768px) {
         background-image: url(${Map});
         background-size: cover;
-        padding-top: 20px;
     }
 `;
 
@@ -124,7 +37,7 @@ export const Section = styled.section`
         flex-direction: column;
         align-items: center;
         width: 100%;
-        height: 100%;
+        height: 510px;
         background-color: #FFF;
         box-shadow: 1px 1px 8px #ccc;
         padding: 20px 0px;
