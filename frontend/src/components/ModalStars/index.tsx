@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
 import { Container, Content } from "./styles";
-import { Star, Subtract } from "grommet-icons";
+import { Subtract } from "grommet-icons";
 import Button from "../Button";
 import { TravelContext } from "../../providers/travel";
 import { Rating } from "react-simple-star-rating";
 import api from "../../services/api";
+import { UserContext } from "../../providers/user";
 
 const ModalStars = () => {
   const { travel } = useContext(TravelContext);
+  const { token } = useContext(UserContext);
   const [ratingValue, setRatingValue] = useState(0);
   const [evaluation, setEvaluation] = useState("Sua avaliação");
   const [description, setDescription] = useState("");
@@ -19,10 +21,12 @@ const ModalStars = () => {
   };
 
   const handleSubmit = () => {
-    const start = ratingValue / 20;
-    const totalNote = { start, description };
+    const stars = ratingValue / 20;
+ 
     api
-      .post(`/drivers/${travel.travel.id}/rating`, totalNote)
+      .post(`/drivers/${travel.driver.id}/rating?stars=${stars}&description=${description}`, {}, {headers: {
+        Authorization: `Bearer ${token}`
+      }})
       .then((response) => {
         console.log(response);
       })
