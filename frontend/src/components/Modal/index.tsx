@@ -34,8 +34,8 @@ function Modal({
       <section>
         {children}
 
-        {user?.favoritesPlaces.length !== 0 && <h2>FAVORITOS</h2>}
-        {user?.favoritesPlaces.map((place) => (
+        {user?.favoritesPlaces && user?.favoritesPlaces.length !== 0 && <h2>FAVORITOS</h2>}
+        {user?.favoritesPlaces && user?.favoritesPlaces.map((place) => (
           <Favourite key={place.id}>
             <div>
               <Location color="white" />
