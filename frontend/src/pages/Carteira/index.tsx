@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user/index";
 import api from "../../services/api";
-import { Footer, HeaderContainer, Main, Section } from "./styles";
-import { Menu } from "grommet-icons";
+import { Footer, Main, Section } from "./styles";
 import QrCode from "../../assets/img/QRCode1.png";
 import Button from "../../components/Button";
 import LogoSalario from "../../assets/img/dinheiro.png";
@@ -36,12 +35,6 @@ const Carteira = () => {
   return (
     <>
       <Header title="Saldo" />
-      <HeaderContainer>
-        <figure onClick={() => console.log("Entrar no menu")}>
-          <Menu color="accent-4" />
-        </figure>
-        <h1>Saldo</h1>
-      </HeaderContainer>
       <Main>
         <Section>
           <figure>
