@@ -44,7 +44,7 @@ export const Container = styled.div`
     border-radius: 15px;
     border: 0.5px solid #d5dde0;
     background: #f7f8f9;
-    margin: 10px;
+    margin: 0 auto;
     &::placeholder {
       font-family: "Inter";
       font-weight: 400;
@@ -71,6 +71,12 @@ export const Content = styled.div`
         flex-direction: column;
         align-items: center;
 
+        p {
+          font-family: "inter";
+          text-align: center;
+          color: #3E4958;
+          font-size: 18px;
+        }
        
 
         
