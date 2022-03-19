@@ -25,6 +25,7 @@ export interface Driver {
   id: string;
   name: string;
   car: Car;
+  image: string;
   rating: {
     starsAverage: number;
     feedbacks: Feedbacks[];
