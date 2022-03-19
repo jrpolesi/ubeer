@@ -36,7 +36,10 @@ const ModalMenu = ({ isOpen, setIsOpen }: Props) => {
           </Button>
           <Button variant="rounded"> Informações da conta</Button>
           <Button variant="rounded"> Preferências </Button>
-          <Button variant="rounded"> Suporte </Button>
+          <Button variant="rounded" onClick={() => navigate("/support")}>
+            {" "}
+            Suporte{" "}
+          </Button>
         </div>
         <span className="signout" onClick={logOut}>
           Sign out

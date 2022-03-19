@@ -7,6 +7,7 @@ import Signup from "../pages/Signup";
 import DashBoard from "../pages/Dashboard";
 import Sobre from "../pages/Sobre";
 import Carteira from "../pages/Carteira";
+import Suporte from "../pages/Suporte";
 
 const RoutesPages = () => {
   return (
@@ -48,6 +49,14 @@ const RoutesPages = () => {
         element={
           <PrivateRoute>
             <Carteira />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/support"
+        element={
+          <PrivateRoute>
+            <Suporte />
           </PrivateRoute>
         }
       />
