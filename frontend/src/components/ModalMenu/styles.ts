@@ -53,6 +53,7 @@ export const Background = styled.div`
         font-family: sans-serif;
         font-size: 30px;
         color: #000000;
+        cursor: pointer;
       }
     }
 
