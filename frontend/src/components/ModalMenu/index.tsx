@@ -35,7 +35,7 @@ const ModalMenu = ({ isOpen, setIsOpen }: Props) => {
             Adicionar saldo{" "}
           </Button>
           <Button variant="rounded"> Informações da conta</Button>
-          <Button variant="rounded"> Preferências </Button>
+          <Button variant="rounded" onClick={() => navigate("/preferences")}> Preferências </Button>
           <Button variant="rounded"> Suporte </Button>
         </div>
         <span className="signout" onClick={logOut}>
