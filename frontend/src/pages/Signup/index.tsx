@@ -9,10 +9,10 @@ import { Container, Main } from "./style";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import Header from "../../components/Header";
 
 import { MailOption, User, Car } from "grommet-icons";
 import { Notification } from "grommet";
+import BackButton from "../../components/BackButton";
 
 const schema = yup.object().shape({
   name: yup.string().required("Campo obrigatório"),
@@ -71,7 +71,7 @@ const Signup = () => {
 
   return (
     <>
-      <Header />
+      <BackButton />
 
       <Container>
         {showToast === true && (

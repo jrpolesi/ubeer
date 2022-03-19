@@ -1,6 +1,7 @@
-import React, { Dispatch, ReactNode, SetStateAction } from "react";
+import React, { Dispatch, ReactNode, SetStateAction, useContext } from "react";
 import { Popup, Favourite } from "./style";
 import { Location } from "grommet-icons";
+import { UserContext } from "../../providers/user";
 
 interface Props {
   children: ReactNode;
@@ -17,58 +18,31 @@ function Modal({
   setHasOrigin,
   hasOrigin,
 }: Props) {
-  function proximoPasso(busca: string) {
-    setOrigin(busca);
-    setHasOrigin(true);
-  }
+  const { user } = useContext(UserContext);
 
-  function posDestino(busca: string) {
-    setDestination(busca);
-  }
+  const handleClick = (event: React.MouseEvent<HTMLParagraphElement>) => {
+    if (hasOrigin) {
+      return setDestination(event.currentTarget.innerText);
+    }
+
+    setOrigin(event.currentTarget.innerText);
+    setHasOrigin(true);
+  };
 
   return (
     <Popup>
       <section>
         {children}
-        <h2>FAVORITOS</h2>
-        <Favourite>
-          <div>
-            <Location color="white" />
-          </div>
-          <p
-            onClick={(event: React.MouseEvent<HTMLParagraphElement>) => {
-              if (hasOrigin) {
-                return posDestino(event.currentTarget.innerText);
-              }
 
-              proximoPasso(event.currentTarget.innerText);
-            }}
-          >
-            Rua Manoel Eufrasio, 123 Curitiba
-          </p>
-        </Favourite>
-        <Favourite>
-          <div>
-            <Location color="white" />
-          </div>
-          <p
-            onClick={(event: React.MouseEvent<HTMLParagraphElement>) => {
-              if (hasOrigin) {
-                return posDestino(event.currentTarget.innerText);
-              }
-
-              proximoPasso(event.currentTarget.innerText);
-            }}
-          >
-            Av Parana, 434, Cacoal Rondonia
-          </p>
-        </Favourite>
-        <Favourite>
-          <div>
-            <Location color="white" />
-          </div>
-          <p>Rua Prof Antonio Reginato Vianna 232, Curitiba</p>
-        </Favourite>
+        {user?.favoritesPlaces.length !== 0 && <h2>FAVORITOS</h2>}
+        {user?.favoritesPlaces.map((place) => (
+          <Favourite key={place.id}>
+            <div>
+              <Location color="white" />
+            </div>
+            <p onClick={handleClick}>{place.name}</p>
+          </Favourite>
+        ))}
       </section>
     </Popup>
   );

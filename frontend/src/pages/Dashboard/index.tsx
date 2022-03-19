@@ -1,19 +1,7 @@
 /* eslint-disable indent */
-import {
-  Header,
-  Box,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Text,
-  TextInput,
-  Heading,
-  List,
-  Button,
-} from "grommet";
-import { Search, Menu, LocationPin, Previous } from "grommet-icons";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Header, Box, Button } from "grommet";
+import { Menu, Previous } from "grommet-icons";
 import { useContext } from "react";
 import { TravelContext } from "../../providers/travel/index";
 import MapUbeer from "../../components/GoogleMaps";

@@ -7,13 +7,12 @@ import api from "../../services/api";
 import { UserContext } from "../../providers/user";
 
 import { Main, Box } from "./styled";
-
-import Header from "../../components/Header/index";
 import Input from "../../components/Input/index";
 import Button from "../../components/Button/index";
 
 import { MailOption, Hide } from "grommet-icons";
 import { Notification } from "grommet";
+import BackButton from "../../components/BackButton";
 
 const schema = yup.object().shape({
   email: yup.string().email("Email inválido").required("Campo Obrigatório"),
@@ -51,7 +50,7 @@ const Login = () => {
 
   return (
     <>
-      <Header />
+      <BackButton />
 
       <Main>
         {showToast === true && (
