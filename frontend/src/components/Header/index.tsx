@@ -1,16 +1,20 @@
-import { FormPrevious } from "grommet-icons";
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Container } from "./style";
+import BackButton from "../BackButton";
+import { Container } from "./styles";
 
-const Header = () => {
-  const navigate = useNavigate();
+import userImg from "../../assets/img/Usuario.png";
+
+const Header = ({ title }: { title: string }) => {
 
   return (
     <Container>
-      <button onClick={() => navigate("/login")}>
-        <FormPrevious size="larger" color="#FBD50E" />
-      </button>
+      <BackButton />
+
+      <h1>{title}</h1>
+
+      <div>
+        <img src={userImg} alt="user avatar" />
+      </div>
     </Container>
   );
 };

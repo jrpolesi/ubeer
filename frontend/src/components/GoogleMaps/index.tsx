@@ -66,6 +66,26 @@ function MapUbeer() {
     setSearchBox(ref);
   };
 
+  const getNewTravelFromAPI = () => {
+    if (response) {
+      const travelRequest = {
+        from: origin,
+        to: destination,
+        distance: response.routes[0].legs[0].distance?.value,
+      };
+
+      api
+        .post(`/travels/newTravel/users/${user && user.id}`, travelRequest, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          updateTravel(response.data);
+          console.log(response.data);
+          updateTravelStatus("waiting for driver");
+        });
+    }
+  };
+
   const onPlacesChanged = () => {
     const places = searchBox?.getPlaces();
     const place = places?.[0];
@@ -195,29 +215,7 @@ function MapUbeer() {
                       response.routes[0].legs[0].distance.value / 1000}
                   </p> */}
 
-                  <Button
-                    variant="rounded"
-                    onClick={() => {
-                      const travelRequest = {
-                        from: origin,
-                        to: destination,
-                        distance: 654,
-                      };
-
-                      // Chamada da API
-                      api
-                        .post(
-                          `/travels/newTravel/users/${user && user.id}`,
-                          travelRequest,
-                          { headers: { Authorization: `Bearer ${token}` } }
-                        )
-                        .then((response) => {
-                          updateTravel(response.data);
-                          console.log(response.data);
-                          updateTravelStatus("waiting for driver");
-                        });
-                    }}
-                  >
+                  <Button variant="rounded" onClick={getNewTravelFromAPI}>
                     Chamar motorista
                   </Button>
                 </>

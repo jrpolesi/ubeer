@@ -23,20 +23,8 @@ export const PopupDriver = styled.div`
   }
 
   button {
-    background-color: #fbd50e;
-    width: 90%;
-    height: 48px;
-    color: white;
-    border-radius: 15px;
-    margin-top: 15px;
-    border: solid 2px #fbd50e;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 28px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    width: 80%;
+    padding: 9px;
   }
 `;
 
@@ -62,20 +50,4 @@ export const PopupWaitingDriver = styled.div`
     justify-content: space-around;
   }
 
-  button {
-    background-color: #fbd50e;
-    width: 90%;
-    height: 48px;
-    color: white;
-    border-radius: 15px;
-    margin-top: 15px;
-    border: solid 2px #fbd50e;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 28px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
 `;
