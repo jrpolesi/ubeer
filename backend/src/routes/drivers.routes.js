@@ -20,25 +20,29 @@ router.get("/:driverId/rating", (req, res) => {
 });
 
 router.post("/:driverId/rating", (req, res) => {
-  const driverId = req.params;
+  const driverId = req.params.driverId;
 
   const { stars, description } = req.query;
 
   const driver = Database.getById("drivers", driverId);
 
+  if (!driver) {
+    return res.status(404).json({ message: "driver not found" });
+  }
   const feedbacks = driver.rating.feedbacks;
 
-  const sumStars = feedbacks.reduce((acc, { stars }) => acc + stars, 0);
+  feedbacks.push({
+    id: uuid4(),
+    stars: Number(stars),
+    description,
+  });
+
+  const sumStars = feedbacks.reduce((acc, { stars }) => acc + Number(stars), 0);
+  console.log(sumStars);
 
   const average = sumStars / feedbacks.length;
 
   driver.rating.starsAverage = average;
-
-  feedbacks.push({
-    id: uuid4(),
-    stars,
-    description,
-  });
 
   Database.updateOne("drivers", driverId, driver);
 
