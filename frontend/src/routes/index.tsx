@@ -1,12 +1,13 @@
-import Login from "../pages/Login/index";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import Login from "../pages/Login/index";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import Signup from "../pages/Signup";
 import DashBoard from "../pages/Dashboard";
 import Sobre from "../pages/Sobre";
 import Carteira from "../pages/Carteira";
+import Preferences from "../pages/Preferences";
 import Suporte from "../pages/Suporte";
 
 const RoutesPages = () => {
@@ -49,6 +50,14 @@ const RoutesPages = () => {
         element={
           <PrivateRoute>
             <Carteira />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/preferences"
+        element={
+          <PrivateRoute>
+            <Preferences />
           </PrivateRoute>
         }
       />

@@ -30,15 +30,18 @@ const ModalMenu = ({ isOpen, setIsOpen }: Props) => {
           </div>
         )}
         <div className="buttons">
-          <Button variant="rounded" onClick={() => navigate("/wallet")}>
-            {" "}
-            Adicionar saldo{" "}
+          <Button variant="rounded" onClick={() => navigate("/dashboard")}>
+            Home
           </Button>
-          <Button variant="rounded"> Informações da conta</Button>
-          <Button variant="rounded"> Preferências </Button>
+          <Button variant="rounded" onClick={() => navigate("/wallet")}>
+            Adicionar saldo
+          </Button>
+          <Button variant="rounded">Informações da conta</Button>
+          <Button variant="rounded" onClick={() => navigate("/preferences")}>
+            Preferências
+          </Button>
           <Button variant="rounded" onClick={() => navigate("/support")}>
-            {" "}
-            Suporte{" "}
+            Suporte
           </Button>
         </div>
         <span className="signout" onClick={logOut}>
