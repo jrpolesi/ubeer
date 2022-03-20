@@ -22,6 +22,7 @@ import { DivModal, MapContainer } from "./styles";
 import Button from "../Button";
 import api from "../../services/api";
 import { UserContext } from "../../providers/user";
+import ModalFinishedTravel from "../ModalFinishedTravel";
 
 interface Location {
   lat: number;
@@ -140,8 +141,8 @@ function MapUbeer() {
           onLoad={onMapLoad}
           mapContainerStyle={
             hasOrigin
-              ? { width: "100vw", height: "38vh" }
-              : { width: "100vw", height: "60vh" }
+              ? { width: "100%", height: "38vh" }
+              : { width: "100%", height: "60vh" }
           }
           center={center}
           zoom={15}
@@ -171,7 +172,7 @@ function MapUbeer() {
           )}
         </GoogleMap>
 
-        {!travelStatus ? (
+        {!travelStatus && (
           <Modal
             setOrigin={setOrigin}
             setDestination={setDestination}
@@ -222,11 +223,12 @@ function MapUbeer() {
               )}
             </DivModal>
           </Modal>
-        ) : (
-          <>
-            <ModalDriver />
-          </>
         )}
+
+        {(travelStatus === "waiting for driver" ||
+          travelStatus === "in transit") && <ModalDriver />}
+
+        {travelStatus === "finished" && <ModalFinishedTravel />}
       </LoadScript>
     </MapContainer>
   );
