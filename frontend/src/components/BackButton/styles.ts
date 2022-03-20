@@ -4,8 +4,8 @@ export const Container = styled.button`
   position: absolute;
   left: 5%;
   top: 14px;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   background: #ffffff;
   border: none;
   border-radius: 50%;
@@ -21,7 +21,7 @@ export const Container = styled.button`
   }
 
   @media screen and (min-width: 768px) {
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
   }
 `;
