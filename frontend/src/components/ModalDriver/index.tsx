@@ -1,6 +1,6 @@
 import React, {  useContext } from "react";
 import { TravelContext } from "../../providers/travel";
-import { PopupDriver } from "./style";
+import { PopupDriver } from "./styles";
 import Button from "../Button";
 
 function ModalDriver() {
