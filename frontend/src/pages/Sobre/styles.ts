@@ -115,15 +115,21 @@ export const SobreArticle = styled.article`
     flex-direction: column;
   }
 
+  .info {
+    line-height: 125%;
+  }
+
   h2 {
     font-size: 40px;
     margin-bottom: 20px;
   }
+
   figure {
     width: 200px;
     height: 200px;
     margin: 20px 0px;
   }
+
   img {
     width: 100%;
     height: 100%;
@@ -159,7 +165,7 @@ export const SobreArticle = styled.article`
       font-size: 50px;
     }
     p {
-      font-size: 26px;
+      font-size: 24px;
     }
   }
 `;
@@ -292,7 +298,7 @@ export const ButtonFooter = styled.footer`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  width: 95%;
+  width: 100%;
   height: 75px;
   background-color: #c7c7c7;
   padding: 0px 10px;
@@ -303,10 +309,6 @@ export const ButtonFooter = styled.footer`
   button {
     max-width: 230px;
     flex: 1;
-  }
-
-  @media (min-width: 400px) {
-    width: 97%;
   }
 
   @media (min-width: 767px) {
