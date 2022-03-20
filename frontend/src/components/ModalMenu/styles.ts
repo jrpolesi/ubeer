@@ -4,7 +4,7 @@ export const Background = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: #00000055;
   z-index: 2;
@@ -15,8 +15,9 @@ export const Background = styled.div`
     position: absolute;
     left: 0%;
     top: 0;
+    overflow: hidden;
     min-height: 570px;
-    height: 100vh;
+    height: 100%;
     width: 90vw;
     max-width: 600px;
     background-color: #ffffff;
