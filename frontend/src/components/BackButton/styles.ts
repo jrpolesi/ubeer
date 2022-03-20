@@ -4,8 +4,8 @@ export const Container = styled.button`
   position: absolute;
   left: 5%;
   top: 14px;
-  width: 65px;
-  height: 65px;
+  width: 50px;
+  height: 50px;
   background: #ffffff;
   border: none;
   border-radius: 50%;
@@ -13,10 +13,15 @@ export const Container = styled.button`
   cursor: pointer;
 
   &:hover {
-    filter: brightness(.98);
+    filter: brightness(0.98);
   }
 
   svg {
     transform: translate(-5%, 4%);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 65px;
+    height: 65px;
   }
 `;

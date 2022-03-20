@@ -6,7 +6,7 @@ import api from "../../services/api";
 
 import { UserContext } from "../../providers/user";
 
-import { Main, Box } from "./styled";
+import { Main } from "./styled";
 import Input from "../../components/Input/index";
 import Button from "../../components/Button/index";
 
@@ -16,9 +16,7 @@ import BackButton from "../../components/BackButton";
 
 const schema = yup.object().shape({
   email: yup.string().email("Email inválido").required("Campo Obrigatório"),
-  password: yup
-    .string()
-    .required("Campo obrigatório"),
+  password: yup.string().required("Campo obrigatório"),
 });
 
 const Login = () => {
@@ -35,7 +33,6 @@ const Login = () => {
   });
 
   const onSubmit = (formData: FieldValues) => {
-
     api
       .post("/users/login", formData)
       .then((response) => {
@@ -63,27 +60,25 @@ const Login = () => {
           />
         )}
         <h1>Entrar</h1>
-        <Box>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Input
-              icon={<MailOption />}
-              placeholder={"Email"}
-              name="email"
-              type="email"
-              register={register}
-              error={errors.email?.message}
-            />
-            <Input
-              icon={<Hide />}
-              placeholder={"Senha"}
-              type="password"
-              name="password"
-              register={register}
-              error={errors.password?.message}
-            />
-            <Button type="submit">Log in</Button>
-          </form>
-        </Box>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            icon={<MailOption />}
+            placeholder={"Email"}
+            name="email"
+            type="email"
+            register={register}
+            error={errors.email?.message}
+          />
+          <Input
+            icon={<Hide />}
+            placeholder={"Senha"}
+            type="password"
+            name="password"
+            register={register}
+            error={errors.password?.message}
+          />
+          <Button type="submit">Log in</Button>
+        </form>
       </Main>
     </>
   );
