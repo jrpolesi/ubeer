@@ -1,19 +1,38 @@
 import styled from "styled-components";
 
-export const Container = styled.header`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 20%;
-    width: 100%;
-    background-color: #F7F8F9;
-    padding: 5px 5%;
+interface Props {
+  variant?: "filled";
+}
 
-    button {
-        position: static;
-    }
+export const Container = styled.header<Props>`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  height: 20%;
+  width: 100%;
+  background-color: ${({ variant }) =>
+    variant === "filled" ? "#f8d50e" : "#F7F8F9"};
+  padding: 5px 5%;
+  color: ${({ variant }) => (variant === "filled" ? "#FFFFFF" : "#000000")};
 
-    .avatar {
-        cursor: pointer;
-    }
+  button {
+    position: static;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+  }
+
+  .avatar {
+    cursor: pointer;
+    height: 60px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+  }
 `;
