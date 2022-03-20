@@ -6,7 +6,7 @@ import api from "../../services/api";
 
 import { UserContext } from "../../providers/user";
 
-import { Main } from "./styled";
+import { Container, Main } from "./styles";
 import Input from "../../components/Input/index";
 import Button from "../../components/Button/index";
 
@@ -46,19 +46,20 @@ const Login = () => {
   };
 
   return (
-    <>
+    <Container>
       <BackButton />
 
+      {showToast === true && (
+        <Notification
+          toast
+          status="critical"
+          title="Falha ao realizar cadastro"
+          message="Email ou senha inválido!"
+          onClose={() => setShowToast(false)}
+        />
+      )}
+
       <Main>
-        {showToast === true && (
-          <Notification
-            toast
-            status="critical"
-            title="Falha ao realizar cadastro"
-            message="Email ou senha inválido!"
-            onClose={() => setShowToast(false)}
-          />
-        )}
         <h1>Entrar</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
@@ -80,7 +81,7 @@ const Login = () => {
           <Button type="submit">Log in</Button>
         </form>
       </Main>
-    </>
+    </Container>
   );
 };
 
