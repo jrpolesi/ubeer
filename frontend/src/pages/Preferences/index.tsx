@@ -29,19 +29,19 @@ const Preferences = () => {
         <Section>
           <div>
             <img src={Conta} alt="Agendamentos" />
-            <p>Agendamentos</p>
+            <p>Histórico</p>
           </div>
           <div onClick={() => navigate("/suport")}>
             <img src={Suporte} alt="Suporte" />
             <p>Suporte</p>
           </div>
         </Section>
-        <Footer>
-          <figure onClick={() => navigate("/dashboard")}>
-            <img src={Cancel} alt="Botão para voltar" />
-          </figure>
-        </Footer>
       </Main>
+      <Footer>
+        <figure onClick={() => navigate(-1)}>
+          <img src={Cancel} alt="Botão para voltar" />
+        </figure>
+      </Footer>
 
     </>
   );

@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
-  height: 100%;
+  margin-top: 40px;
+
+  @media (min-width: 768px){
+    margin-top: 80px;
+  }
 `;
 
 export const Section = styled.section`
@@ -22,13 +26,40 @@ export const Section = styled.section`
   img{
     margin-bottom: 10px;
   }
+
+  @media (min-width: 560px){
+    div{
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  @media (min-width: 768px){
+    margin: 40px 0px;
+
+    div{
+      width: 250px;
+      height: 250px;
+    }
+    img{
+      width: 56px;
+    }
+  }
+
+  @media (min-width: 1024px){
+    margin: 80px 0px;
+
+    div{
+      width: 300px;
+    }
+  }
 `;
 
 export const Footer = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 80px;
 
   figure{
     display: flex;
@@ -42,7 +73,7 @@ export const Footer = styled.footer`
     cursor: pointer;
   }
 
-  img{
-
+  @media (min-width: 768px){
+    display: none;
   }
 `;
