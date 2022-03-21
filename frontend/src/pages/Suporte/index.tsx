@@ -9,7 +9,7 @@ const Suporte = () => {
       <Main>
         <div>
           <ol>
-            Perguntas frequentes
+            <h1>Perguntas frequentes</h1>
             <li>
               <p>Q: Como faço para socilitar um veículo?</p>
               <p>
