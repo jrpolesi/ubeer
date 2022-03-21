@@ -72,6 +72,7 @@ function MapUbeer() {
   };
 
   const getNewTravelFromAPI = () => {
+    setHasOrigin(false);
     if (response) {
       const distanceInMeters = response.routes[0].legs[0].distance?.value;
 
@@ -159,7 +160,7 @@ function MapUbeer() {
           onLoad={onMapLoad}
           mapContainerStyle={
             hasOrigin
-              ? { width: "100%", height: "38vh" }
+              ? { width: "100%", height: "50vh" }
               : { width: "100%", height: "60vh" }
           }
           center={center}

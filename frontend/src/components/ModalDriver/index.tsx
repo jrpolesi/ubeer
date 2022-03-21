@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { TravelContext } from "../../providers/travel";
-import { PopupDriver } from "./styles";
+import { PopupDriver, PopUpLeft, PopupRight } from "./styles";
 import Button from "../Button";
 import api from "../../services/api";
 import { UserContext } from "../../providers/user";
+import { Star } from "grommet-icons";
 
 function ModalDriver() {
   const { travelStatus, updateTravelStatus, travel, updateTravel } =
@@ -31,22 +32,26 @@ function ModalDriver() {
         return updateTravelStatus("finished");
       });
   };
-
+  console.log(travel);
   return (
     <>
       {travelStatus !== "finished" ? (
         <PopupDriver>
           <section>
-            <div>
-              <img src={travel.driver.image} alt="" />
-              <h2>{travel.driver.name}</h2>
-              <p>{travel.driver.rating.starsAverage}</p>
-            </div>
-            <div>
-              <p>{travel.driver.car.plate}</p>
+            <PopUpLeft>
+              <div>
+                <img src={travel.driver.image} alt="" />
+                <h2>{travel.driver.name}</h2>
+              </div>
+              <p>
+                {travel.driver.rating.starsAverage} <Star color="#f8d50e" />
+              </p>
+            </PopUpLeft>
+            <PopupRight>
+              <h3>{travel.driver.car.plate}</h3>
               <p>{travel.driver.car.model}</p>
-              <p>{travel.driver.car.plate}</p>
-            </div>
+              <h4> R$ {travel.travel.value}</h4>
+            </PopupRight>
           </section>
           <Button variant="rounded" onClick={handleClick}>
             {travelStatus === "waiting for driver"
