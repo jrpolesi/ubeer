@@ -7,6 +7,7 @@ import { Rating } from "react-simple-star-rating";
 import api from "../../services/api";
 import { UserContext } from "../../providers/user";
 import { Notification } from "grommet";
+import { TravelData } from "../../types/travelContext";
 
 const ModalStars = () => {
   const { travel, updateTravelStatus, updateTravel } =
@@ -39,7 +40,7 @@ const ModalStars = () => {
       .then((response) => {
         setToastSucess(true);
         updateTravelStatus(false);
-        // updateTravel();
+        updateTravel({} as TravelData);
       });
   };
 
