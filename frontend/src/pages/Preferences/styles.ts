@@ -25,6 +25,11 @@ export const Section = styled.section`
     border-radius: 15px;
     cursor: pointer;
   }
+
+  div:hover{
+    box-shadow: 1px 1px 8px #ccc;
+  }
+
   img{
     margin-bottom: 10px;
   }
@@ -58,6 +63,16 @@ export const Section = styled.section`
 `;
 
 export const SectionConta = styled.section`
+
+  @keyframes animation{
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+    }
+  }
+
   position: fixed;
   width: 80%;
   max-width: 560px;
@@ -65,6 +80,8 @@ export const SectionConta = styled.section`
   box-shadow: 1px 1px 20px #ccc;
   border-radius: 15px;
   padding: 20px;
+  animation-name: animation;
+  animation-duration: 1s;
 
   div button {
     width: 30px;
@@ -75,17 +92,26 @@ export const SectionConta = styled.section`
     box-shadow: 1px 1px 20px #ccc;
     border-radius: 90px;
     font-weight: bold;
+    animation-name: animation;
+    animation-duration: 1.5s;
     cursor: pointer;
+  }
 
+  div button:hover{
+    box-shadow: 1px 1px 8px #ccc;
   }
 
   form div{
     margin: 10px 0px;
+    animation-name: animation;
+    animation-duration: 1.5s;
   }
 
   form button{
     width: 100%;
     margin-top: 20px;
+    animation-name: animation;
+    animation-duration: 1.5s;
   }
 `;
 
