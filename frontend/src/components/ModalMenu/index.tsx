@@ -1,10 +1,10 @@
 import React, { Dispatch, SetStateAction, useContext } from "react";
-import { Background } from "./styles";
+import { Background, Icon } from "./styles";
 import Button from "../Button/index";
 import { UserContext } from "../../providers/user";
 import userImg from "../../assets/img/Usuario.png";
 import { useNavigate } from "react-router-dom";
-
+import themeIcon from "../../assets/img/darkTheme.svg";
 interface Props {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -22,7 +22,7 @@ const ModalMenu = ({ isOpen, setIsOpen }: Props) => {
             <div>
               <img src={userImg} alt="user avatar" />
               <h2>{user.name}</h2>
-              <span>{user.email}</span>
+              <span className="email">{user.email}</span>
             </div>
             <span className="closeButton" onClick={() => setIsOpen(false)}>
               X
@@ -47,6 +47,9 @@ const ModalMenu = ({ isOpen, setIsOpen }: Props) => {
         <span className="signout" onClick={logOut}>
           Sign out
         </span>
+        <Icon>
+          <img src={themeIcon} />
+        </Icon>
       </div>
     </Background>
   );
