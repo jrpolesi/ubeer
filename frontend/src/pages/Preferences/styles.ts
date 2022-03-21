@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
-  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  margin-top: 20px;
 
-  @media (min-width: 768px){
-    margin-top: 80px;
-  }
 `;
 
 export const Section = styled.section`
   display: flex;
   justify-content: space-evenly;
-  margin: 20px 0px;
+  width: 100%;
+  margin: 20px 20px;
 
   div{
     display: flex;
@@ -20,8 +21,9 @@ export const Section = styled.section`
     justify-content: center;
     width: 140px;
     height: 140px;
-    box-shadow: 1px 1px 8px #ccc;
-    border-radius: 5px;
+    box-shadow: 1px 1px 20px #ccc;
+    border-radius: 15px;
+    cursor: pointer;
   }
   img{
     margin-bottom: 10px;
@@ -47,11 +49,43 @@ export const Section = styled.section`
   }
 
   @media (min-width: 1024px){
-    margin: 80px 0px;
+    margin: 80px 0px 20px 0px;
 
     div{
       width: 300px;
     }
+  }
+`;
+
+export const SectionConta = styled.section`
+  position: fixed;
+  width: 80%;
+  max-width: 560px;
+  background-color: #FFF;
+  box-shadow: 1px 1px 20px #ccc;
+  border-radius: 15px;
+  padding: 20px;
+
+  div button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #FFF;
+    color: #FBD50E;
+    box-shadow: 1px 1px 20px #ccc;
+    border-radius: 90px;
+    font-weight: bold;
+    cursor: pointer;
+
+  }
+
+  form div{
+    margin: 10px 0px;
+  }
+
+  form button{
+    width: 100%;
+    margin-top: 20px;
   }
 `;
 
