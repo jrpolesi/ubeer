@@ -62,7 +62,7 @@ const Carteira = () => {
         <Footer>
           <div>
             <p>O seu saldo atual é:</p>
-            <input value={`R$ ${user?.budget} `} readOnly />
+            <input value={`R$ ${user?.budget.toFixed(2).replace(".", ",")} `} readOnly />
           </div>
           <Button variant="rounded" onClick={() => navigate("/Dashboard")}>
             Ok
