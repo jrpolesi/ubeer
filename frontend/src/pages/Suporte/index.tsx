@@ -8,33 +8,37 @@ const Suporte = () => {
       <Header title="Suporte" />
       <Main>
         <div>
-          <ul>
+          <ol>
             Perguntas frequentes
             <li>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book. It has
-              survived not only.
+              <p>Q: Como faço para socilitar um veículo?</p>
+              <p>
+                A: Você só precisa entrar em sua conta e já estará na página
+                certa para solicitar um veículo.
+              </p>
             </li>
             <li>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book. It has
-              survived not only.
+              <p>Q: Como identificar o motorista?</p>
+              <p>
+                A: Assim que o motorista chegar ao local onde você está, ele
+                fará uma ligação para que possam se encontrar.
+              </p>
             </li>
             <li>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book. It has
-              survived not only.
+              <p>Q: Onde posso adicionar o saldo?</p>
+              <p>
+                A: Assim que você acessar sua conta, aperte em seu avatar e
+                aparecerá um botão de saldo, lá você conseguirá adicionar os
+                valores necessários.
+              </p>
             </li>
-          </ul>
-          <a href="">Entre em contato</a>
-          <img onClick={() => console.log("Página de contato")} src={contatoSupport} />
-          <p>ENTRE EM CONTATO</p>
+          </ol>
+          <span>Entre em contato: 14325-4451</span>
+          <img
+            onClick={() => console.log("Página de contato")}
+            src={contatoSupport}
+          />
+          <h3>ENTRE EM CONTATO</h3>
         </div>
       </Main>
     </>

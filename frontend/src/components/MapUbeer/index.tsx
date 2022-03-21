@@ -50,6 +50,16 @@ function MapUbeer() {
   const [response, setResponse] = useState<google.maps.DirectionsResult | null>(
     null
   );
+  const [notificationWaiting, setNotificationWaiting] =
+    useState<boolean>(false);
+  const [messageOnRoute, setMessageOnRoute] = useState<boolean>(false);
+
+  const resetMap = () => {
+    setHasOrigin(false);
+    setOrigin("");
+    setDestination("");
+    setResponse(null);
+  };
 
   useEffect(() => {
     const navigatorId = navigator.geolocation.watchPosition((position) =>
@@ -87,10 +97,10 @@ function MapUbeer() {
         })
         .then((response) => {
           const { user, ...rest } = response.data;
-
           updateTravel(rest);
           updateUser(user);
           updateTravelStatus("waiting for driver");
+          setNotificationWaiting(true);
         })
         .catch((err) => {
           setRequestError(err.response.data.message);
@@ -159,12 +169,30 @@ function MapUbeer() {
           onLoad={onMapLoad}
           mapContainerStyle={
             hasOrigin
-              ? { width: "100%", height: "38vh" }
+              ? { width: "100%", height: "50vh" }
               : { width: "100%", height: "60vh" }
           }
           center={center}
           zoom={15}
         >
+          {notificationWaiting && travelStatus === "waiting for driver" ? (
+            <Notification
+              toast
+              status="warning"
+              title="Atenção"
+              message="O seu motorista chegará em breve"
+              onClose={() => setNotificationWaiting(false)}
+            />
+          ) : messageOnRoute && travelStatus === "in transit" ? (
+            <Notification
+              toast
+              status="normal"
+              title="Hey, aproveite e peça uma água ou uma coca para melhorar :)"
+              onClose={() => setMessageOnRoute(false)}
+            />
+          ) : (
+            ""
+          )}
           {origin && destination && (
             <DirectionsService
               options={directionsServiceOptions}
@@ -238,9 +266,13 @@ function MapUbeer() {
         )}
 
         {(travelStatus === "waiting for driver" ||
-          travelStatus === "in transit") && <ModalDriver />}
+          travelStatus === "in transit") && (
+          <ModalDriver setMessageOnRoute={setMessageOnRoute} />
+        )}
 
-        {travelStatus === "finished" && <ModalFinishedTravel />}
+        {travelStatus === "finished" && (
+          <ModalFinishedTravel resetMap={resetMap} />
+        )}
       </LoadScript>
     </MapContainer>
   );

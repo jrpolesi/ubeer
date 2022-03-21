@@ -3,7 +3,7 @@ import { TravelContext } from "../../providers/travel";
 import Button from "../Button";
 import ModalStars from "../ModalStars";
 
-const ModalFinishedTravel = () => {
+const ModalFinishedTravel = ({ resetMap }: {resetMap: () => void}) => {
   const {
     travel: { travel },
   } = useContext(TravelContext);
@@ -12,7 +12,7 @@ const ModalFinishedTravel = () => {
   return (
     <>
       {showFeedback ? (
-        <ModalStars />
+        <ModalStars resetMap={resetMap} />
       ) : (
         <div>
           <div>
