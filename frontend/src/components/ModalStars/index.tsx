@@ -9,7 +9,8 @@ import { UserContext } from "../../providers/user";
 import { Notification } from "grommet";
 
 const ModalStars = () => {
-  const { travel } = useContext(TravelContext);
+  const { travel, updateTravelStatus, updateTravel } =
+    useContext(TravelContext);
   const { token } = useContext(UserContext);
   const [ratingValue, setRatingValue] = useState(0);
   const [evaluation, setEvaluation] = useState("Sua avaliação");
@@ -37,9 +38,8 @@ const ModalStars = () => {
       )
       .then((response) => {
         setToastSucess(true);
-      })
-      .catch((error) => {
-        console.log(error);
+        updateTravelStatus(false);
+        // updateTravel();
       });
   };
 
