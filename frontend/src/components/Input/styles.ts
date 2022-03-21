@@ -22,5 +22,7 @@ export const Container = styled.div`
     display: block;
     color: red;
     margin-top: 4px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
   }
 `;

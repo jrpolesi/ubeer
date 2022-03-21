@@ -1,8 +1,7 @@
 import React from "react";
-import { Main } from "./styled";
+import { Main } from "./styles";
 import Header from "../../components/Header/";
 import contatoSupport from "../../assets/img/contatoSupport.png";
-import { Navigate } from "react-router-dom";
 const Suporte = () => {
   return (
     <>

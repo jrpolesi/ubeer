@@ -1,19 +1,35 @@
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import { TravelContext } from "../../providers/travel";
-import { PopupDriver } from "./style";
+import { PopupDriver } from "./styles";
 import Button from "../Button";
+import api from "../../services/api";
+import { UserContext } from "../../providers/user";
 
 function ModalDriver() {
-  const { travelStatus, updateTravelStatus, travel } =
+  const { travelStatus, updateTravelStatus, travel, updateTravel } =
     useContext(TravelContext);
+  const { user, token } = useContext(UserContext);
 
   const handleClick = () => {
     if (travelStatus === "waiting for driver") {
       return updateTravelStatus("in transit");
     }
 
-    //Requisiçao API finalizar
-    return updateTravelStatus("finished");
+    api
+      .put(
+        `/travels/finishTravel/users/${user && user.id}?travelid=${
+          travel.travel.id
+        }`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((response) => {
+        updateTravel({
+          ...travel,
+          travel: response.data,
+        });
+        return updateTravelStatus("finished");
+      });
   };
 
   return (

@@ -22,6 +22,8 @@ import { DivModal, MapContainer } from "./styles";
 import Button from "../Button";
 import api from "../../services/api";
 import { UserContext } from "../../providers/user";
+import ModalFinishedTravel from "../ModalFinishedTravel";
+import { Notification } from "grommet";
 
 interface Location {
   lat: number;
@@ -39,7 +41,8 @@ const arrayPlace: (
 function MapUbeer() {
   const { travelStatus, updateTravelStatus, updateTravel } =
     useContext(TravelContext);
-  const { user, token } = useContext(UserContext);
+  const { user, token, updateUser } = useContext(UserContext);
+  const [requestError, setRequestError] = useState<string | boolean>(false);
   const [hasOrigin, setHasOrigin] = useState(false);
   const [center, setCenter] = useState({} as Location);
   const [origin, setOrigin] = useState<string>("");
@@ -49,12 +52,14 @@ function MapUbeer() {
   );
 
   useEffect(() => {
-    navigator.geolocation.watchPosition((position) =>
+    const navigatorId = navigator.geolocation.watchPosition((position) =>
       setCenter({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       })
     );
+
+    return () => navigator.geolocation.clearWatch(navigatorId);
   }, []);
 
   const [map, setMap] = useState<google.maps.Map>();
@@ -68,10 +73,12 @@ function MapUbeer() {
 
   const getNewTravelFromAPI = () => {
     if (response) {
+      const distanceInMeters = response.routes[0].legs[0].distance?.value;
+
       const travelRequest = {
         from: origin,
         to: destination,
-        distance: response.routes[0].legs[0].distance?.value,
+        distance: distanceInMeters ? distanceInMeters / 1000 : 100,
       };
 
       api
@@ -79,9 +86,14 @@ function MapUbeer() {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          updateTravel(response.data);
-          console.log(response.data);
+          const { user, ...rest } = response.data;
+
+          updateTravel(rest);
+          updateUser(user);
           updateTravelStatus("waiting for driver");
+        })
+        .catch((err) => {
+          setRequestError(err.response.data.message);
         });
     }
   };
@@ -99,7 +111,6 @@ function MapUbeer() {
   };
 
   const onMapLoad = (map: google.maps.Map) => {
-    console.log(map);
     setMap(map);
   };
 
@@ -108,7 +119,6 @@ function MapUbeer() {
       result: google.maps.DirectionsResult | null,
       status: google.maps.DirectionsStatus
     ) => {
-      console.log(result, status);
       if (result !== null && status === "OK") {
         setResponse(result);
       }
@@ -132,6 +142,15 @@ function MapUbeer() {
 
   return (
     <MapContainer>
+      {requestError && (
+        <Notification
+          toast
+          status="critical"
+          title="Falha ao pedir corrida"
+          message={requestError as string}
+          onClose={() => setRequestError(false)}
+        />
+      )}
       <LoadScript
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_KEY as string}
         libraries={arrayPlace}
@@ -140,8 +159,8 @@ function MapUbeer() {
           onLoad={onMapLoad}
           mapContainerStyle={
             hasOrigin
-              ? { width: "100vw", height: "38vh" }
-              : { width: "100vw", height: "60vh" }
+              ? { width: "100%", height: "38vh" }
+              : { width: "100%", height: "60vh" }
           }
           center={center}
           zoom={15}
@@ -171,7 +190,7 @@ function MapUbeer() {
           )}
         </GoogleMap>
 
-        {!travelStatus ? (
+        {!travelStatus && (
           <Modal
             setOrigin={setOrigin}
             setDestination={setDestination}
@@ -208,12 +227,6 @@ function MapUbeer() {
                       onBlur={(event) => setDestination(event.target.value)}
                     />
                   </StandaloneSearchBox>
-                  {/* <p>
-                    {" "}
-                    R$
-                    {response &&
-                      response.routes[0].legs[0].distance.value / 1000}
-                  </p> */}
 
                   <Button variant="rounded" onClick={getNewTravelFromAPI}>
                     Chamar motorista
@@ -222,11 +235,12 @@ function MapUbeer() {
               )}
             </DivModal>
           </Modal>
-        ) : (
-          <>
-            <ModalDriver />
-          </>
         )}
+
+        {(travelStatus === "waiting for driver" ||
+          travelStatus === "in transit") && <ModalDriver />}
+
+        {travelStatus === "finished" && <ModalFinishedTravel />}
       </LoadScript>
     </MapContainer>
   );
