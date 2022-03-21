@@ -15,5 +15,8 @@ export const Container = styled.div`
     background-color: transparent;
     border: none;
     outline: none;
+    font-family: "Inter";
+    font-weight: bold;
+    font-size: 18px;
   }
 `;
