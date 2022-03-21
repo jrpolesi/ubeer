@@ -8,6 +8,10 @@ export const Main = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  div::-webkit-scrollbar{
+    display: none;
+  }
   div {
     position: absolute;
     height: 50%;
@@ -22,7 +26,7 @@ export const Main = styled.main`
     img {
       display: none;
     }
-    ul {
+    ol {
       font-size: 26px;
       margin: 10px 0 0 40px;
     }
@@ -35,7 +39,7 @@ export const Main = styled.main`
     li {
       display: none;
     }
-    a {
+    span {
       position: relative;
       left: 7%;
       top: 20%;
@@ -49,7 +53,7 @@ export const Main = styled.main`
     background: url(${backgroundMap}) no-repeat center center;
     background-size: cover;
     div {
-      ul {
+      ol {
         pointer-events: none;
       }
       height: 80%;
@@ -59,7 +63,7 @@ export const Main = styled.main`
         margin-top: 30px;
         width: 60%;
       }
-      a {
+      span {
         display: none;
       }
       img {
@@ -71,12 +75,13 @@ export const Main = styled.main`
         display: block;
         right: 0;
         top: 0;
+        cursor: pointer;
       }
       p {
         display: block;
         position: absolute;
         right: 1.3%;
-        top: 20%;
+        top: 15%;
         font-family: "Inter";
         font-style: normal;
         font-weight: 700;
@@ -85,4 +90,4 @@ export const Main = styled.main`
       }
     }
   }
-`;
+  `;
