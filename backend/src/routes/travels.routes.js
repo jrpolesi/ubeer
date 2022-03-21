@@ -16,8 +16,8 @@ router.post("/newTravel/users/:userId", (req, res) => {
   if (user.budget >= totalPrice) {
     const travel = {
       id: uuid4(),
-      from: from.name,
-      to: to.name,
+      from,
+      to,
       departureDate: new Date(),
       arrivedDate: "",
       value: totalPrice,
@@ -34,16 +34,14 @@ router.post("/newTravel/users/:userId", (req, res) => {
     return res.status(201).json({ travel, driver, user });
   }
 
-  return res
-    .status(400)
-    .json({
-      message: `Seu saldo é R$${user.budget.toFixed(
-        2
-      )} mas o valor da corrida é R$${totalPrice.toFixed(2)}`,
-    });
+  return res.status(400).json({
+    message: `Seu saldo é R$${user.budget.toFixed(
+      2
+    )} mas o valor da corrida é R$${totalPrice.toFixed(2)}`,
+  });
 });
 
-router.put("/newTravel/users/:userId", (req, res) => {
+router.put("/finishTravel/users/:userId", (req, res) => {
   const userId = req.params.userId;
   const travelId = req.query.travelid;
 

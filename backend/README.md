@@ -298,7 +298,7 @@ Para salvar a hora da chegada utilize a rota abaixo:
 
 | Método | endpoint                                                |
 | ------ | ------------------------------------------------------- |
-| PUT    | /travels/newTravel/users/:userId?travelid=&lt;travelId> |
+| PUT    | /travels/finishTravel/users/:userId?travelid=&lt;travelId> |
 
 #### `Formato de resposta`
 
