@@ -3,13 +3,10 @@ import * as yup from "yup";
 import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
-
 import { UserContext } from "../../providers/user";
-
 import { Container, Main } from "./styles";
 import Input from "../../components/Input/index";
 import Button from "../../components/Button/index";
-
 import { MailOption, Hide } from "grommet-icons";
 import { Notification } from "grommet";
 import BackButton from "../../components/BackButton";
