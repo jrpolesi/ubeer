@@ -6,6 +6,7 @@ import { TravelContext } from "../../providers/travel";
 import { Rating } from "react-simple-star-rating";
 import api from "../../services/api";
 import { UserContext } from "../../providers/user";
+import { Notification } from "grommet";
 
 const ModalStars = () => {
   const { travel } = useContext(TravelContext);
@@ -13,6 +14,7 @@ const ModalStars = () => {
   const [ratingValue, setRatingValue] = useState(0);
   const [evaluation, setEvaluation] = useState("Sua avaliação");
   const [description, setDescription] = useState("");
+  const [toastSucess, setToastSucess] = useState(false);
 
   const handleRating = (rate: number) => {
     setRatingValue(rate);
@@ -22,13 +24,19 @@ const ModalStars = () => {
 
   const handleSubmit = () => {
     const stars = ratingValue / 20;
- 
+
     api
-      .post(`/drivers/${travel.driver.id}/rating?stars=${stars}&description=${description}`, {}, {headers: {
-        Authorization: `Bearer ${token}`
-      }})
+      .post(
+        `/drivers/${travel.driver.id}/rating?stars=${stars}&description=${description}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
-        console.log(response);
+        setToastSucess(true);
       })
       .catch((error) => {
         console.log(error);
@@ -37,6 +45,16 @@ const ModalStars = () => {
 
   return (
     <Container>
+      {toastSucess === true && (
+        <Notification
+          toast
+          status="normal"
+          title="Sucesso ao realizar avaliação"
+          message="Deu tudo certo!"
+          onClose={() => setToastSucess(false)}
+        />
+      )}
+
       <section>
         <section>
           <Subtract size="large" color="grey" />
