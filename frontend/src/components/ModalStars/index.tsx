@@ -41,6 +41,7 @@ const ModalStars = ({ resetMap }: { resetMap: () => void }) => {
         setToastSucess(true);
         updateTravelStatus(false);
         updateTravel({} as TravelData);
+        resetMap();
       });
   };
 

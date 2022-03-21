@@ -55,6 +55,7 @@ function MapUbeer() {
     setHasOrigin(false);
     setOrigin("");
     setDestination("");
+    setResponse(null);
   };
 
   useEffect(() => {
