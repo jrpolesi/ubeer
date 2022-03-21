@@ -23,7 +23,7 @@ import Button from "../Button";
 import api from "../../services/api";
 import { UserContext } from "../../providers/user";
 import ModalFinishedTravel from "../ModalFinishedTravel";
-import { Notification } from "grommet";
+import { Box, Notification } from "grommet";
 
 interface Location {
   lat: number;
@@ -50,6 +50,9 @@ function MapUbeer() {
   const [response, setResponse] = useState<google.maps.DirectionsResult | null>(
     null
   );
+  const [notificationWaiting, setNotificationWaiting] =
+    useState<boolean>(false);
+  const [messageOnRoute, setMessageOnRoute] = useState<boolean>(false);
 
   useEffect(() => {
     const navigatorId = navigator.geolocation.watchPosition((position) =>
@@ -92,6 +95,7 @@ function MapUbeer() {
           updateTravel(rest);
           updateUser(user);
           updateTravelStatus("waiting for driver");
+          setNotificationWaiting(true);
         })
         .catch((err) => {
           setRequestError(err.response.data.message);
@@ -166,6 +170,28 @@ function MapUbeer() {
           center={center}
           zoom={15}
         >
+          {notificationWaiting && travelStatus === "waiting for driver" ? (
+            <Box justify="center">
+              <Notification
+                toast
+                status="warning"
+                title="Atenção"
+                message="O seu motorista chegará em breve"
+                onClose={() => setNotificationWaiting(false)}
+              />
+            </Box>
+          ) : messageOnRoute && travelStatus === "in transit" ? (
+            <Box justify="center">
+              <Notification
+                toast
+                status="normal"
+                title="Hey, aproveite e peça uma água ou uma coca para melhorar :)"
+                onClose={() => setMessageOnRoute(false)}
+              />
+            </Box>
+          ) : (
+            ""
+          )}
           {origin && destination && (
             <DirectionsService
               options={directionsServiceOptions}
@@ -239,7 +265,9 @@ function MapUbeer() {
         )}
 
         {(travelStatus === "waiting for driver" ||
-          travelStatus === "in transit") && <ModalDriver />}
+          travelStatus === "in transit") && (
+          <ModalDriver setMessageOnRoute={setMessageOnRoute} />
+        )}
 
         {travelStatus === "finished" && <ModalFinishedTravel />}
       </LoadScript>

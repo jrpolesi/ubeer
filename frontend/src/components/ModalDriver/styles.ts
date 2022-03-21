@@ -11,9 +11,7 @@ export const PopupDriver = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  color: black;
   border-radius: 16px 16px 0px 0px;
-  border: 1px solid #97adb6;
 
   section {
     width: 90%;

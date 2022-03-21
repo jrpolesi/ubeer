@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, Dispatch, SetStateAction } from "react";
 import { TravelContext } from "../../providers/travel";
 import { PopupDriver, PopUpLeft, PopupRight } from "./styles";
 import Button from "../Button";
@@ -6,13 +6,18 @@ import api from "../../services/api";
 import { UserContext } from "../../providers/user";
 import { Star } from "grommet-icons";
 
-function ModalDriver() {
+interface Props {
+  setMessageOnRoute: Dispatch<SetStateAction<boolean>>;
+}
+
+function ModalDriver({ setMessageOnRoute }: Props) {
   const { travelStatus, updateTravelStatus, travel, updateTravel } =
     useContext(TravelContext);
   const { user, token } = useContext(UserContext);
 
   const handleClick = () => {
     if (travelStatus === "waiting for driver") {
+      setMessageOnRoute(true);
       return updateTravelStatus("in transit");
     }
 
@@ -32,7 +37,7 @@ function ModalDriver() {
         return updateTravelStatus("finished");
       });
   };
-  console.log(travel);
+
   return (
     <>
       {travelStatus !== "finished" ? (
@@ -48,9 +53,21 @@ function ModalDriver() {
               </p>
             </PopUpLeft>
             <PopupRight>
-              <h3>{travel.driver.car.plate}</h3>
-              <p>{travel.driver.car.model}</p>
-              <h4> R$ {travel.travel.value}</h4>
+              <h3>
+                {travelStatus === "waiting for driver"
+                  ? travel.driver.car.plate
+                  : user?.car.plate}
+              </h3>
+              <p>
+                {travelStatus === "waiting for driver"
+                  ? travel.driver.car.model
+                  : user?.car.model}
+              </p>
+              <h4>
+                {travelStatus === "waiting for driver"
+                  ? `R$ ${travel.travel.value}`
+                  : ""}
+              </h4>
             </PopupRight>
           </section>
           <Button variant="rounded" onClick={handleClick}>
