@@ -15,6 +15,7 @@ export const Container = styled.div`
       background-color: transparent;
       border: none;
       outline: none;
+      font-family: "Roboto", sans-serif;
     }
   }
 
