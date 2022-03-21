@@ -7,9 +7,11 @@ import { Rating } from "react-simple-star-rating";
 import api from "../../services/api";
 import { UserContext } from "../../providers/user";
 import { Notification } from "grommet";
+import { TravelData } from "../../types/travelContext";
 
 const ModalStars = ({ resetMap }: { resetMap: () => void }) => {
-  const { travel } = useContext(TravelContext);
+  const { travel, updateTravelStatus, updateTravel } =
+  useContext(TravelContext);
   const { token } = useContext(UserContext);
   const [ratingValue, setRatingValue] = useState(0);
   const [evaluation, setEvaluation] = useState("Sua avaliação");
@@ -37,9 +39,8 @@ const ModalStars = ({ resetMap }: { resetMap: () => void }) => {
       )
       .then((response) => {
         setToastSucess(true);
-      })
-      .catch((error) => {
-        console.log(error);
+        updateTravelStatus(false);
+        updateTravel({} as TravelData);
       });
   };
 
