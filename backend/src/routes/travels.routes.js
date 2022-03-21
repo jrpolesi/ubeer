@@ -13,22 +13,34 @@ router.post("/newTravel/users/:userId", (req, res) => {
 
   const totalPrice = distance * pricePerKm;
 
-  const travel = {
-    id: uuid4(),
-    from: from.name,
-    to: to.name,
-    departureDate: new Date(),
-    arrivedDate: "",
-    value: totalPrice,
-  };
+  if (user.budget >= totalPrice) {
+    const travel = {
+      id: uuid4(),
+      from: from.name,
+      to: to.name,
+      departureDate: new Date(),
+      arrivedDate: "",
+      value: totalPrice,
+    };
 
-  user.travelHistoric.push(travel);
+    user.budget -= totalPrice;
 
-  Database.updateOne("users", userId, user);
+    user.travelHistoric.push(travel);
 
-  const driver = Database.getRandomItem("drivers");
+    Database.updateOne("users", userId, user);
 
-  res.status(201).json({ travel, driver });
+    const driver = Database.getRandomItem("drivers");
+
+    return res.status(201).json({ travel, driver, user });
+  }
+
+  return res
+    .status(400)
+    .json({
+      message: `Seu saldo é R$${user.budget.toFixed(
+        2
+      )} mas o valor da corrida é R$${totalPrice.toFixed(2)}`,
+    });
 });
 
 router.put("/newTravel/users/:userId", (req, res) => {
@@ -47,4 +59,3 @@ router.put("/newTravel/users/:userId", (req, res) => {
 });
 
 export default router;
-
