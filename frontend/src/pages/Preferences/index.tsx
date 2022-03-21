@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Footer, Main, Section, SectionConta } from "./styles";
+import { Footer, Main, Section, SectionContainer } from "./styles";
 import Conta from "../../assets/img/iconConta.png";
 import Favoritos from "../../assets/img/iconFavoritos.png";
 import Suporte from "../../assets/img/iconSuporte.png";
 import Cancel from "../../assets/img/iconCancel.png";
+import bebado from "../../assets/img/bebado.jpg";
 import { Car, MailOption, User } from "grommet-icons";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import { UserContext } from "../../providers/user";
 
 const Preferences = () => {
 
@@ -32,12 +34,10 @@ const Preferences = () => {
       .matches(/^[a-zA-Z]{3}-[0-9]{4}$/, "Placa inválida"),
   });
 
-  const navigate = useNavigate();
-  const [conta, setConta] = useState(false);
   const {register, handleSubmit, formState: { errors }} = useForm({
     resolver: yupResolver(schema),
   });
-
+  
   const editUser = ({ model, plate, email, password, name }: FieldValues) => {
     const userFormated = {
       email,
@@ -45,8 +45,12 @@ const Preferences = () => {
       name,
       car: { model, plate },
     };
-    console.log(userFormated);
   };
+  
+  const [bill, setBill] = useState(false);
+  const [favorite, setFavorite] = useState(false);
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   return(
     <>
@@ -55,17 +59,11 @@ const Preferences = () => {
       
 
       <Main>
-        {conta && (
-          <SectionConta>
+        {bill && (
+          <SectionContainer>
             <div>
-              <button onClick={() => setConta(false)}>X</button>
-            </div>
-            <div>
-              <figure>
-                <img src="" alt="" />
-              </figure>
-              <h1></h1>
-              <p></p>
+              <button onClick={() => setBill(false)}>X</button>
+              <h2>Editar informações</h2>
             </div>
             <form onSubmit={handleSubmit(editUser)}>
               <Input
@@ -109,14 +107,40 @@ const Preferences = () => {
               />
               <Button type="submit">Salvar</Button>
             </form>
-          </SectionConta>
+          </SectionContainer>
+        )}
+
+        {favorite && (
+          <SectionContainer>
+            <div>
+              <button onClick={() => setFavorite(false)}>X</button>
+              <h2>Favoritos</h2>
+            </div>
+            {user?.favoritesPlaces.length === 0 ? 
+              (
+                <aside>
+                  <p>Sem favoritos salvos</p>
+                  <figure>
+                    <img src={bebado} alt="Imagem de um bebado" />
+                  </figure>
+                </aside>
+              ):
+              (
+                <ul>
+                  {user?.favoritesPlaces.map((favorite) => 
+                    <li key={favorite.id}>
+                      <p>{favorite.name}</p>
+                    </li>)}
+                </ul>
+              )}
+          </SectionContainer>
         )}
         <Section>
-          <div onClick={() => setConta(true)}>
+          <div onClick={() => setBill(true)}>
             <img src={Conta} alt="Conta" />
             <p>Conta</p>
           </div>
-          <div onClick={() => navigate("/favorite")}>
+          <div onClick={() => setFavorite(true)}>
             <img src={Favoritos} alt="Favoritos" />
             <p>Favoritos</p>
           </div>

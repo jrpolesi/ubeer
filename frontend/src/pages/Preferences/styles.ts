@@ -62,7 +62,7 @@ export const Section = styled.section`
   }
 `;
 
-export const SectionConta = styled.section`
+export const SectionContainer = styled.section`
 
   @keyframes animation{
     from{
@@ -83,6 +83,13 @@ export const SectionConta = styled.section`
   animation-name: animation;
   animation-duration: 1s;
 
+  div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
   div button {
     width: 30px;
     height: 30px;
@@ -102,6 +109,7 @@ export const SectionConta = styled.section`
   }
 
   form div{
+    width: 100%;
     margin: 10px 0px;
     animation-name: animation;
     animation-duration: 1.5s;
@@ -112,6 +120,43 @@ export const SectionConta = styled.section`
     margin-top: 20px;
     animation-name: animation;
     animation-duration: 1.5s;
+  }
+
+  li{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color: #FBD50E;
+    border-radius: 15px;
+    padding: 0px 20px;
+    margin: 20px 0px;
+    animation-duration: 1.5s;
+    cursor: pointer;
+  }
+
+  aside{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    animation-duration: 1.5s;
+  }
+
+  aside p {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  figure{
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+    
+  }
+  figure img{
+    width: 100%;
+    animation-duration: 2s;
   }
 `;
 
