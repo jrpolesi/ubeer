@@ -126,7 +126,7 @@ const Preferences = () => {
             <img src={Conta} alt="Histórico" />
             <p>Histórico</p>
           </div>
-          <div onClick={() => navigate("/suport")}>
+          <div onClick={() => navigate("/support")}>
             <img src={Suporte} alt="Suporte" />
             <p>Suporte</p>
           </div>
