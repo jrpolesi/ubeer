@@ -8,7 +8,7 @@ import api from "../../services/api";
 import { UserContext } from "../../providers/user";
 import { Notification } from "grommet";
 
-const ModalStars = () => {
+const ModalStars = ({ resetMap }: { resetMap: () => void }) => {
   const { travel } = useContext(TravelContext);
   const { token } = useContext(UserContext);
   const [ratingValue, setRatingValue] = useState(0);

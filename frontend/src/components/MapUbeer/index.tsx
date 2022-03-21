@@ -43,13 +43,19 @@ function MapUbeer() {
     useContext(TravelContext);
   const { user, token, updateUser } = useContext(UserContext);
   const [requestError, setRequestError] = useState<string | boolean>(false);
-  const [hasOrigin, setHasOrigin] = useState(false);
+  const [hasOrigin, setHasOrigin] = useState(false); //esse
   const [center, setCenter] = useState({} as Location);
-  const [origin, setOrigin] = useState<string>("");
-  const [destination, setDestination] = useState<string>("");
+  const [origin, setOrigin] = useState<string>(""); //esse
+  const [destination, setDestination] = useState<string>(""); //esse
   const [response, setResponse] = useState<google.maps.DirectionsResult | null>(
     null
   );
+
+  const resetMap = () => {
+    setHasOrigin(false);
+    setOrigin("");
+    setDestination("");
+  };
 
   useEffect(() => {
     const navigatorId = navigator.geolocation.watchPosition((position) =>
@@ -87,7 +93,6 @@ function MapUbeer() {
         })
         .then((response) => {
           const { user, ...rest } = response.data;
-
           updateTravel(rest);
           updateUser(user);
           updateTravelStatus("waiting for driver");
@@ -240,7 +245,7 @@ function MapUbeer() {
         {(travelStatus === "waiting for driver" ||
           travelStatus === "in transit") && <ModalDriver />}
 
-        {travelStatus === "finished" && <ModalFinishedTravel />}
+        {travelStatus === "finished" && <ModalFinishedTravel resetMap={resetMap} />}
       </LoadScript>
     </MapContainer>
   );
