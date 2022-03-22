@@ -19,7 +19,6 @@ export const Header = styled.header`
     gap: 20px;
 
     figure {
-
       img {
         width: 55px;
       }
@@ -97,7 +96,13 @@ export const LogoSection = styled.section`
   }
   @media (min-width: 1024px) {
     #desktop {
-      font-size: 64px;
+      font-family: "Comfortaa";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 62px;
+      line-height: 69px;
+      letter-spacing: -0.015em;
+      color: #151515;
     }
   }
 `;
@@ -115,15 +120,27 @@ export const SobreArticle = styled.article`
     flex-direction: column;
   }
 
+  .info {
+    line-height: 125%;
+    font-family: "Comfortaa";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25.1px;
+    letter-spacing: -0.015em;
+    color: #000000;
+  }
+
   h2 {
     font-size: 40px;
     margin-bottom: 20px;
   }
+
   figure {
     width: 200px;
     height: 200px;
     margin: 20px 0px;
   }
+
   img {
     width: 100%;
     height: 100%;
@@ -131,6 +148,7 @@ export const SobreArticle = styled.article`
 
   @media (min-width: 767px) {
     margin-top: 60px;
+
     div {
       display: flex;
       flex-direction: row;
@@ -149,6 +167,7 @@ export const SobreArticle = styled.article`
       width: 250px;
       height: 250px;
     }
+
     p {
       font-size: 22px;
     }
@@ -156,10 +175,18 @@ export const SobreArticle = styled.article`
 
   @media (min-width: 1440px) {
     h2 {
-      font-size: 50px;
+      font-family: "Comfortaa";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 40px;
+      align-items: center;
+      letter-spacing: -0.015em;
+      color: #000000;
     }
+    
     p {
-      font-size: 26px;
+      font-size: 24px;
     }
   }
 `;
@@ -292,7 +319,7 @@ export const ButtonFooter = styled.footer`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  width: 95%;
+  width: 100%;
   height: 75px;
   background-color: #c7c7c7;
   padding: 0px 10px;
@@ -303,10 +330,6 @@ export const ButtonFooter = styled.footer`
   button {
     max-width: 230px;
     flex: 1;
-  }
-
-  @media (min-width: 400px) {
-    width: 97%;
   }
 
   @media (min-width: 767px) {

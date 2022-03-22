@@ -38,7 +38,6 @@ router.post("/:driverId/rating", (req, res) => {
   });
 
   const sumStars = feedbacks.reduce((acc, { stars }) => acc + Number(stars), 0);
-  console.log(sumStars);
 
   const average = sumStars / feedbacks.length;
 

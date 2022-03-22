@@ -5,7 +5,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
 
-import { Container, Main } from "./style";
+import { Container, Main } from "./styles";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";

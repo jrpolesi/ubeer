@@ -55,15 +55,14 @@ const Sobre = () => {
             <figure>
               <img src={Motorista} alt="Motorista dirigindo bebado" />
             </figure>
-            <p>
-              Todos os anos morrem milhares de pessoas no trânsito devido ao
-              consumo irresponsável de bebidas alcoólicas. Com o intuito de
-              reduzir o número de mortes no trânsito, nossa aplicação permite
-              que alguém que tenha saído com o seu próprio carro, e acabou
-              ingerindo bebidas alcoólicas, possa chamar um de nossos motoristas
-              altamente capacitados para buscar o usuário e seu veículo, e levar
-              os dois em segurança para casa. Com nosso aplicativo acreditamos
-              que podemos deixar o trânsito mais seguro para todos.
+            <p className="info">
+              Com o intuito de reduzir o número de mortes no trânsito, nossa
+              aplicação permite que alguém que tenha saído com o seu próprio
+              carro, e acabou ingerindo bebidas alcoólicas, possa chamar um de
+              nossos motoristas altamente capacitados para buscar o usuário e
+              seu veículo, e levar os dois em segurança para casa. Com nosso
+              aplicativo acreditamos que podemos deixar o trânsito mais seguro
+              para todos.
             </p>
           </div>
         </SobreArticle>
@@ -194,7 +193,9 @@ const Sobre = () => {
       </Main>
       <ButtonFooter>
         <Button onClick={() => navigate("/login")}>LOG IN</Button>
-        <Button bg="dark" onClick={() => navigate("/Signup")}>CADASTRE-SE</Button>
+        <Button bg="dark" onClick={() => navigate("/Signup")}>
+          CADASTRE-SE
+        </Button>
       </ButtonFooter>
     </>
   );

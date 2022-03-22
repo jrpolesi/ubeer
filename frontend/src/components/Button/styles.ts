@@ -15,5 +15,5 @@ export const Container = styled.button<Props>`
     variant === "rounded" ? "25px" : "5px"};
   font-family: ${({ variant }) => (variant === "rounded" ? "Inter" : "Roboto")};
   font-weight: 800;
-  font-size: 14px
+  font-size: 14px;
 `;

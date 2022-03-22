@@ -1,23 +1,28 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import BackButton from "../BackButton";
 import { Container } from "./styles";
-
-import userImg from "../../assets/img/Usuario.png";
 import ModalMenu from "../ModalMenu";
+import { UserContext } from "../../providers/user";
+import Avatar from "../Avatar";
 
-const Header = ({ title }: { title: string }) => {
+interface Props {
+  title?: string;
+  variant?: "filled";
+}
+
+const Header = ({ title, variant }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useContext(UserContext);
 
   return (
-    <Container>
+    <Container variant={variant}>
       <BackButton />
 
       <h1>{title}</h1>
-
-      <div>
-        <img className="avatar" src={userImg} alt="user avatar" onClick={() => setIsOpen(prevState => !prevState)}/>
+      <div className="Avatar" onClick={() => setIsOpen((prevState) => !prevState)}>
+        <Avatar name={user?.name}/>
       </div>
-      <ModalMenu isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <ModalMenu isOpen={isOpen} setIsOpen={setIsOpen} />
     </Container>
   );
 };
