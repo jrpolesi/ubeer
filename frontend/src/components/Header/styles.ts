@@ -14,7 +14,7 @@ export const Container = styled.header<Props>`
   background-color: ${({ variant }) =>
     variant === "filled" ? "#f8d50e" : "#F7F8F9"};
   padding: 5px 5%;
-  color: ${({ variant }) => (variant === "filled" ? "#FFFFFF" : "#000000")};
+  color: ${({ variant }) => (variant === "filled" ? "#FFFFFF" : "#3E4958")};
 
   button {
     position: static;
@@ -22,8 +22,8 @@ export const Container = styled.header<Props>`
 
   h1 {
     text-align: center;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 500;
     font-family: "Inter", sans-serif;
   }
 
@@ -40,6 +40,8 @@ export const Container = styled.header<Props>`
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 22px;
+    h1{
+      font-size: 30px;
+    }
   }
 `;

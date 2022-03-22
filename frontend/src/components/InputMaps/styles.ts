@@ -11,9 +11,13 @@ export const Container = styled.div`
   box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
 
   input {
+    overflow: hidden;
     flex: 1 1 auto;
     background-color: transparent;
     border: none;
     outline: none;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 16px;
   }
 `;

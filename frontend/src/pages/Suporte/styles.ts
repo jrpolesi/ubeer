@@ -7,8 +7,18 @@ export const Main = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  div::-webkit-scrollbar{
+  font-family: "Comfortaa";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 25.1px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.015em;
+
+  color: #000000;
+
+  div::-webkit-scrollbar {
     display: none;
   }
   div {
@@ -28,6 +38,14 @@ export const Main = styled.main`
     ol {
       font-size: 26px;
       margin: 10px 0 0 40px;
+    }
+    h1{
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 136%;
+      color: #000000;
     }
     ol:hover {
       li {
@@ -76,7 +94,7 @@ export const Main = styled.main`
         top: 0;
         cursor: pointer;
       }
-      p{
+      p {
         display: block;
       }
       h3 {
@@ -92,4 +110,4 @@ export const Main = styled.main`
       }
     }
   }
-  `;
+`;

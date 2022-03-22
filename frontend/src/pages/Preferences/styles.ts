@@ -5,7 +5,13 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;  
   margin-top: 20px;
-
+  height: 100%;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+  color: #4b545a;
 `;
 
 export const Section = styled.section`
@@ -14,7 +20,7 @@ export const Section = styled.section`
   width: 100%;
   margin: 20px 20px;
 
-  div{
+  div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,8 +35,8 @@ export const Section = styled.section`
   div:hover{
     box-shadow: 1px 1px 8px #ccc;
   }
-
-  img{
+  
+  img {
     margin-bottom: 10px;
   }
 
@@ -166,12 +172,12 @@ export const Footer = styled.footer`
   justify-content: center;
   margin-top: 80px;
 
-  figure{
+  figure {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FBD50E;
-    border-radius: 90px; 
+    background-color: #fbd50e;
+    border-radius: 90px;
     box-shadow: 1px 1px 8px #ccc;
     width: 65px;
     height: 65px;

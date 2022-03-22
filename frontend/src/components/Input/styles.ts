@@ -11,10 +11,12 @@ export const Container = styled.div`
     border: 2px solid black;
 
     input {
+      overflow: hidden;
       flex: 1 1 auto;
       background-color: transparent;
       border: none;
       outline: none;
+      font-family: "Roboto", sans-serif;
     }
   }
 

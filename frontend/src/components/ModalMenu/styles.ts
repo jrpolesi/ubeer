@@ -10,6 +10,7 @@ export const Background = styled.div`
   z-index: 2;
   opacity: 1;
   transition: opacity 0.5s;
+  font-family: "Inter";
 
   .menu {
     position: absolute;
@@ -44,8 +45,11 @@ export const Background = styled.div`
       h2 {
         font-weight: bold;
         margin: 15px 0 4px;
+        font-size: 20px;
       }
-
+      .email {
+        font-size: 15px;
+      }
       img {
         width: 80px;
       }
@@ -80,8 +84,8 @@ export const Background = styled.div`
       margin: 30px 0;
 
       button {
+        color: #3e4958;
         background-color: #ffffff;
-        color: #000000;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.14);
         border-radius: 15px;
         padding: 0px 25px;
@@ -91,8 +95,12 @@ export const Background = styled.div`
     .signout {
       flex-grow: 0;
       margin: auto 0 40px;
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      font-size: 15px;
       line-height: 150%;
-      color: blue;
+      color: #1152fd;
       border-bottom: 1px solid blue;
       cursor: pointer;
     }
@@ -109,5 +117,15 @@ export const Background = styled.div`
         opacity: 0;
       }
     }
+  }
+`;
+
+export const Icon = styled.div`
+  img {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 3.5%;
+    right: 10%;
   }
 `;
