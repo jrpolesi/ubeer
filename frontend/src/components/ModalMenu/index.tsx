@@ -2,8 +2,8 @@ import React, { Dispatch, SetStateAction, useContext } from "react";
 import { Background } from "./styles";
 import Button from "../Button/index";
 import { UserContext } from "../../providers/user";
-import userImg from "../../assets/img/Usuario.png";
 import { useNavigate } from "react-router-dom";
+import Avatar from "../Avatar/";
 
 interface Props {
   isOpen: boolean;
@@ -13,19 +13,21 @@ interface Props {
 const ModalMenu = ({ isOpen, setIsOpen }: Props) => {
   const { logOut, user } = useContext(UserContext);
   const navigate = useNavigate();
-
+  
   return (
     <Background className={isOpen ? "" : "hide"}>
       <div className="menu">
         {user && (
           <div className="header">
             <div>
-              <img src={userImg} alt="user avatar" />
+              <div className="avatar">
+                <Avatar name={user?.name}/>
+              </div>
               <h2>{user.name}</h2>
               <span>{user.email}</span>
             </div>
             <span className="closeButton" onClick={() => setIsOpen(false)}>
-              X
+                X
             </span>
           </div>
         )}

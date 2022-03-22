@@ -27,9 +27,16 @@ export const Container = styled.header<Props>`
     font-family: "Inter", sans-serif;
   }
 
-  .avatar {
+  .Avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    background-color: #05a1fb;
+    color: #FFF;
+    border-radius: 90px;
     cursor: pointer;
-    height: 60px;
   }
 
   @media screen and (min-width: 768px) {
