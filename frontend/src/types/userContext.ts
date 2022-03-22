@@ -12,8 +12,8 @@ export interface TravelHistoric {
   id: string;
   from: string;
   to: string;
-  departureDate: string;
-  arrivedDate: string;
+  departureDate: Date;
+  arrivedDate: Date;
   value: number;
 }
 
