@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-height: 210px;
-  max-width: 400px;
+  width: 99%;
+  height: 99%;
+  max-height: 250px;
   border-radius: 8px;
   background-color: #fbd50e;
 

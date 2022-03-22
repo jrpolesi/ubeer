@@ -67,17 +67,14 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-        p {
-          font-family: "inter";
-          text-align: center;
-          color: #3E4958;
-          font-size: 18px;
-        }
-       
-
-        
+  p {
+    font-family: "inter";
+    text-align: center;
+    color: #3e4958;
+    font-size: 18px;
+  }
 `;

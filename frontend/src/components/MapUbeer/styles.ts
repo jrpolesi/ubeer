@@ -6,7 +6,16 @@ export const DivModal = styled.div`
   gap: 10px;
 `;
 
-export const MapContainer = styled.div`
+export const MapContainer = styled.aside`
+  min-height: calc(100vh - 73px);
+  display: flex;
+  flex-direction: column;
+
+  > div:nth-of-type(2) {
+    flex: 1 1 auto;
+    background-color: red;
+  }
+
   .marker {
     position: absolute;
     left: 0;

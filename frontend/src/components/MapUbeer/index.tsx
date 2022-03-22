@@ -164,8 +164,8 @@ function MapUbeer() {
           onLoad={onMapLoad}
           mapContainerStyle={
             hasOrigin
-              ? { width: "100%", height: "50vh" }
-              : { width: "100%", height: "60vh" }
+              ? { width: "100%", height: "50vh", position: "static" }
+              : { width: "100%", height: "60vh", position: "static" }
           }
           center={center}
           zoom={15}

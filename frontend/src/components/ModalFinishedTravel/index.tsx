@@ -3,6 +3,7 @@ import { TravelContext } from "../../providers/travel";
 import CardTravel from "../CardTravel";
 import Button from "../Button";
 import ModalStars from "../ModalStars";
+import { Container, TravelCardPos } from "./styles";
 
 const ModalFinishedTravel = () => {
   const {
@@ -14,16 +15,16 @@ const ModalFinishedTravel = () => {
   console.log(travel);
 
   return (
-    <>
+    <Container>
       {showFeedback ? (
         <ModalStars />
       ) : (
-        <div>
+        <TravelCardPos>
           <CardTravel isTravel={false} travel={travel} />
           <Button onClick={() => setShowFeedback(true)}>Avaliar</Button>
-        </div>
+        </TravelCardPos>
       )}
-    </>
+    </Container>
   );
 };
 
