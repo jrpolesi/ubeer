@@ -1,68 +1,67 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 95%;
-  max-width: 376px;
-  max-height: 487px;
   background-color: #ffffff;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  border-radius: 16px;
 
   section {
+    gap: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    section {
+    .subtract {
+      width: 60px;
+      height: 5px;
+      border-radius: 10px;
+      background-color: gray;
       margin: 0 auto;
     }
-  }
 
-  img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin-left: 12px;
-  }
+    .driver-avatar {
+      width: fit-content;
+      margin: auto;
 
-  h3 {
-    font-family: "Inter";
-    font-weight: 700;
-    font-size: 18px;
-    color: #3e4958;
-    margin-left: 14px;
-    margin-bottom: 12px;
-  }
+      img {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+      }
 
-  textarea {
-    width: 90%;
-    max-width: 333px;
-    height: 73px;
-    border-radius: 15px;
-    border: 0.5px solid #d5dde0;
-    background: #f7f8f9;
-    margin: 0 auto;
-    &::placeholder {
-      font-family: "Inter";
-      font-weight: 400;
-      font-size: 15px;
-      color: #97adb6;
+      h3 {
+        margin-top: 5px;
+        text-align: center;
+        font-family: "Inter";
+        font-weight: 700;
+        font-size: 18px;
+        color: #3e4958;
+      }
     }
-  }
 
-  button {
-    margin: 8px;
-  }
+    textarea {
+      width: 90%;
+      max-width: 333px;
+      height: 73px;
+      border-radius: 15px;
+      border: 0.5px solid #d5dde0;
+      background: #f7f8f9;
+      margin: 0 auto;
+      padding: 10px;
+      resize: none;
 
-  p {
-    margin: 4px;
-    font-family: "Inter";
-    font-weight: 400;
-    font-size: 15px;
-    text-align: center;
+      &::placeholder {
+        font-family: "Inter";
+        font-weight: 400;
+        font-size: 15px;
+        color: #97adb6;
+      }
+    }
+
+    button {
+      margin: 8px auto;
+      width: 90%;
+      max-width: 333px;
+    }
   }
 `;
 
@@ -72,6 +71,7 @@ export const Content = styled.div`
   align-items: center;
 
   p {
+    margin: 4px;
     font-family: "inter";
     text-align: center;
     color: #3e4958;

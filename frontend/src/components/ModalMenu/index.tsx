@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useContext } from "react";
-import { Background, Icon } from "./styles";
+import { Background } from "./styles";
 import Button from "../Button/index";
 import { UserContext } from "../../providers/user";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ interface Props {
 const ModalMenu = ({ isOpen, setIsOpen }: Props) => {
   const { logOut, user } = useContext(UserContext);
   const navigate = useNavigate();
-  
+
   return (
     <Background className={isOpen ? "" : "hide"}>
       <div className="menu">
@@ -22,13 +22,13 @@ const ModalMenu = ({ isOpen, setIsOpen }: Props) => {
           <div className="header">
             <div>
               <div className="avatar">
-                <Avatar name={user?.name}/>
+                <Avatar name={user?.name} />
               </div>
               <h2>{user.name}</h2>
               <span className="email">{user.email}</span>
             </div>
             <span className="closeButton" onClick={() => setIsOpen(false)}>
-                X
+              X
             </span>
           </div>
         )}
@@ -47,12 +47,12 @@ const ModalMenu = ({ isOpen, setIsOpen }: Props) => {
             Suporte
           </Button>
         </div>
-        <span className="signout" onClick={logOut}>
-          Sign out
-        </span>
-        <Icon>
+        <div className="footer">
+          <span className="signout" onClick={logOut}>
+            Sign out
+          </span>
           <img src={themeIcon} />
-        </Icon>
+        </div>
       </div>
     </Background>
   );

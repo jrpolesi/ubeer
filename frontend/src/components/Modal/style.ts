@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 export const Popup = styled.div`
-  width: 99%;
-  /* position: absolute; */
+  width: 100%;
   bottom: 0;
   left: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
   color: #97adb6;
-  background-color: white;
+  padding: 10px 0 30px;
   border-radius: 16px 16px 0px 0px;
 
   section {

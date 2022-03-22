@@ -62,14 +62,14 @@ export const Background = styled.div`
       }
     }
 
-    .avatar{
+    .avatar {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 55px;
       height: 55px;
       background-color: #05a1fb;
-      color: #FFF;
+      color: #fff;
       border-radius: 90px;
       cursor: pointer;
     }
@@ -92,17 +92,27 @@ export const Background = styled.div`
       }
     }
 
-    .signout {
-      flex-grow: 0;
-      margin: auto 0 40px;
-      position: absolute;
-      bottom: 0;
-      left: 10%;
-      font-size: 15px;
-      line-height: 150%;
-      color: #1152fd;
-      border-bottom: 1px solid blue;
-      cursor: pointer;
+    .footer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin: 0 auto 20px;
+
+      .signout {
+        font-size: 15px;
+        line-height: 150%;
+        color: #1152fd;
+        border-bottom: 1px solid blue;
+        cursor: pointer;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        bottom: 3.5%;
+        right: 10%;
+      }
     }
   }
 
@@ -120,12 +130,3 @@ export const Background = styled.div`
   }
 `;
 
-export const Icon = styled.div`
-  img {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    bottom: 3.5%;
-    right: 10%;
-  }
-`;

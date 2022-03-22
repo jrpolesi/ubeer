@@ -31,8 +31,8 @@ export const Container = styled.header<Props>`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
     background-color: #05a1fb;
     color: #FFF;
     border-radius: 90px;
@@ -42,6 +42,11 @@ export const Container = styled.header<Props>`
   @media screen and (min-width: 768px) {
     h1{
       font-size: 30px;
+    }
+
+    .Avatar{
+      width: 55px;
+      height: 55px;
     }
   }
 `;

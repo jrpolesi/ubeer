@@ -1,6 +1,6 @@
 import React, { useContext, Dispatch, SetStateAction } from "react";
 import { TravelContext } from "../../providers/travel";
-import { PopupDriver, PopUpLeft, PopupRight } from "./styles";
+import { PopupDriver, Left, Right } from "./styles";
 import Button from "../Button";
 import api from "../../services/api";
 import { UserContext } from "../../providers/user";
@@ -43,16 +43,17 @@ function ModalDriver({ setMessageOnRoute }: Props) {
       {travelStatus !== "finished" ? (
         <PopupDriver>
           <section>
-            <PopUpLeft>
-              <div>
+            <Left>
+              <div className="driver-avatar">
                 <img src={travel.driver.image} alt="" />
                 <h2>{travel.driver.name}</h2>
               </div>
-              <p>
-                {travel.driver.rating.starsAverage} <Star color="#f8d50e" />
-              </p>
-            </PopUpLeft>
-            <PopupRight>
+              <div className="stars">
+                <span>{travel.driver.rating.starsAverage.toFixed(1)}</span>
+                <Star color="#f8d50e" />
+              </div>
+            </Left>
+            <Right>
               <h3>
                 {travelStatus === "waiting for driver"
                   ? travel.driver.car.plate
@@ -65,10 +66,10 @@ function ModalDriver({ setMessageOnRoute }: Props) {
               </p>
               <h4>
                 {travelStatus === "waiting for driver"
-                  ? `R$ ${travel.travel.value}`
+                  ? `R$ ${travel.travel.value.toFixed(2)}`
                   : ""}
               </h4>
-            </PopupRight>
+            </Right>
           </section>
           <Button variant="rounded" onClick={handleClick}>
             {travelStatus === "waiting for driver"

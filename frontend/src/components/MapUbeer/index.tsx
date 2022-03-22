@@ -167,11 +167,7 @@ function MapUbeer() {
       >
         <GoogleMap
           onLoad={onMapLoad}
-          mapContainerStyle={
-            hasOrigin
-              ? { width: "100%", height: "50vh", position: "static" }
-              : { width: "100%", height: "60vh", position: "static" }
-          }
+          mapContainerStyle={{ position: "static" }}
           center={center}
           zoom={15}
         >

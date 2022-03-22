@@ -7,13 +7,16 @@ export const DivModal = styled.div`
 `;
 
 export const MapContainer = styled.div`
-  min-height: calc(100vh - 73px);
+  min-height: calc(100vh - 55px);
   display: flex;
   flex-direction: column;
 
   > div:nth-of-type(2) {
     flex: 1 1 auto;
-    background-color: red;
+  }
+
+  > div:nth-of-type(3) {
+    background-color: #ffffff;
   }
 
   .marker {
@@ -34,6 +37,17 @@ export const MapContainer = styled.div`
       width: 10px;
       height: 10px;
       background-color: white;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    min-height: calc(100vh - 65px);
+
+    > div:nth-of-type(3) {
+      position: absolute;
+      margin-left: 20px;
+      max-width: 480px;
+      box-shadow: 5px -4px 15px rgba(0, 0, 0, 0.2);
     }
   }
 `;

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Container, Content } from "./styles";
-import { Subtract } from "grommet-icons";
 import Button from "../Button";
 import { TravelContext } from "../../providers/travel";
 import { Rating } from "react-simple-star-rating";
@@ -11,7 +10,7 @@ import { TravelData } from "../../types/travelContext";
 
 const ModalStars = ({ resetMap }: { resetMap: () => void }) => {
   const { travel, updateTravelStatus, updateTravel } =
-  useContext(TravelContext);
+    useContext(TravelContext);
   const { token } = useContext(UserContext);
   const [ratingValue, setRatingValue] = useState(0);
   const [evaluation, setEvaluation] = useState("Sua avaliação");
@@ -37,7 +36,7 @@ const ModalStars = ({ resetMap }: { resetMap: () => void }) => {
           },
         }
       )
-      .then((response) => {
+      .then(() => {
         setToastSucess(true);
         updateTravelStatus(false);
         updateTravel({} as TravelData);
@@ -58,11 +57,11 @@ const ModalStars = ({ resetMap }: { resetMap: () => void }) => {
       )}
 
       <section>
-        <section>
-          <Subtract size="large" color="grey" />
-        </section>
-
         <div>
+          <div className="subtract"></div>
+        </div>
+
+        <div className="driver-avatar">
           <img src={travel?.driver?.image} />
           <h3>{travel?.driver?.name}</h3>
         </div>
