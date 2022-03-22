@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Main = styled.main`
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   margin-top: 20px;
   height: 100%;
   font-family: "Inter";
@@ -32,49 +32,48 @@ export const Section = styled.section`
     cursor: pointer;
   }
 
-  div:hover{
+  div:hover {
     box-shadow: 1px 1px 8px #ccc;
   }
-  
+
   img {
     margin-bottom: 10px;
   }
 
-  @media (min-width: 560px){
-    div{
+  @media (min-width: 560px) {
+    div {
       width: 200px;
       height: 200px;
     }
   }
 
-  @media (min-width: 768px){
+  @media (min-width: 768px) {
     margin: 40px 0px;
 
-    div{
+    div {
       width: 250px;
       height: 250px;
     }
-    img{
+    img {
       width: 56px;
     }
   }
 
-  @media (min-width: 1024px){
+  @media (min-width: 1024px) {
     margin: 80px 0px 20px 0px;
 
-    div{
+    div {
       width: 300px;
     }
   }
 `;
 
 export const SectionContainer = styled.section`
-
-  @keyframes animation{
-    from{
+  @keyframes animation {
+    from {
       opacity: 0;
     }
-    to{
+    to {
       opacity: 1;
     }
   }
@@ -82,58 +81,67 @@ export const SectionContainer = styled.section`
   position: fixed;
   width: 80%;
   max-width: 560px;
-  background-color: #FFF;
+  background-color: #fff;
   box-shadow: 1px 1px 20px #ccc;
   border-radius: 15px;
   padding: 20px;
   animation-name: animation;
   animation-duration: 1s;
 
-  div{
+  > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+
+    button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      background-color: #fff;
+      color: #fbd50e;
+      box-shadow: 1px 1px 20px #ccc;
+      border-radius: 90px;
+      font-weight: bold;
+      animation-name: animation;
+      animation-duration: 1.5s;
+      cursor: pointer;
+      &:hover {
+        box-shadow: 1px 1px 8px #ccc;
+      }
+    }
   }
 
-  div button {
-    width: 30px;
-    height: 30px;
-    border: none;
-    background-color: #FFF;
-    color: #FBD50E;
-    box-shadow: 1px 1px 20px #ccc;
-    border-radius: 90px;
-    font-weight: bold;
-    animation-name: animation;
-    animation-duration: 1.5s;
-    cursor: pointer;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    label {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    div {
+      width: 100%;
+      animation-name: animation;
+      animation-duration: 1.5s;
+    }
+    button {
+      width: 100%;
+      margin-top: 20px;
+      animation-name: animation;
+      animation-duration: 1.5s;
+    }
   }
 
-  div button:hover{
-    box-shadow: 1px 1px 8px #ccc;
-  }
-
-  form div{
-    width: 100%;
-    margin: 10px 0px;
-    animation-name: animation;
-    animation-duration: 1.5s;
-  }
-
-  form button{
-    width: 100%;
-    margin-top: 20px;
-    animation-name: animation;
-    animation-duration: 1.5s;
-  }
-
-  li{
+  li {
     display: flex;
     align-items: center;
     width: 100%;
     height: 70px;
-    background-color: #FBD50E;
+    background-color: #fbd50e;
     border-radius: 15px;
     padding: 0px 20px;
     margin: 20px 0px;
@@ -141,28 +149,28 @@ export const SectionContainer = styled.section`
     cursor: pointer;
   }
 
-  aside{
+  aside {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
     animation-duration: 1.5s;
+
+    p {
+      font-size: 22px;
+      font-weight: bold;
+    }
   }
 
-  aside p {
-    font-size: 22px;
-    font-weight: bold;
-  }
-
-  figure{
+  figure {
     width: 200px;
     height: 200px;
     margin-top: 10px;
-    
-  }
-  figure img{
-    width: 100%;
-    animation-duration: 2s;
+
+    img {
+      width: 100%;
+      animation-duration: 2s;
+    }
   }
 `;
 
@@ -184,7 +192,7 @@ export const Footer = styled.footer`
     cursor: pointer;
   }
 
-  @media (min-width: 768px){
+  @media (min-width: 768px) {
     display: none;
   }
 `;
