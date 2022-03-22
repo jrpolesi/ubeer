@@ -82,7 +82,7 @@ function MapUbeer() {
   };
 
   const getNewTravelFromAPI = () => {
-    if (response) {
+    if (response && origin !== destination) {
       const distanceInMeters = response.routes[0].legs[0].distance?.value;
 
       const travelRequest = {
@@ -105,6 +105,10 @@ function MapUbeer() {
         .catch((err) => {
           setRequestError(err.response.data.message);
         });
+    } else {
+      setRequestError(
+        "Ops, você pode está pra lá de Bagdá, mas precisa escolher dois lugares diferentes"
+      );
     }
   };
 
