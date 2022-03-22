@@ -9,7 +9,7 @@ const BackButton = () => {
   const navigate = useNavigate();
 
   return (
-    <Container onClick={() => navigate(-1)}>
+    <Container onClick={() => navigate("/")}>
       <FormPrevious size="larger" color="#FBD50E" />
     </Container>
   );

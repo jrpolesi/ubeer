@@ -54,6 +54,10 @@ table {
 button {
 	cursor: pointer;
 }
+
+body {
+	font-family: 'Comfortaa', sans-serif;
+}
 `;
 
 export default GlobalStyle;

@@ -4,19 +4,21 @@ export const Background = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: #00000055;
   z-index: 2;
   opacity: 1;
   transition: opacity 0.5s;
+  font-family: "Inter";
 
   .menu {
     position: absolute;
     left: 0%;
     top: 0;
+    overflow: hidden;
     min-height: 570px;
-    height: 100vh;
+    height: 100%;
     width: 90vw;
     max-width: 600px;
     background-color: #ffffff;
@@ -43,8 +45,11 @@ export const Background = styled.div`
       h2 {
         font-weight: bold;
         margin: 15px 0 4px;
+        font-size: 20px;
       }
-
+      .email {
+        font-size: 15px;
+      }
       img {
         width: 80px;
       }
@@ -53,7 +58,20 @@ export const Background = styled.div`
         font-family: sans-serif;
         font-size: 30px;
         color: #000000;
+        cursor: pointer;
       }
+    }
+
+    .avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      background-color: #05a1fb;
+      color: #fff;
+      border-radius: 90px;
+      cursor: pointer;
     }
 
     .buttons {
@@ -66,21 +84,35 @@ export const Background = styled.div`
       margin: 30px 0;
 
       button {
+        color: #3e4958;
         background-color: #ffffff;
-        color: #000000;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.14);
         border-radius: 15px;
         padding: 0px 25px;
       }
     }
 
-    .signout {
-      flex-grow: 0;
-      margin: auto 0 40px;
-      line-height: 150%;
-      color: blue;
-      border-bottom: 1px solid blue;
-      cursor: pointer;
+    .footer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin: 0 auto 20px;
+
+      .signout {
+        font-size: 15px;
+        line-height: 150%;
+        color: #1152fd;
+        border-bottom: 1px solid blue;
+        cursor: pointer;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        bottom: 3.5%;
+        right: 10%;
+      }
     }
   }
 
@@ -97,3 +129,4 @@ export const Background = styled.div`
     }
   }
 `;
+

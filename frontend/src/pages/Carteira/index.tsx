@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user/index";
 import api from "../../services/api";
-import { Footer, HeaderContainer, Main, Section } from "./styles";
-import { Menu } from "grommet-icons";
+import { Footer, Main, Section } from "./styles";
 import QrCode from "../../assets/img/QRCode1.png";
 import Button from "../../components/Button";
 import LogoSalario from "../../assets/img/dinheiro.png";
@@ -36,12 +35,6 @@ const Carteira = () => {
   return (
     <>
       <Header title="Saldo" />
-      <HeaderContainer>
-        <figure onClick={() => console.log("Entrar no menu")}>
-          <Menu color="accent-4" />
-        </figure>
-        <h1>Saldo</h1>
-      </HeaderContainer>
       <Main>
         <Section>
           <figure>
@@ -59,17 +52,11 @@ const Carteira = () => {
           <figure className="QrCode">
             <img src={QrCode} alt="QR Code" />
           </figure>
-          <Button
-            variant="rounded"
-            onClick={() => console.log("Requisição para atualizar o saldo")}
-          >
-            Adicionar saldo
-          </Button>
         </Section>
         <Footer>
           <div>
-            <p>O seu saldo atual é:</p>
-            <input value={`R$ ${user?.budget} `} readOnly />
+            <p>O seu saldo é:</p>
+            <input value={`R$ ${user?.budget.toFixed(2).replace(".", ",")} `} readOnly />
           </div>
           <Button variant="rounded" onClick={() => navigate("/Dashboard")}>
             Ok
