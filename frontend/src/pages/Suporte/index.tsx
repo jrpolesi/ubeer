@@ -34,10 +34,7 @@ const Suporte = () => {
             </li>
           </ol>
           <span>Entre em contato: 14325-4451</span>
-          <img
-            onClick={() => console.log("Página de contato")}
-            src={contatoSupport}
-          />
+          <img src={contatoSupport} />
           <h3>ENTRE EM CONTATO</h3>
         </div>
       </Main>
