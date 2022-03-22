@@ -58,6 +58,18 @@ export const Background = styled.div`
       }
     }
 
+    .avatar{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      background-color: #05a1fb;
+      color: #FFF;
+      border-radius: 90px;
+      cursor: pointer;
+    }
+
     .buttons {
       flex: 1 1 auto;
       display: flex;
