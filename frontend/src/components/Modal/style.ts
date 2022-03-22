@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Popup = styled.div`
   width: 99%;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   left: 0;
   z-index: 1;
