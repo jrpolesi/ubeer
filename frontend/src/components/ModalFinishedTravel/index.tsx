@@ -5,14 +5,12 @@ import Button from "../Button";
 import ModalStars from "../ModalStars";
 import { Container, TravelCardPos } from "./styles";
 
-const ModalFinishedTravel = ({ resetMap }: {resetMap: () => void}) => {
+const ModalFinishedTravel = ({ resetMap }: { resetMap: () => void }) => {
   const {
     travel: { travel },
   } = useContext(TravelContext);
 
   const [showFeedback, setShowFeedback] = useState(false);
-
-  console.log(travel);
 
   return (
     <Container>
