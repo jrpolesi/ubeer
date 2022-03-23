@@ -183,7 +183,11 @@ const Sobre = () => {
                 >
                   <Github />
                 </a>
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.linkedin.com/in/robert-costa-944a57234/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Linkedin />
                 </a>
               </div>
