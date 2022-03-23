@@ -16,7 +16,6 @@ import Button from "../../components/Button";
 import { UserContext } from "../../providers/user";
 
 const Preferences = () => {
-
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
@@ -34,10 +33,14 @@ const Preferences = () => {
       .matches(/^[a-zA-Z]{3}-[0-9]{4}$/, "Placa inválida"),
   });
 
-  const {register, handleSubmit, formState: { errors }} = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
-  
+
   const editUser = ({ model, plate, email, password, name }: FieldValues) => {
     const userFormated = {
       email,
@@ -46,17 +49,15 @@ const Preferences = () => {
       car: { model, plate },
     };
   };
-  
+
   const [bill, setBill] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
-  return(
+  return (
     <>
-      <Header title="Preferências"/>
-
-      
+      <Header title="Preferências" />
 
       <Main>
         {bill && (
@@ -70,7 +71,7 @@ const Preferences = () => {
                 error={errors.name?.message}
                 register={register}
                 name="name"
-                placeholder="Nome completo"
+                placeholder={user?.name}
                 icon={<User />}
                 type="text"
               />
@@ -78,7 +79,7 @@ const Preferences = () => {
                 error={errors.email?.message}
                 register={register}
                 name="email"
-                placeholder="Email"
+                placeholder={user?.email}
                 icon={<MailOption />}
                 type="email"
               />
@@ -93,7 +94,8 @@ const Preferences = () => {
                 error={errors.model?.message}
                 register={register}
                 name="model"
-                placeholder="Modelo do veículo"
+                placeholder={user?.car.model}
+
                 icon={<Car />}
                 type="text"
               />
@@ -101,7 +103,7 @@ const Preferences = () => {
                 error={errors.plate?.message}
                 register={register}
                 name="plate"
-                placeholder="Placa do veículo. Ex: XXX-0000"
+                placeholder={user?.car.plate}
                 icon={<Car />}
                 type="text"
               />
@@ -116,23 +118,22 @@ const Preferences = () => {
               <button onClick={() => setFavorite(false)}>X</button>
               <h2>Favoritos</h2>
             </div>
-            {user?.favoritesPlaces.length === 0 ? 
-              (
-                <aside>
-                  <p>Sem favoritos salvos</p>
-                  <figure>
-                    <img src={bebado} alt="Imagem de um bebado" />
-                  </figure>
-                </aside>
-              ):
-              (
-                <ul>
-                  {user?.favoritesPlaces.map((favorite) => 
-                    <li key={favorite.id}>
-                      <p>{favorite.name}</p>
-                    </li>)}
-                </ul>
-              )}
+            {user?.favoritesPlaces.length === 0 ? (
+              <aside>
+                <p>Sem favoritos salvos</p>
+                <figure>
+                  <img src={bebado} alt="Imagem de um bebado" />
+                </figure>
+              </aside>
+            ) : (
+              <ul>
+                {user?.favoritesPlaces.map((favorite) => (
+                  <li key={favorite.id}>
+                    <p>{favorite.name}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
           </SectionContainer>
         )}
         <Section>
@@ -161,7 +162,6 @@ const Preferences = () => {
           <img src={Cancel} alt="Botão para voltar" />
         </figure>
       </Footer>
-
     </>
   );
 };

@@ -36,7 +36,7 @@ const schema = yup.object().shape({
   plate: yup
     .string()
     .required("Campo obrigatório")
-    .matches(/^[a-zA-Z]{3}-[0-9]{4}$/, "Placa inválida"),
+    .matches(/^[a-zA-Z]{3}-[0-9]{4}$/, "Placa inválida. Formato: XXX-0000"),
 });
 
 const Signup = () => {
