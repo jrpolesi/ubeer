@@ -53,7 +53,7 @@ router.put("/finishTravel/users/:userId", (req, res) => {
 
   Database.updateOne("users", userId, user);
 
-  return res.status(200).json(travel);
+  return res.status(200).json({ travel, user });
 });
 
 export default router;

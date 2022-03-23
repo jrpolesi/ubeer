@@ -13,7 +13,7 @@ interface Props {
 function ModalDriver({ setMessageOnRoute }: Props) {
   const { travelStatus, updateTravelStatus, travel, updateTravel } =
     useContext(TravelContext);
-  const { user, token } = useContext(UserContext);
+  const { user, updateUser, token } = useContext(UserContext);
 
   const handleClick = () => {
     if (travelStatus === "waiting for driver") {
@@ -30,10 +30,13 @@ function ModalDriver({ setMessageOnRoute }: Props) {
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
+        updateUser(response.data.user);
+
         updateTravel({
           ...travel,
-          travel: response.data,
+          travel: response.data.travel,
         });
+
         return updateTravelStatus("finished");
       });
   };
