@@ -5,12 +5,17 @@ import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Footer, Main, Section, SectionContainer } from "./styles";
-import Conta from "../../assets/img/iconConta.png";
-import Favoritos from "../../assets/img/iconFavoritos.png";
-import Suporte from "../../assets/img/iconSuporte.png";
 import Cancel from "../../assets/img/iconCancel.png";
 import bebado from "../../assets/img/bebado.jpg";
-import { Car, MailOption, User } from "grommet-icons";
+import {
+  Car,
+  Favorite,
+  History,
+  MailOption,
+  Support,
+  User,
+  UserSettings,
+} from "grommet-icons";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { UserContext } from "../../providers/user";
@@ -95,7 +100,6 @@ const Preferences = () => {
                 register={register}
                 name="model"
                 placeholder={user?.car.model}
-
                 icon={<Car />}
                 type="text"
               />
@@ -138,21 +142,29 @@ const Preferences = () => {
         )}
         <Section>
           <div onClick={() => setBill(true)}>
-            <img src={Conta} alt="Conta" />
+            <div className="preferences-icon">
+              <UserSettings color="white" size="42px" />
+            </div>
             <p>Conta</p>
           </div>
           <div onClick={() => setFavorite(true)}>
-            <img src={Favoritos} alt="Favoritos" />
+            <div className="preferences-icon">
+              <Favorite color="white" size="42px" />
+            </div>
             <p>Favoritos</p>
           </div>
         </Section>
         <Section>
           <div onClick={() => navigate("/history")}>
-            <img src={Conta} alt="Histórico" />
+            <div className="preferences-icon">
+              <History color="white" size="42px" />
+            </div>
             <p>Histórico</p>
           </div>
           <div onClick={() => navigate("/support")}>
-            <img src={Suporte} alt="Suporte" />
+            <div className="preferences-icon">
+              <Support color="white" size="42px" />
+            </div>
             <p>Suporte</p>
           </div>
         </Section>

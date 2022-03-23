@@ -42,47 +42,58 @@ function MapUbeer() {
   const { travelStatus, updateTravelStatus, updateTravel } =
     useContext(TravelContext);
   const { user, token, updateUser } = useContext(UserContext);
-  const [requestError, setRequestError] = useState<string | boolean>(false);
+
   const [hasOrigin, setHasOrigin] = useState(false);
-  const [center, setCenter] = useState({} as Location);
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
   const [response, setResponse] = useState<google.maps.DirectionsResult | null>(
     null
   );
+
+  const [map, setMap] = useState<google.maps.Map>();
+  const [searchBox, setSearchBox] =
+    useState<google.maps.places.SearchBox | null>(null);
+
+  const [requestError, setRequestError] = useState<string | boolean>(false);
   const [notificationWaiting, setNotificationWaiting] =
     useState<boolean>(false);
   const [messageOnRoute, setMessageOnRoute] = useState<boolean>(false);
+
+  const [clientPosition, setClientPosition] = useState<Location>({
+    lat: -23.55052,
+    lng: -46.633309,
+  });
+  const [center, setCenter] = useState<Location>({
+    lat: -23.55052,
+    lng: -46.633309,
+  });
+
+  useEffect(() => {
+    const navigatorId = navigator.geolocation.watchPosition((position) => {
+      setCenter({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+
+      setClientPosition({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    });
+
+    return () => navigator.geolocation.clearWatch(navigatorId);
+  }, []);
 
   const resetMap = () => {
     setHasOrigin(false);
     setOrigin("");
     setDestination("");
     setResponse(null);
-  };
-
-  useEffect(() => {
-    const navigatorId = navigator.geolocation.watchPosition((position) =>
-      setCenter({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      })
-    );
-
-    return () => navigator.geolocation.clearWatch(navigatorId);
-  }, []);
-
-  const [map, setMap] = useState<google.maps.Map>();
-
-  const [searchBox, setSearchBox] =
-    useState<google.maps.places.SearchBox | null>(null);
-
-  const onLoad = (ref: google.maps.places.SearchBox) => {
-    setSearchBox(ref);
+    setCenter(clientPosition);
   };
 
   const getNewTravelFromAPI = () => {
-    if (response) {
+    if (response && origin !== destination) {
       const distanceInMeters = response.routes[0].legs[0].distance?.value;
 
       const travelRequest = {
@@ -105,6 +116,10 @@ function MapUbeer() {
         .catch((err) => {
           setRequestError(err.response.data.message);
         });
+    } else {
+      setRequestError(
+        "Ops, você pode está pra lá de Bagdá, mas precisa escolher dois lugares diferentes"
+      );
     }
   };
 
@@ -116,12 +131,15 @@ function MapUbeer() {
       lat: place?.geometry?.location?.lat() || 0,
       lng: place?.geometry?.location?.lng() || 0,
     });
-
-    map?.panTo(center);
+    if (center) map?.panTo(center);
   };
 
   const onMapLoad = (map: google.maps.Map) => {
     setMap(map);
+  };
+
+  const onLoad = (ref: google.maps.places.SearchBox) => {
+    setSearchBox(ref);
   };
 
   const directionsCallback = useCallback(
@@ -168,7 +186,7 @@ function MapUbeer() {
         <GoogleMap
           onLoad={onMapLoad}
           mapContainerStyle={{ position: "static" }}
-          center={center}
+          center={center ? center : undefined}
           zoom={15}
         >
           {notificationWaiting && travelStatus === "waiting for driver" ? (
@@ -189,6 +207,7 @@ function MapUbeer() {
           ) : (
             ""
           )}
+          
           {origin && destination && (
             <DirectionsService
               options={directionsServiceOptions}
@@ -200,7 +219,7 @@ function MapUbeer() {
             <DirectionsRenderer options={directionsRendererOptions} />
           )}
 
-          {!response && (
+          {!response && center && (
             <Marker
               position={center}
               options={{
