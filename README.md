@@ -1,9 +1,7 @@
 # ubeer
 Aplicação web para buscar motoristas que sairam com o próprio carro e acabaram ingerindo bebidas alcoólicas
 
-# Frontend
-
-
+link: **https://ubeer.vercel.app/**
 
 # API
 
@@ -236,7 +234,7 @@ Para pedir uma viagem utilize a rota abaixo:
 {
   "from": "Habbis",
   "to": "Bar do zé",
-  "distance": 12
+  "distance": 30
 }
 ```
 
@@ -247,7 +245,7 @@ Para pedir uma viagem utilize a rota abaixo:
   "travel": {
     "id": "26f4969b-33d0-4ee4-95a1-11a1073701ca",
     "from": "Habbis",
-    "to": "casa",
+    "to": "Bar do zé",
     "departureDate": "Tue Mar 15 2022 22:46:41 GMT-0300 (Brasilia Standard Time)",
     "arrivedDate": "",
     "value": 71.48941180343579
@@ -269,6 +267,32 @@ Para pedir uma viagem utilize a rota abaixo:
         }
       ]
     }
+  },
+  "user": {
+    "id": "6155957e-bd2a-4675-bff4-bf10805b422c",
+    "email": "gabrielcastedo@kenzie.com.br",
+    "name": "Gabriel",
+    "car": {
+      "model": "fusion",
+      "plate": "AZP-3705"
+    },
+    "budget": 200,
+    "favoritesPlaces": [
+      {
+        "id": "1234957e-ad2a-4675-bff4-bf16846b192r",
+        "name": "Bar do Zé"
+      }
+    ],
+    "travelHistoric": [
+      {
+        "id": "26f4969b-33d0-4ee4-95a1-11a1073701ca",
+        "from": "Habbis",
+        "to": "Bar do zé",
+        "departureDate": "Tue Mar 15 2022 22:46:41 GMT-0300 (Brasilia Standard Time)",
+        "arrivedDate": "",
+        "value": 71.48941180343579
+      }
+    ]
   }
 }
 ```
@@ -279,17 +303,45 @@ Para salvar a hora da chegada utilize a rota abaixo:
 
 | Método | endpoint                                                |
 | ------ | ------------------------------------------------------- |
-| PUT    | /travels/newTravel/users/:userId?travelid=&lt;travelId> |
+| PUT    | /travels/finishTravel/users/:userId?travelid=&lt;travelId> |
 
 #### `Formato de resposta`
 
 ```json
 {
-  "id": "d8c96d59-d8b0-4169-b5f2-4aa14b025d7b",
-  "from": "Habbis",
-  "to": "casa",
-  "departureDate": "Tue Mar 15 2022 22:46:41 GMT-0300 (Brasilia Standard Time)",
-  "arrivedDate": "Tue Mar 15 2022 23:01:11 GMT-0300 (Brasilia Standard Time)",
-  "value": 71.48941180343579
+  "travel":{
+    "id": "d8c96d59-d8b0-4169-b5f2-4aa14b025d7b",
+    "from": "Habbis",
+    "to": "casa",
+    "departureDate": "Tue Mar 15 2022 22:46:41 GMT-0300 (Brasilia Standard Time)",
+    "arrivedDate": "Tue Mar 15 2022 23:01:11 GMT-0300 (Brasilia Standard Time)",
+    "value": 71.48941180343579
+  },
+  "user": {
+    "id": "6155957e-bd2a-4675-bff4-bf10805b422c",
+    "email": "gabrielcastedo@kenzie.com.br",
+    "name": "Gabriel",
+    "car": {
+      "model": "fusion",
+      "plate": "AZP-3705"
+    },
+    "budget": 200,
+    "favoritesPlaces": [
+      {
+        "id": "1234957e-ad2a-4675-bff4-bf16846b192r",
+        "name": "Bar do Zé"
+      }
+    ],
+    "travelHistoric": [
+      {
+        "id": "26f4969b-33d0-4ee4-95a1-11a1073701ca",
+        "from": "Habbis",
+        "to": "Bar do zé",
+        "departureDate": "Tue Mar 15 2022 22:46:41 GMT-0300 (Brasilia Standard Time)",
+        "arrivedDate": "",
+        "value": 71.48941180343579
+      }
+    ]
+  }
 }
 ```
