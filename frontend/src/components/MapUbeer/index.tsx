@@ -207,7 +207,7 @@ function MapUbeer() {
           ) : (
             ""
           )}
-          
+
           {origin && destination && (
             <DirectionsService
               options={directionsServiceOptions}
@@ -271,7 +271,11 @@ function MapUbeer() {
                     />
                   </StandaloneSearchBox>
 
-                  <Button variant="rounded" onClick={getNewTravelFromAPI}>
+                  <Button
+                    variant="rounded"
+                    onClick={getNewTravelFromAPI}
+                    disabled={!origin || !destination}
+                  >
                     Chamar motorista
                   </Button>
                 </>
