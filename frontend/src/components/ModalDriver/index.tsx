@@ -1,19 +1,17 @@
-import React, { useContext, Dispatch, SetStateAction } from "react";
+import React, { useContext } from "react";
 import { TravelContext } from "../../providers/travel";
 import { PopupDriver, Left, Right } from "./styles";
 import Button from "../Button";
 import api from "../../services/api";
 import { UserContext } from "../../providers/user";
 import { Star } from "grommet-icons";
+import { MapContext } from "../../providers/map";
 
-interface Props {
-  setMessageOnRoute: Dispatch<SetStateAction<boolean>>;
-}
-
-function ModalDriver({ setMessageOnRoute }: Props) {
+function ModalDriver() {
   const { travelStatus, updateTravelStatus, travel, updateTravel } =
     useContext(TravelContext);
   const { user, updateUser, token } = useContext(UserContext);
+  const {setMessageOnRoute} = useContext(MapContext);
 
   const handleClick = () => {
     if (travelStatus === "waiting for driver") {

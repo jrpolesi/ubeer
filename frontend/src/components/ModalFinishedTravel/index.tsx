@@ -5,7 +5,7 @@ import Button from "../Button";
 import ModalStars from "../ModalStars";
 import { Container, TravelCardPos } from "./styles";
 
-const ModalFinishedTravel = ({ resetMap }: { resetMap: () => void }) => {
+const ModalFinishedTravel = () => {
   const {
     travel: { travel },
   } = useContext(TravelContext);
@@ -15,7 +15,7 @@ const ModalFinishedTravel = ({ resetMap }: { resetMap: () => void }) => {
   return (
     <Container>
       {showFeedback ? (
-        <ModalStars resetMap={resetMap} />
+        <ModalStars />
       ) : (
         <TravelCardPos>
           <CardTravel isTravel={false} travel={travel} />
