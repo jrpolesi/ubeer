@@ -20,15 +20,9 @@ import { Search, Indicator } from "grommet-icons";
 import { TravelContext } from "../../providers/travel";
 import { DivModal, MapContainer } from "./styles";
 import Button from "../Button";
-import api from "../../services/api";
-import { UserContext } from "../../providers/user";
 import ModalFinishedTravel from "../ModalFinishedTravel";
 import { Notification } from "grommet";
-
-interface Location {
-  lat: number;
-  lng: number;
-}
+import { MapContext } from "../../providers/map";
 
 const arrayPlace: (
   | "places"
@@ -39,74 +33,49 @@ const arrayPlace: (
 )[] = ["places"];
 
 function MapUbeer() {
-  const { travelStatus, updateTravelStatus, updateTravel } =
+  const {
+    setCenter,
+    response,
+    hasOrigin,
+    setHasOrigin,
+    setOrigin,
+    destination,
+    setDestination,
+    setResponse,
+    requestError,
+    setRequestError,
+    getNewTravelFromAPI,
+    notificationWaiting,
+    setNotificationWaiting,
+    messageOnRoute,
+    setMessageOnRoute,
+    setClientPosition,
+    center,
+    origin,
+  } = useContext(MapContext);
+
+  const { travelStatus } =
     useContext(TravelContext);
-  const { user, token, updateUser } = useContext(UserContext);
-  const [requestError, setRequestError] = useState<string | boolean>(false);
-  const [hasOrigin, setHasOrigin] = useState(false);
-  const [center, setCenter] = useState({} as Location);
-  const [origin, setOrigin] = useState<string>("");
-  const [destination, setDestination] = useState<string>("");
-  const [response, setResponse] = useState<google.maps.DirectionsResult | null>(
-    null
-  );
-  const [notificationWaiting, setNotificationWaiting] =
-    useState<boolean>(false);
-  const [messageOnRoute, setMessageOnRoute] = useState<boolean>(false);
-
-  const resetMap = () => {
-    setHasOrigin(false);
-    setOrigin("");
-    setDestination("");
-    setResponse(null);
-  };
-
-  useEffect(() => {
-    const navigatorId = navigator.geolocation.watchPosition((position) =>
-      setCenter({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      })
-    );
-
-    return () => navigator.geolocation.clearWatch(navigatorId);
-  }, []);
 
   const [map, setMap] = useState<google.maps.Map>();
-
   const [searchBox, setSearchBox] =
     useState<google.maps.places.SearchBox | null>(null);
 
-  const onLoad = (ref: google.maps.places.SearchBox) => {
-    setSearchBox(ref);
-  };
+  useEffect(() => {
+    const navigatorId = navigator.geolocation.watchPosition((position) => {
+      setCenter({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
 
-  const getNewTravelFromAPI = () => {
-    if (response) {
-      const distanceInMeters = response.routes[0].legs[0].distance?.value;
+      setClientPosition({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    });
 
-      const travelRequest = {
-        from: origin,
-        to: destination,
-        distance: distanceInMeters ? distanceInMeters / 1000 : 100,
-      };
-
-      api
-        .post(`/travels/newTravel/users/${user && user.id}`, travelRequest, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((response) => {
-          const { user, ...rest } = response.data;
-          updateTravel(rest);
-          updateUser(user);
-          updateTravelStatus("waiting for driver");
-          setNotificationWaiting(true);
-        })
-        .catch((err) => {
-          setRequestError(err.response.data.message);
-        });
-    }
-  };
+    return () => navigator.geolocation.clearWatch(navigatorId);
+  }, []);
 
   const onPlacesChanged = () => {
     const places = searchBox?.getPlaces();
@@ -116,12 +85,15 @@ function MapUbeer() {
       lat: place?.geometry?.location?.lat() || 0,
       lng: place?.geometry?.location?.lng() || 0,
     });
-
-    map?.panTo(center);
+    if (center) map?.panTo(center);
   };
 
   const onMapLoad = (map: google.maps.Map) => {
     setMap(map);
+  };
+
+  const onLoad = (ref: google.maps.places.SearchBox) => {
+    setSearchBox(ref);
   };
 
   const directionsCallback = useCallback(
@@ -168,7 +140,7 @@ function MapUbeer() {
         <GoogleMap
           onLoad={onMapLoad}
           mapContainerStyle={{ position: "static" }}
-          center={center}
+          center={center ? center : undefined}
           zoom={15}
         >
           {notificationWaiting && travelStatus === "waiting for driver" ? (
@@ -189,6 +161,7 @@ function MapUbeer() {
           ) : (
             ""
           )}
+
           {origin && destination && (
             <DirectionsService
               options={directionsServiceOptions}
@@ -200,7 +173,7 @@ function MapUbeer() {
             <DirectionsRenderer options={directionsRendererOptions} />
           )}
 
-          {!response && (
+          {!response && center && (
             <Marker
               position={center}
               options={{
@@ -215,12 +188,7 @@ function MapUbeer() {
         </GoogleMap>
 
         {!travelStatus && (
-          <Modal
-            setOrigin={setOrigin}
-            setDestination={setDestination}
-            setHasOrigin={setHasOrigin}
-            hasOrigin={hasOrigin}
-          >
+          <Modal>
             <DivModal>
               <StandaloneSearchBox
                 onLoad={onLoad}
@@ -252,7 +220,11 @@ function MapUbeer() {
                     />
                   </StandaloneSearchBox>
 
-                  <Button variant="rounded" onClick={getNewTravelFromAPI}>
+                  <Button
+                    variant="rounded"
+                    onClick={getNewTravelFromAPI}
+                    disabled={!origin || !destination}
+                  >
                     Chamar motorista
                   </Button>
                 </>
@@ -263,11 +235,11 @@ function MapUbeer() {
 
         {(travelStatus === "waiting for driver" ||
           travelStatus === "in transit") && (
-          <ModalDriver setMessageOnRoute={setMessageOnRoute} />
+          <ModalDriver />
         )}
 
         {travelStatus === "finished" && (
-          <ModalFinishedTravel resetMap={resetMap} />
+          <ModalFinishedTravel />
         )}
       </LoadScript>
     </MapContainer>

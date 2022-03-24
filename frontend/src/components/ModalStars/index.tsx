@@ -7,11 +7,13 @@ import api from "../../services/api";
 import { UserContext } from "../../providers/user";
 import { Notification } from "grommet";
 import { TravelData } from "../../types/travelContext";
+import { MapContext } from "../../providers/map";
 
-const ModalStars = ({ resetMap }: { resetMap: () => void }) => {
+const ModalStars = () => {
   const { travel, updateTravelStatus, updateTravel } =
     useContext(TravelContext);
   const { token } = useContext(UserContext);
+  const {resetMap} = useContext(MapContext);
   const [ratingValue, setRatingValue] = useState(0);
   const [evaluation, setEvaluation] = useState("Sua avaliação");
   const [description, setDescription] = useState("");

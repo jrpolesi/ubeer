@@ -9,6 +9,7 @@ import Sobre from "../pages/Sobre";
 import Carteira from "../pages/Carteira";
 import Preferences from "../pages/Preferences";
 import Suporte from "../pages/Suporte";
+import Historic from "../pages/Historic/Historic";
 
 const RoutesPages = () => {
   return (
@@ -69,7 +70,14 @@ const RoutesPages = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/history" element={<PrivateRoute>historico</PrivateRoute>} />
+      <Route
+        path="/history"
+        element={
+          <PrivateRoute>
+            <Historic />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 };

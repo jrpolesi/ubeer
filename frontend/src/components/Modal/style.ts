@@ -49,5 +49,6 @@ export const Favourite = styled.div`
     justify-content: center;
     margin-bottom: 5px;
     color: #3e4958;
+    cursor: pointer;
   }
 `;
