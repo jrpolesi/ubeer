@@ -8,7 +8,7 @@ interface Props {
   children: ReactNode;
 }
 
-function Modal({ children }: Props) {
+const ModalSearchAddress = ({ children }: Props) => {
   const { user } = useContext(UserContext);
 
   const { setOrigin, setDestination, setHasOrigin, hasOrigin } =
@@ -43,6 +43,6 @@ function Modal({ children }: Props) {
       </section>
     </Popup>
   );
-}
+};
 
-export default Modal;
+export default ModalSearchAddress;

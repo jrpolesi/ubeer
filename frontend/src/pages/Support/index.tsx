@@ -1,8 +1,8 @@
 import React from "react";
 import { Main } from "./styles";
-import Header from "../../components/Header/";
+import Header from "../../components/Header";
 import contatoSupport from "../../assets/img/contatoSupport.png";
-const Suporte = () => {
+const Support = () => {
   return (
     <>
       <Header title="Suporte" />
@@ -45,4 +45,4 @@ const Suporte = () => {
   );
 };
 
-export default Suporte;
+export default Support;

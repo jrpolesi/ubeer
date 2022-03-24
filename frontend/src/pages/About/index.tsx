@@ -22,7 +22,7 @@ import Jose from "../../assets/img/Jose.jpeg";
 import Carlos from "../../assets/img/Carlos.jpeg";
 import Robert from "../../assets/img/Robert.png";
 
-const Sobre = () => {
+const About = () => {
   const navigate = useNavigate();
 
   return (
@@ -205,4 +205,4 @@ const Sobre = () => {
   );
 };
 
-export default Sobre;
+export default About;

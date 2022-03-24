@@ -8,7 +8,7 @@ import Button from "../../components/Button";
 import LogoSalario from "../../assets/img/dinheiro.png";
 import Header from "../../components/Header";
 
-const Carteira = () => {
+const Wallet = () => {
   const { updateUser, user, token } = useContext(UserContext);
 
   const handleClick = (value: number) => {
@@ -67,4 +67,4 @@ const Carteira = () => {
   );
 };
 
-export default Carteira;
+export default Wallet;

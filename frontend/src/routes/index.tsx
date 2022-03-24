@@ -5,10 +5,10 @@ import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import Signup from "../pages/Signup";
 import DashBoard from "../pages/Dashboard";
-import Sobre from "../pages/Sobre";
-import Carteira from "../pages/Carteira";
+import About from "../pages/About";
+import Wallet from "../pages/Wallet";
 import Preferences from "../pages/Preferences";
-import Suporte from "../pages/Suporte";
+import Support from "../pages/Support";
 import Historic from "../pages/Historic/Historic";
 
 const RoutesPages = () => {
@@ -18,7 +18,7 @@ const RoutesPages = () => {
         path="/"
         element={
           <PublicRoute>
-            <Sobre />
+            <About />
           </PublicRoute>
         }
       />
@@ -50,7 +50,7 @@ const RoutesPages = () => {
         path="/wallet"
         element={
           <PrivateRoute>
-            <Carteira />
+            <Wallet />
           </PrivateRoute>
         }
       />
@@ -66,7 +66,7 @@ const RoutesPages = () => {
         path="/support"
         element={
           <PrivateRoute>
-            <Suporte />
+            <Support />
           </PrivateRoute>
         }
       />

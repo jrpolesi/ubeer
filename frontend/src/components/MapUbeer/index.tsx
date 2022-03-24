@@ -13,7 +13,7 @@ import {
   DirectionsService,
   DirectionsRenderer,
 } from "@react-google-maps/api";
-import Modal from "../Modal";
+import ModalSearchAddress from "../ModalSearchAddress";
 import ModalDriver from "../ModalDriver";
 import InputMaps from "../InputMaps";
 import { Search, Indicator } from "grommet-icons";
@@ -188,7 +188,7 @@ function MapUbeer() {
         </GoogleMap>
 
         {!travelStatus && (
-          <Modal>
+          <ModalSearchAddress>
             <DivModal>
               <StandaloneSearchBox
                 onLoad={onLoad}
@@ -230,7 +230,7 @@ function MapUbeer() {
                 </>
               )}
             </DivModal>
-          </Modal>
+          </ModalSearchAddress>
         )}
 
         {(travelStatus === "waiting for driver" ||
