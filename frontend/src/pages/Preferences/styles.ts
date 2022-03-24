@@ -39,7 +39,7 @@ export const Section = styled.section`
   .preferences-icon {
     width: 82px;
     height: 82px;
-    background: #FBD50E;
+    background: #fbd50e;
     border-radius: 50%;
     margin-bottom: 10px;
 
@@ -96,7 +96,7 @@ export const SectionContainer = styled.section`
   animation-name: animation;
   animation-duration: 1s;
 
-  div {
+  > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -121,18 +121,27 @@ export const SectionContainer = styled.section`
     box-shadow: 1px 1px 8px #ccc;
   }
 
-  form div {
-    width: 100%;
-    margin: 10px 0px;
-    animation-name: animation;
-    animation-duration: 1.5s;
-  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
-  form button {
-    width: 100%;
-    margin-top: 20px;
-    animation-name: animation;
-    animation-duration: 1.5s;
+    div {
+      width: 100%;
+      animation-name: animation;
+      animation-duration: 1.5s;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      animation-name: animation;
+      animation-duration: 1.5s;
+    }
+
+    label {
+      font-weight: 400;
+    }
   }
 
   li {

@@ -55,7 +55,7 @@ const Preferences = () => {
     };
   };
 
-  const [bill, setBill] = useState(false);
+  const [account, setAccount] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
@@ -65,10 +65,10 @@ const Preferences = () => {
       <Header title="Preferências" />
 
       <Main>
-        {bill && (
+        {account && (
           <SectionContainer>
             <div>
-              <button onClick={() => setBill(false)}>X</button>
+              <button onClick={() => setAccount(false)}>X</button>
               <h2>Editar informações</h2>
             </div>
             <form onSubmit={handleSubmit(editUser)}>
@@ -141,7 +141,7 @@ const Preferences = () => {
           </SectionContainer>
         )}
         <Section>
-          <div onClick={() => setBill(true)}>
+          <div onClick={() => setAccount(true)}>
             <div className="preferences-icon">
               <UserSettings color="white" size="42px" />
             </div>
