@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import map from "../../images/map.svg";
+import map from "../../assets/img/map.svg";
 
 export const Container = styled.div`
   padding: 80px 0 20px;
