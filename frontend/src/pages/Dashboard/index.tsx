@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { TravelContext } from "../../providers/travel/index";
 import MapUbeer from "../../components/MapUbeer";
 import Header from "../../components/Header";
+import { MapProvider } from "../../providers/map";
 
 function DashBoard() {
   const { travelStatus } = useContext(TravelContext);
@@ -23,7 +24,9 @@ function DashBoard() {
             : "Avaliação"
         }
       />
-      <MapUbeer />
+      <MapProvider>
+        <MapUbeer />
+      </MapProvider>
     </>
   );
 }
