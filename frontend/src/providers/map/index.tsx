@@ -1,44 +1,16 @@
-import React, { Dispatch } from "react";
+import React from "react";
 import { createContext, ReactNode, useContext, useState } from "react";
 import api from "../../services/api";
+import { MapContextInterface, Location } from "../../types/mapContext";
 import { TravelContext } from "../travel";
 import { UserContext } from "../user";
-
-interface Location {
-  lat: number;
-  lng: number;
-}
-
-interface MapContextInterface {
-  hasOrigin: boolean;
-  setHasOrigin: Dispatch<React.SetStateAction<boolean>>;
-  origin: string;
-  setOrigin: Dispatch<React.SetStateAction<string>>;
-  destination: string;
-  setDestination: Dispatch<React.SetStateAction<string>>;
-  response: google.maps.DirectionsResult | null;
-  setResponse: Dispatch<React.SetStateAction<google.maps.DirectionsResult | null>>;
-  requestError: string | boolean;
-  setRequestError: Dispatch<React.SetStateAction<string | boolean>>;
-  notificationWaiting: boolean;
-  setNotificationWaiting: Dispatch<React.SetStateAction<boolean>>;
-  messageOnRoute: boolean;
-  setMessageOnRoute: Dispatch<React.SetStateAction<boolean>>
-  clientPosition: Location;
-  setClientPosition: Dispatch<React.SetStateAction<Location>>;
-  center: Location;
-  setCenter: Dispatch<React.SetStateAction<Location>>;
-  getNewTravelFromAPI: () => void;
-  resetMap: () => void;
-}
 
 export const MapContext = createContext<MapContextInterface>(
   {} as MapContextInterface
 );
 
 export const MapProvider = ({ children }: { children: ReactNode }) => {
-  const { updateTravelStatus, updateTravel } =
-    useContext(TravelContext);
+  const { updateTravelStatus, updateTravel } = useContext(TravelContext);
   const { user, token, updateUser } = useContext(UserContext);
 
   const [hasOrigin, setHasOrigin] = useState(false);
